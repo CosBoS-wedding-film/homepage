@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fine Days Studio</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="scripts.js"></script>
+</head>
+<body>
+    <header>
+        <div>
+            <img src="candidate2.png" alt="Fine Days Studio Logo" class="header-logo" onclick="navigateToHomePage()">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showSection('about-us')">About Us</a></li>
+                <li><a href="#" onclick="showSection('product-price')">Product (Price)</a></li>
+                <li><a href="#" onclick="showSection('reservation')">Reservation</a></li>
+                <li><a href="#" onclick="showSection('review')">Review</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="videos" class="content-section show">
+            <div class="section">4K: 1분 SNS 영상 / 5분 하이라이트 영상 / Full 영상</div>
+            <div class="section">아래는 화질 저하된 유튜브 영상이며, 4K 영상 화질로 보실 분들은 Reservation 메뉴의 번호로 연락바랍니다.</div>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/4_NIn-PFYYA?si=GFTrH6r7d2Ihfv4B" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/zWhG3LKL4u4?si=anUEQkwc9A80cOH8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/vYBil5VE5Qk?si=IkZWb9v8QMG1Pok1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </section>
+        <section id="about-us" class="content-section" style="display: none;">
+            <div class="center-content">
+                <p>Fine Days Studio는 소중한 결혼식의 감동을 영원히 담을 수 있는 영상을 제작합니다.</p>
+                <p>평생 기억될 부모님과 신랑 신부님의 가장 아름다운 순간을</p>
+                <p>최고의 퀄리티로 담아드리겠습니다.</p>
+            </div>
+        </section>
+        <section id="product-price" class="content-section" style="display: none;">
+            <h3>BASIC (다큐멘터리 영상)</h3>
+            <ul>
+                <li>가격: 390,000원</li>
+                <li>화질: 4K</li>    
+                <li>구성: 1인 1캠 고음질 녹음기 </li>
+                <li>제공영상: Full 영상 / 1분 SNS 영상 (EVENT1) / 원본 (EVENT2)</li>
+            </ul>
+            <h3>PRESTIGE (시네마틱 영상)</h3>
+            <ul>
+                <li>가격: 590,000원 </li>
+                <li>화질: 4K </li>
+                <li>구성: 1인 2캠 고음질 녹음기 with 짐벌 </li>
+                <li>제공영상: Full 영상 / 5분 하이라이트 영상 / 1분 SNS 영상 (EVENT1) / 원본 (EVENT2)</li>
+                <li>인터뷰: 고음질 마이크로 양가 부모님 및 신랑 신부님과 하객분들 인터뷰</li>
+            </ul>
+            <h3>EVENT</h3>
+            <ul>
+                <li>EVENT1. 네이버 블로그 홍보 시 SNS 1분 영상 무료 제공 </li>
+                <li>EVENT2. 숨고 리뷰 & 인스타 홍보 시 원본 영상 무료 제공</li>
+            </ul>
+            </ul>
+            <h3>스냅+원판 추가</h3>
+            <ul>
+                <li>스냅 (4K 영상 30장 추출 보정본 + 앨범) + 원판 (10장 보정본 + 앨범) + 원본 </li>
+            </ul>
+        </section>
+        <section id="reservation" class="content-section" style="display: none;">
+            <div class="center-content">
+                <p>010-9201-2674로 연락주시면 친절하게 예약 상담 도와드리겠습니다.</p>
+            </div>
+        </section>
+        <section id="review" class="content-section" style="display: none;">
+            <h3 class="section-title">Reviews</h3>
+            <p>아래는 숨고가 보증하는 신랑 신부님들의 리뷰입니다.</p>
+            <p>리뷰 클릭시 Fine Days Studio의 숨고 페이지로 이동합니다.</p>
+            <div class="photo-grid">
+                <a href="https://soomgo.com/profile/users/4565961" target="_blank"><img src="review1.png" alt="Review 1"></a>
+                <a href="https://soomgo.com/profile/users/4565961" target="_blank"><img src="review2.png" alt="Review 2"></a>
+                <a href="https://soomgo.com/profile/users/4565961" target="_blank"><img src="review3.png" alt="Review 3"></a>
+                <a href="https://soomgo.com/profile/users/4565961" target="_blank"><img src="review4.png" alt="Review 4"></a>
+                <a href="https://soomgo.com/profile/users/4565961" target="_blank"><img src="review5.png" alt="Review 5"></a>
+                <a href="https://soomgo.com/profile/users/4565961" target="_blank"><img src="review6.png" alt="Review 6"></a>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <!-- <p>사업자등록번호 : ???-??-????? | 대표 : 임민정</p> -->
+        <p>COPYRIGHT © FINEDAYSSTUDIO ALL RIGHTS RESERVED.</p>
+    </footer>
+</body>
+</html>
