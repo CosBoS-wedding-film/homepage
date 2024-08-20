@@ -40,3 +40,38 @@ function openTab(event, tabName) {
     document.getElementById(tabName).style.display = "block";
     event.currentTarget.className += " active";
 }
+
+
+
+
+
+
+
+// Tab functionality for the portfolio section
+function openTab(event, tabName) {
+    // Get all tab content and hide them
+    const tabContents = document.getElementsByClassName("tab-content");
+    for (let i = 0; i < tabContents.length; i++) {
+        tabContents[i].style.display = "none";
+        tabContents[i].classList.remove("show");
+    }
+
+    // Remove active class from all tabs
+    const tabLinks = document.getElementsByClassName("tab-link");
+    for (let i = 0; i < tabLinks.length; i++) {
+        tabLinks[i].classList.remove("active");
+    }
+
+    // Show the selected tab content and add the active class to the clicked tab
+    document.getElementById(tabName).style.display = "block";
+    document.getElementById(tabName).classList.add("show");
+    event.currentTarget.classList.add("active");
+}
+
+// Ensure the default tab is displayed on page load
+document.addEventListener("DOMContentLoaded", function() {
+    const defaultTab = document.querySelector('.tab-link.active');
+    if (defaultTab) {
+        defaultTab.click();
+    }
+});
