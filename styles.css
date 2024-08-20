@@ -181,7 +181,18 @@ footer p {
 
 
 
+
+
 .content-section {
-    opacity: 1; /* 기본 상태에서 보이도록 설정 */
+    padding: 20px;
+    font-size: 18px;
+    line-height: 1.6;
+    opacity: 0;
+    transform: translateY(20px);
     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.content-section.show {
+    opacity: 1;
+    transform: translateY(0);
 }
