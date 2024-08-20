@@ -1,20 +1,26 @@
-function showSection(sectionId) {
-    // Get all sections
-    const sections = document.querySelectorAll('.content-section');
-
-    // Hide all sections
-    sections.forEach(section => {
-        section.style.display = 'none';
-    });
-
-    // Show the selected section
-    const activeSection = document.getElementById(sectionId);
-    if (activeSection) {
-        activeSection.style.display = 'block';
-    }
+function navigateToHomePage() {
+    showSection('videos');
 }
 
-// Tab functionality for the portfolio section
+function showSection(sectionId) {
+    const sections = document.querySelectorAll('.content-section');
+    sections.forEach(section => {
+        if (section.id === sectionId) {
+            section.style.display = 'block';
+            setTimeout(() => {
+                section.classList.add('show');
+            }, 0); // slight delay to trigger transition
+        } else {
+            section.classList.remove('show');
+            setTimeout(() => {
+                section.style.display = 'none';
+            }, 100); // match the CSS transition duration
+        }
+    });
+}
+
+
+
 function openTab(event, tabName) {
     var i, tabcontent, tablinks;
 
@@ -34,8 +40,3 @@ function openTab(event, tabName) {
     document.getElementById(tabName).style.display = "block";
     event.currentTarget.className += " active";
 }
-
-// Ensure the "Videos" section is shown by default on page load
-document.addEventListener("DOMContentLoaded", function() {
-    showSection('videos');
-});
