@@ -182,17 +182,16 @@ footer p {
 
 
 
-
 .content-section {
     padding: 20px;
     font-size: 18px;
     line-height: 1.6;
+    display: none;  /* 기본적으로 숨김 */
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
 }
 
 .content-section.show {
+    display: block;  /* 보일 때 */
     opacity: 1;
-    transform: translateY(0);
 }
