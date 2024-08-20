@@ -28,15 +28,19 @@ function openTab(event, tabName) {
     tabcontent = document.getElementsByClassName("tab-content");
     for (i = 0; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
+        tabcontent[i].classList.remove("show");
     }
 
     // Remove active class from all tabs
     tablinks = document.getElementsByClassName("tab-link");
     for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
+        tablinks[i].classList.remove("active");
     }
 
     // Show the selected tab and add the active class
     document.getElementById(tabName).style.display = "block";
-    event.currentTarget.className += " active";
+    document.getElementById(tabName).classList.add("show");
+    event.currentTarget.classList.add("active");
 }
+
+
