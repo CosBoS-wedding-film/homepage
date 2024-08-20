@@ -43,20 +43,34 @@
                 <p>최고의 퀄리티로 담아드리겠습니다.</p>
             </div>
         </section>
-        <section id="portfolio" class="content-section" style="display: none;">
+        <section id="portfolio" class="content-section">
             <h3 class="section-title">Portfolio</h3>
-            <div class="portfolio-categories">
-                <div class="category">
-                    <h4>5분 하이라이트 영상</h4>
-                    <p>Description of the highlight films goes here.</p>
+            <div class="tabs">
+                <button class="tab-link active" onclick="openTab(event, 'highlight')">5분 하이라이트 영상</button>
+                <button class="tab-link" onclick="openTab(event, 'sns')">1분 SNS 영상</button>
+            </div>
+
+            <div id="highlight" class="tab-content" style="display: block;">
+                <div class="photo-grid">
+                    <a href="https://www.youtube.com/watch?v=example1" target="_blank">
+                        <img src="thumb1.png" alt="Video Thumbnail 1">
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=example2" target="_blank">
+                        <img src="thumb2.png" alt="Video Thumbnail 2">
+                    </a>
+                    <!-- More images as needed -->
                 </div>
-                <div class="category">
-                    <h4>1분 SNS 영상</h4>
-                    <p>Description of the 1 min SNS films goes here.</p>
-                </div>
-                <div class="category">
-                    <h4>Full</h4>
-                    <p>Description of the full films goes here.</p>
+            </div>
+
+            <div id="sns" class="tab-content" style="display: none;">
+                <div class="photo-grid">
+                    <a href="https://www.youtube.com/watch?v=example3" target="_blank">
+                        <img src="thumb3.png" alt="Video Thumbnail 3">
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=example4" target="_blank">
+                        <img src="thumb4.png" alt="Video Thumbnail 4">
+                    </a>
+                    <!-- More images as needed -->
                 </div>
             </div>
         </section>
