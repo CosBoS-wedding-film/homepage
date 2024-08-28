@@ -370,3 +370,36 @@ footer p {
 }
 
 
+
+
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+    border-top: 2px solid #ddd;
+    position: relative; /* Add positioning context */
+}
+
+footer p {
+    margin: 5px 0;
+    color: #777;
+    font-size: 14px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Adjust spacing between icons */
+    margin-top: 10px;
+}
+
+.social-icons a img {
+    width: 30px; /* Adjust icon size */
+    height: auto;
+    transition: transform 0.3s;
+}
+
+.social-icons a:hover img {
+    transform: scale(1.1); /* Slight enlargement on hover */
+}
