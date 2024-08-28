@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,64 +10,66 @@
 <body>
     <header>
         <div>
-            <img src="candidate2.png" alt="Fine Days Studio Logo" class="header-logo" onclick="navigateToHomePage()">
+            <img src="cosbos.png" alt="Fine Days Studio Logo" class="header-logo" onclick="navigateToHomePage()">
         </div>
         <nav>
             <ul>
-                <li><a href="#" onclick="showSection('about-us')">About Us</a></li>
-                <li><a href="#" onclick="showSection('portfolio')">Portfolio</a></li>
-                <li><a href="#" onclick="showSection('product-price')">Product Price</a></li>
-                <li><a href="#" onclick="showSection('reservation')">Reservation</a></li>
-                <li><a href="#" onclick="showSection('review')">Review</a></li>
+                <li><a href="#" onclick="showSection('ABOUT')">ABOUT</a></li>
+                <li><a href="#" onclick="showSection('PRODUCT')">PRODUCT</a></li>
+                <li><a href="#" onclick="showSection('RESERVATION')">RESERVATION</a></li>
+                <li><a href="#" onclick="showSection('REVIEWS')">REVIEWS</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <section id="videos" class="content-section show">
-            <div class="section">4K: 1분 SNS 영상 / 5분 하이라이트 영상 / Full 영상</div>
-            <div class="section">아래는 화질 저하된 유튜브 영상이며, 4K 영상 화질로 보실 분들은 Reservation 메뉴의 번호로 연락바랍니다.</div>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/4_NIn-PFYYA?si=GFTrH6r7d2Ihfv4B" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
-            <div class="video-container">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/zWhG3LKL4u4?si=anUEQkwc9A80cOH8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
-            <div class="video-container">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/vYBil5VE5Qk?si=IkZWb9v8QMG1Pok1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <section id="gallery" class="content-section show">
+            <div class="photo-grid">
+                <div class="gallery-item" data-venue="마리드블랑" data-video="https://www.youtube.com/watch?v=rRaeqAxxQgI">
+                    <img src="220402_역삼_마리드블랑.jpeg" alt="마리드블랑">
+                    <div class="overlay">
+                        <span>마리드블랑</span>
+                    </div>
+                </div>
+                <div class="gallery-item" data-venue="리움하우스" data-video="https://www.youtube.com/watch?v=pKpautir6cY">
+                    <img src="211023_인천_리움하우스.jpeg" alt="리움하우스">
+                    <div class="overlay">
+                        <span>리움하우스</span>
+                    </div>
+                </div>
+                <div class="gallery-item" data-venue="서울대이라운지" data-video="https://www.youtube.com/watch?v=HfQQQLm4_So">
+                    <img src="220219_관악_서울대이라운지.jpeg" alt="서울대이라운지">
+                    <div class="overlay">
+                        <span>서울대이라운지</span>
+                    </div>
+                </div>
+                <div class="gallery-item" data-venue="더AW컨벤션" data-video="https://www.youtube.com/watch?v=LuxfmZmflow">
+                    <img src="211127_안성_AW컨벤션.jpeg" alt="더AW컨벤션">
+                    <div class="overlay">
+                        <span>더AW컨벤션</span>
+                    </div>
+                </div>
+                <div class="gallery-item" data-venue="인천계양교회" data-video="https://www.youtube.com/watch?v=1Klb40oJTk8">
+                    <img src="211204_인천_계양교회.jpeg" alt="인천계양교회">
+                    <div class="overlay">
+                        <span>인천계양교회</span>
+                    </div>
+                </div>
             </div>
         </section>
-        <section id="about-us" class="content-section" style="display: none;">
+        
+        <div class="modal" id="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="modal-img">
+            <div id="caption"></div>
+        </div>
+        <section id="ABOUT" class="content-section" style="display: none;">
             <div class="center-content">
-                <p>Fine Days Studio는 소중한 결혼식의 감동을 영원히 담을 수 있는 영상을 제작합니다.</p>
+                <p>코스보스 웨딩필름은 소중한 결혼식의 감동을 영원히 담을 수 있는 영상을 제작합니다.</p>
                 <p>평생 기억될 부모님과 신랑 신부님의 가장 아름다운 순간을</p>
                 <p>최고의 퀄리티로 담아드리겠습니다.</p>
             </div>
         </section>
-        <section id="portfolio" class="content-section">
-            <h3 class="section-title">Portfolio</h3>
-            <div class="tabs">
-                <button class="tab-link active" onclick="openTab(event, 'sns')">1분 SNS 영상</button>
-                <button class="tab-link" onclick="openTab(event, 'highlight')">5분 하이라이트 영상</button>
-                <button class="tab-link" onclick="openTab(event, 'Full')">Full 영상</button>
-            </div>
-
-            <div id="highlight" class="tab-content" style="display: block;">
-                <div class="photo-grid">
-                    <a href="https://www.youtube.com/watch?v=4_NIn-PFYYA" target="_blank">
-                        <img src="candidate2.png" alt="Video Thumbnail 1">
-                    </a>
-                </div>
-            </div>
-
-            <div id="sns" class="tab-content" style="display: none;">
-                <div class="photo-grid">
-                    <a href="https://www.youtube.com/watch?v=4_NIn-PFYYA" target="_blank">
-                        <img src="fine_days_studio.png" alt="Video Thumbnail 3">
-                    </a>
-                </div>
-            </div>
-        </section>
-        <section id="product-price" class="content-section" style="display: none;">
+        <section id="PRODUCT" class="content-section" style="display: none;">
             <h3>BASIC (다큐멘터리 영상)</h3>
             <ul>
                 <li>가격: 390,000원</li>
@@ -94,14 +96,14 @@
                 <li>스냅 (4K 영상 30장 추출 보정본 + 앨범) + 원판 (10장 보정본 + 앨범) + 원본 </li>
             </ul>
         </section>
-        <section id="reservation" class="content-section" style="display: none;">
+        <section id="RESERVATION" class="content-section" style="display: none;">
             <div class="center-content">
                 <p>010-9201-2674로 연락주시면 친절하게 예약 상담 도와드리겠습니다.</p>
             </div>
             <div class="center-content scrollable-content">
-                <h3>Reservation Terms</h3>
+                <h3>계약서</h3>
                     <h4>제1조. 예약 및 환불</h4>
-                    <p>예약은 위임인이 전체 대금의 절반을 코스보스 웨딩필름 대표계좌로 입금하고 코스보스 웨딩필름 대표가 확인하면 예약이 완료됩니다.</p>
+                    <p>예약은 위임인이 전체 대금의 절반을 코스보스 웨딩필름 대표계좌로 입금하고 코스보스 웨딩필름 대표가 확인하면 예약이 완료됩니다.</p>
                     <h4>제2조. 잔금 지불</h4>
                     <p>예약금 외 나머지 잔금은 촬영 이후 입금해주시는 것을 원칙으로 합니다.</p>
                     <h4>제3조. 보상 규정</h4>
@@ -112,10 +114,12 @@
                     <p>원본영상의 보존기간은 촬영 된 영상이 고용량 으로 데이터 저장공간의 한계로 인하여, 상품을 납품한 날을 기준으로 1개월 후 원본데이터를 삭제합니다.</p>
             </div>
         </section>
-        <section id="review" class="content-section" style="display: none;">
-            <h3 class="section-title">Reviews</h3>
+        <section id="REVIEWS" class="content-section" style="display: none;">
+            <h3 class="section-title">REVIEWS</h3>
             <p>아래는 숨고가 보증하는 신랑 신부님들의 리뷰입니다.</p>
-            <p>리뷰 클릭시 Fine Days Studio의 숨고 페이지로 이동합니다.</p>
+            <p>리뷰 클릭시 C o s B o S 웨딩필름의 숨고 페이지로 이동합니다.</p>
+            <p>* 회사 이름을 FINE DAYS STUDIO에서 코스보스 웨딩필름으로 변경하였습니다 *</p>
+            
             <div class="photo-grid">
                 <a href="https://soomgo.com/profile/users/4565961" target="_blank"><img src="review1.png" alt="Review 1"></a>
                 <a href="https://soomgo.com/profile/users/4565961" target="_blank"><img src="review2.png" alt="Review 2"></a>
@@ -132,3 +136,8 @@
     </footer>
 </body>
 </html>
+
+
+
+
+

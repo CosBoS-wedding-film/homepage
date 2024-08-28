@@ -1,7 +1,4 @@
-function navigateToHomePage() {
-    showSection('videos');
-}
-
+// Function to show and hide sections
 function showSection(sectionId) {
     const sections = document.querySelectorAll('.content-section');
     sections.forEach(section => {
@@ -17,61 +14,77 @@ function showSection(sectionId) {
             }, 100); // match the CSS transition duration
         }
     });
+
+    // If navigating to the gallery (home section), trigger the animation
+    if (sectionId === 'gallery') {
+        animateGalleryItems();
+    }
 }
 
-
-
-function openTab(event, tabName) {
-    var i, tabcontent, tablinks;
-
-    // Hide all tab content
-    tabcontent = document.getElementsByClassName("tab-content");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-
-    // Remove active class from all tabs
-    tablinks = document.getElementsByClassName("tab-link");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-
-    // Show the selected tab and add the active class
-    document.getElementById(tabName).style.display = "block";
-    event.currentTarget.className += " active";
+// Function to animate gallery items with staggered animation
+function animateGalleryItems() {
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    
+    galleryItems.forEach((item, index) => {
+        // Reset the opacity and animation state
+        item.style.opacity = 0;
+        item.classList.remove('show');
+        
+        // Apply staggered animation
+        setTimeout(() => {
+            item.style.opacity = 1;
+            item.classList.add('show');
+        }, index * 100);  // Stagger the animation timing (100ms delay between each item)
+    });
 }
 
-
-
-
-
-
-
-// Tab functionality for the portfolio section
-function openTab(event, tabName) {
-    // Get all tab content and hide them
-    const tabContents = document.getElementsByClassName("tab-content");
-    for (let i = 0; i < tabContents.length; i++) {
-        tabContents[i].style.display = "none";
-        tabContents[i].classList.remove("show");
-    }
-
-    // Remove active class from all tabs
-    const tabLinks = document.getElementsByClassName("tab-link");
-    for (let i = 0; i < tabLinks.length; i++) {
-        tabLinks[i].classList.remove("active");
-    }
-
-    // Show the selected tab content and add the active class to the clicked tab
-    document.getElementById(tabName).style.display = "block";
-    document.getElementById(tabName).classList.add("show");
-    event.currentTarget.classList.add("active");
-}
-
-// Ensure the default tab is displayed on page load
+// Event listener for when the document is loaded
 document.addEventListener("DOMContentLoaded", function() {
-    const defaultTab = document.querySelector('.tab-link.active');
-    if (defaultTab) {
-        defaultTab.click();
-    }
+    // Run the animation on initial load
+    animateGalleryItems();
 });
+
+// Function to navigate back to the home page (gallery)
+function navigateToHomePage() {
+    showSection('gallery');
+}
+
+// Event listeners for gallery modal functionality
+const galleryItems = document.querySelectorAll('.gallery-item');
+const modal = document.getElementById('modal');
+const modalImg = document.getElementById('modal-img');
+const captionText = document.getElementById('caption');
+const closeBtn = document.querySelector('.close');
+
+galleryItems.forEach(item => {
+    item.addEventListener('click', function() {
+        modal.style.display = "block";
+        modalImg.src = this.querySelector('img').src;
+        captionText.textContent = this.dataset.venue;
+    });
+});
+
+// Close modal
+closeBtn.addEventListener('click', function() {
+    modal.style.display = "none";
+});
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    galleryItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const videoUrl = this.getAttribute('data-video');
+            window.open(videoUrl, '_blank');
+        });
+    });
+});
+
+
+
+
