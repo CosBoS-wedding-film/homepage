@@ -1,68 +1,113 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Wedding Film</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>코스보스 웨딩필름</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* 이 페이지에만 적용되는 비디오 스타일 */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            margin: 40px auto;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* 비디오 제목 스타일 */
+        .video-title {
+            text-align: center;
+            font-size: 1.5em;
+            margin: 20px 0;
+            padding: 10px;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <!-- 기존 header 복사 -->
-    <div>
-      <img
-        src="cosbos.png"
-        class="header-logo"
-        alt="CosBoS Logo"
-        onclick="navigateToHomePage()"
-      />
-    </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">HOME</a></li>
-        <li><a href="index.html#WEDDING FILM">WEDDING FILM</a></li>
-        <!-- 필요시 추가 메뉴 -->
-      </ul>
-    </nav>
-  </header>
+    <header>
+        <div>
+            <img src="cosbos.png" alt="CosBoS Logo" class="header-logo" onclick="navigateToHomePage()">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" onclick="return navigateWithSection('ABOUT')">ABOUT</a></li>
+                <li><a href="index.html" onclick="return navigateWithSection('PRODUCT')">PRODUCT</a></li>
+                <li><a href="index.html" onclick="return navigateWithSection('EVENT')">EVENT</a></li>
+                <li><a href="index.html" onclick="return navigateWithSection('RESERVATION')">RESERVATION</a></li>
+                <li><a href="index.html" onclick="return navigateWithSection('REVIEWS')">REVIEWS</a></li>
+                <li><a href="index.html" onclick="return navigateWithSection('돌잔치')">돌잔치</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="content-section show" style="padding: 40px; text-align: center;">
+            <h3 class="video-title" id="videoTitle"></h3>
+            <div class="video-container">
+                <iframe id="videoFrame" width="560" height="315" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </section>
+    </main>
 
-  <main>
-    <section
-      class="content-section show"
-      style="padding: 40px; text-align: center;"
-    >
-      <h3 id="video-title" style="margin-bottom: 20px;"></h3>
-      <div
-        class="video-container"
-        style="max-width: 900px; margin: 0 auto;"
-      >
-        <iframe
-          id="video-iframe"
-          width="100%"
-          height="500"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
-      </div>
-    </section>
-  </main>
+    <footer>
+        <div class="footer-content">
+            <div class="social-icons">
+                <a href="https://www.instagram.com/cosbos_wedding" target="_blank"><img src="instagram.png" alt="Instagram" class="social-icon"></a>
+                <a href="https://blog.naver.com/wedding_cosbos" target="_blank"><img src="blog.png" alt="Blog" class="social-icon"></a>
+                <a href="https://youtube.com/@cosbos" target="_blank"><img src="youtube.png" alt="YouTube" class="social-icon"></a>
+                <a href="https://linktr.ee/cosbos_wedding" target="_blank"><img src="linktree_logo.png" alt="LinkTree" class="social-icon"></a>
+                <a href="https://soomgo.com/profile/users/2224654" target="_blank"><img src="soomgo_logo.png" alt="Soomgo" class="social-icon"></a>
+            </div>
+        </div>
+    </footer>
 
-  <script>
-    // URL 파라미터에서 videoId, title 읽어서 iframe & h3 설정
-    const params = new URLSearchParams(location.search);
-    const title = params.get("title") || "";
-    const videoId = params.get("videoId") || "";
-
-    document.getElementById("video-title").textContent = title;
-    document.getElementById(
-      "video-iframe"
-    ).src = `https://www.youtube.com/embed/${videoId}?rel=0`;
-
-    // 로고 클릭 시 갤러리로 돌아가기
-    function navigateToHomePage() {
-      window.location.href = "index.html#gallery";
-    }
-  </script>
+    <script>
+        // URL 파라미터에서 videoId, title 읽어서 iframe & h3 설정
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const videoId = urlParams.get('videoId');
+            const title = urlParams.get('title');
+            
+            const videoFrame = document.getElementById('videoFrame');
+            const videoTitle = document.getElementById('videoTitle');
+            
+            if (videoId) {
+                videoFrame.src = `https://www.youtube.com/embed/${videoId}`;
+            }
+            
+            if (title) {
+                videoTitle.textContent = title;
+                document.title = `코스보스 웨딩필름 - ${title}`;
+            }
+        });
+        
+        // 로고 클릭 시 갤러리로 돌아가기 & 페이지 맨 위로 스크롤
+        function navigateToHomePage() {
+            window.scrollTo(0, 0);
+            window.location.href = 'index.html';
+        }
+        
+        // 섹션 전환 함수
+        function navigateWithSection(sectionId) {
+            // 강제로 돌잔치 섹션 초기화 트리거 설정
+            if (sectionId === '돌잔치') {
+                localStorage.setItem('forceInit', 'true');
+            }
+            localStorage.setItem('activeSection', sectionId);
+            window.location.href = "index.html";
+            return false;
+        }
+    </script>
 </body>
 </html>

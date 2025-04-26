@@ -1,11 +1,70 @@
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CosBoS wedding film</title>
+    <style>
+        /* 어떤 섹션을 보여줄지 결정할 때까지 초기에 콘텐츠를 숨김 */
+        .content-section {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .content-section.show {
+            opacity: 1;
+        }
+    </style>
     <link rel="stylesheet" href="styles.css">
     <script defer src="scripts.js"></script>
+    <script>
+        // 어떤 섹션을 보여줄지 결정할 때까지 모든 섹션을 숨기는 스타일 추가
+        document.addEventListener('DOMContentLoaded', () => {
+            // localStorage에 저장된 activeSection이 있는지 확인
+            const activeSection = localStorage.getItem('activeSection');
+            if (activeSection) {
+                // 갤러리 섹션을 즉시 숨겨 깜빡임 방지
+                const gallerySection = document.getElementById('gallery');
+                if (gallerySection) {
+                    gallerySection.style.display = 'none';
+                    gallerySection.classList.remove('show');
+                }
+                
+                // 저장된 섹션 표시
+                const targetSection = document.getElementById(activeSection);
+                if (targetSection) {
+                    targetSection.style.display = 'block';
+                    setTimeout(() => {
+                        targetSection.classList.add('show');
+                        
+                        // 돌잔치 섹션인 경우 추가 처리
+                        if (activeSection === '돌잔치') {
+                            const dolPhotoGrid = targetSection.querySelector('.photo-grid');
+                            if (dolPhotoGrid) {
+                                // 이미 존재하는 항목에 클릭 이벤트 추가
+                                const galleryItem = dolPhotoGrid.querySelector('.gallery-item');
+                                if (galleryItem) {
+                                    galleryItem.addEventListener('click', () => {
+                                        const videoId = "_LtYqUqYQK0?si=Xbjy8z3PldtZwJq0";
+                                        const title = "더블유페스타";
+                                        const url = `video.html?videoId=${encodeURIComponent(videoId)}&title=${encodeURIComponent(title)}`;
+                                        window.open(url, '_blank');
+                                    });
+                                    
+                                    // 애니메이션 적용
+                                    setTimeout(() => {
+                                        galleryItem.style.opacity = 1;
+                                        galleryItem.classList.add('show');
+                                    }, 100);
+                                }
+                            }
+                        }
+                    }, 0);
+                }
+                
+                // 사용 후 제거
+                localStorage.removeItem('activeSection');
+            }
+        });
+    </script>
 </head>
 <body>
     <header>
@@ -42,9 +101,9 @@
                 <p></p>
                 <p>In the vastness of space and the immensity of time, it is my joy to share a planet and an epoch with you.</p>
                 <p>
-                  linktree: 
-                  <a href="https://linktr.ee/cosbos" target="_blank" rel="noopener">
-                    카톡 상담 · 상품 계약 · 홈페이지 · 인스타 · 유튜브 · 후기
+                  <a href="https://linktr.ee/cosbos" target="_blank" rel="noopener" class="fancy-link linktree-link">
+                    <img src="linktree_logo.png" alt="Linktree">
+                    <span>카톡 상담 · 상품 계약 · 홈페이지 · 인스타 · 유튜브 · 후기</span>
                   </a>
                 </p>
             </div>
@@ -68,7 +127,7 @@
             </ul>
             <h3>+ 스냅&원판</h3>
             <ul>
-                <li>가격: 770,000원 (VAT 포함) </li>
+                <li>가격: 990,000원 (VAT 포함) </li>
                 <li>구성: 스냅 (4K 영상 추출 보정본: 일반 스냅보다 자연스러운 모습 담고 싶은 분들께 추천) + 원판 (일반 스냅과 동일) + 원본 </li>
                 <li>원판 전문 촬영 장비 (조명 등) 사용 & 국가 기술 자격증 (사진기능사) 보유: 자격번호 17641001735H / 취득일 2017.06.02
             </ul>
@@ -87,58 +146,64 @@
         </section>
         <section id="RESERVATION" class="content-section" style="display: none; font-size: 1.5em;">
             <div class="center-content">
-                <h3 class="section-title" style="font-size: 1.5em;">RESERVATION</h3>
-                    <p></p>
-                    <p>👉🏻 
-                      <a href="http://pf.kakao.com/_xjAvfn/chat" target="_blank" rel="noopener">
-                        카카오톡 상담
-                      </a>
-                    </p>
-                    <p>👉🏻 
-                      <a href="https://docs.google.com/forms/d/e/1FAIpQLSf-LWt9fFy1HFqq6UNKzWIIEt41rXUSuv_uirpNyAtHNqi8bg/viewform" target="_blank" rel="noopener">
-                        계약서 작성
-                      </a>
-                    </p>
-                    <p></p>
-                    <p></p>
+                  <p></p>
+                  <p>
+                    <a href="http://pf.kakao.com/_xjAvfn/chat" target="_blank" rel="noopener" class="fancy-link">
+                      <img src="kakao_logo.png" alt="KakaoTalk">
+                      <span>카카오톡 상담</span>
+                    </a>
+                  </p>
+                  <p>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSf-LWt9fFy1HFqq6UNKzWIIEt41rXUSuv_uirpNyAtHNqi8bg/viewform" target="_blank" rel="noopener" class="fancy-link">
+                      <img src="contract_logo.png" alt="Google Forms" onerror="this.src='kakao_logo.png'; this.style.opacity=0.5;">
+                      <span>계약서 작성</span>
+                    </a>
+                  </p>
+                  <p></p>
+                  <p></p>
             </div>
         </section>
         <section id="REVIEWS" class="content-section" style="display: none; font-size: 1.5em;">
             <div class="center-content">
-                <h3 class="section-title" style="font-size: 1.5em;">REVIEWS</h3>
-                  <p></p>
-                  <p>👉🏻 
-                    <a href="https://soomgo.com/profile/users/4565961" target="_blank" rel="noopener">
-                      숨고 리뷰 (평점 만점 상위 5% 고수)
-                    </a>
-                  </p>
-                  <p>👉🏻 
-                    <a href="https://drive.google.com/drive/folders/1Ewx63mtR4h-TEsoNxy28RshavJZcrVfd?usp=sharing" target="_blank" rel="noopener">
-                      블로그 및 카페 포스팅 후기
-                    </a>
-                  </p>
-                  <p></p>
-                  <p></p>
+                <p></p>
+                <p>
+                  <a href="https://soomgo.com/profile/users/4565961" target="_blank" rel="noopener" class="fancy-link soomgo-link">
+                    <img src="soomgo_logo.png" alt="Soomgo">
+                    <span>숨고 리뷰 (평점 만점 상위 5% 고수)</span>
+                  </a>
+                </p>
+                <p>
+                  <a href="https://drive.google.com/drive/folders/1Ewx63mtR4h-TEsoNxy28RshavJZcrVfd?usp=sharing" target="_blank" rel="noopener" class="fancy-link">
+                    <img src="review_logo.png" alt="Google Drive" onerror="this.src='kakao_logo.png'; this.style.opacity=0.5;">
+                    <span>블로그 및 카페 포스팅 후기</span>
+                  </a>
+                </p>
+                <p></p>
+                <p></p>
             </div>
         </section>
         <section id="돌잔치" class="content-section" style="display: none;">
-          <div class="single-photo-container">
-            <img
-              src="./thumbnail_only_16to9/edit_name_crop_W240810E_1500_서초_이지인_w페스타.jpg"
-              alt="서초 이지인 w페스타"
-              class="single-photo"
-            >
+          <div class="photo-grid">
+            <div class="gallery-item">
+              <img
+                src="./thumbnail_only_16to9/edit_name_crop_W240810E_1500_서초_이지인_w페스타.jpg"
+                alt="더블유페스타"
+              >
+              <div class="overlay">더블유페스타</div>
+            </div>
           </div>
         </section>
     </main>
     <footer>
         <p>TEL : 010-5924-7037
         <p>사업자등록번호 : 227-78-00415 </p>
-        <p>COPYRIGHT © COSBOS_WEDDING_FILM ALL RIGHTS RESERVED.</p>
+        <p>COPYRIGHT © COSBOS_WEDDING_FILM ALL RIGHTS RESERVED.</p>
         <div class="social-icons">
             <a href="https://www.instagram.com/cosbos.wedding.film" target="_blank"><img src="insta_logo.png" alt="Instagram"></a>
-            <a href="https://www.youtube.com/@CosBoSweddingfilm" target="_blank"><img src="youtube_logo.png" alt="YouTube"></a>
-            <a href="http://pf.kakao.com/_Exjahn" target="_blank"><img src="kakao_logo.png" alt="KakaoTalk"></a>
+            <a href="https://www.youtube.com/@cosbos.weddingfilm" target="_blank"><img src="youtube_logo.png" alt="YouTube"></a>
+            <a href="http://pf.kakao.com/_xjAvfn/chat" target="_blank"><img src="kakao_logo.png" alt="KakaoTalk"></a>
+            <a href="https://linktr.ee/cosbos" target="_blank"><img src="linktree_logo.png" alt="Linktree"></a>
+            <a href="https://soomgo.com/profile/users/4565961" target="_blank"><img src="soomgo_logo.png" alt="Soomgo"></a>
         </div>
     </footer>
 </body>
