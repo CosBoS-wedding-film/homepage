@@ -172,6 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
       // (c) 클릭 시 video.html 에 ID와 제목 넘겨서 열기
       wrapper.addEventListener('click', () => {
+        fbq('track', 'ViewContent');
         const url = `video.html?videoId=${encodeURIComponent(videoId)}&title=${encodeURIComponent(title)}`;
         window.open(url, '_blank');
       });
@@ -262,6 +263,7 @@ function showSection(sectionId) {
     
         // (c) 클릭 시 video.html 에 ID와 제목 넘겨서 열기
         wrapper.addEventListener('click', () => {
+          fbq('track', 'ViewContent');
           const url = `video.html?videoId=${encodeURIComponent(dolVideoInfo.videoId)}&title=${encodeURIComponent(dolVideoInfo.title)}`;
           window.open(url, '_blank');
         });
