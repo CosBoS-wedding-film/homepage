@@ -300,7 +300,7 @@ footer p {
 }
 
 .modal-content {
-    margin: auto;
+    margin: 50px auto; /* 상단 여백 추가 */
     display: block;
     max-width: 80%;
     max-height: 80%;
@@ -589,4 +589,28 @@ footer p {
 /* 비디오 제목 더 얇게 */
 .video-title, #video-title {
   font-weight: normal !important;
+}
+
+/* SNAP 섹션 사진 스타일 */
+.snap-photo {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 66.67%; /* 3:2 비율 유지 */
+  height: 0;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.snap-photo img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.snap-photo:hover img {
+  transform: scale(1.05);
 }

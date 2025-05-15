@@ -96,6 +96,7 @@
                 <li><a href="#" onclick="fbq('track', 'ViewContent'); showSection('EVENT')">EVENT</a></li>
                 <li><a href="#" onclick="fbq('track', 'ViewContent'); showSection('RESERVATION')">RESERVATION</a></li>
                 <li><a href="#" onclick="fbq('track', 'ViewContent'); showSection('REVIEWS')">REVIEWS</a></li>
+                <li><a href="#" onclick="fbq('track', 'ViewContent'); showSection('+SNAP')">+SNAP</a></li>
                 <li><a href="#" onclick="fbq('track', 'ViewContent'); showSection('돌잔치')">돌잔치</a></li>
             </ul>
         </nav>
@@ -130,7 +131,7 @@
         <section id="PRODUCT" class="content-section" style="display: none;">
             <h3>단일 상품 (대표 촬영 및 편집)</h3>
             <ul>
-                <li>가격: 770,000원 (VAT 포함) </li>
+                <li>가격: 770,000원 </li>
                 <li>장비: <span style="color:red"> 1인 3캠 4K</span> / 고음질 녹음기 </li>
                 <li>제공: Full 영상 / 5분 하이라이트 영상 / 원본 (EVENT 1 - 리뷰 포스팅)</li>
             </ul>
@@ -141,12 +142,67 @@
                 <li>시간: 웨딩카 하차 장면</li>
                 <li>제작: 3일 이내 영상 전송</li>
             </ul>
-            <!-- <h3>+ 스냅&원판</h3>
+        </section>
+        <section id="+SNAP" class="content-section" style="display: none;">
+            <h3>스냅 & 원판 추가</h3>
             <ul>
-                <li>가격: 990,000원 (VAT 포함) </li>
-                <li>구성: 스냅 (4K 영상 추출 보정본: 일반 스냅보다 자연스러운 모습 담고 싶은 분들께 추천) + 원판 (일반 스냅과 동일) + 원본 </li>
-                <li>원판 전문 촬영 장비 (조명 등) 사용 & 국가 기술 자격증 (사진기능사) 보유: 자격번호 17641001735H / 취득일 2017.06.02
-            </ul> -->
+                <li>가격: 770,000원</li>
+                <li>구성: 스냅 (4K 영상 추출 보정본: 일반 스냅보다 자연스러운 모습 담고 싶은 분들께 추천) + 원판 (일반 스냅과 동일) + 원본 + 보정본 (스냅 12P + 원판) </li>
+                <li>옵션: 앨범 두 권 (스냅 한 권 + 원판 한 권) >>> 330,000원</li>
+                <li>앨범은 최고급 후지필름 인화지를 사용하며, 매우 선명한 화질을 얻을 수 있는 은염 인화 공정으로 제작됩니다. </li>
+                <li>원판 전문 촬영 장비 (조명 등) 사용 & 국가 기술 자격증 (사진기능사) 보유: 자격번호 17641001735H / 취득일 2017.06.02</li>
+            </ul>
+            
+            <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+                <div style="width: 48%;">
+                    <h4 style="text-align: center;">스냅 앨범 샘플</h4>
+                    <!-- 스냅 사진 3장 -->
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                        <div style="width: 32%; position: relative; padding-bottom: 21.33%;" class="snap-photo" onclick="openModal(this)">
+                            <img src="./snap/0.jpeg" alt="스냅 사진 1" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 4px; cursor: pointer;">
+                        </div>
+                        <div style="width: 32%; position: relative; padding-bottom: 21.33%;" class="snap-photo" onclick="openModal(this)">
+                            <img src="./snap/23.jpeg" alt="스냅 사진 2" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 4px; cursor: pointer;">
+                        </div>
+                        <div style="width: 32%; position: relative; padding-bottom: 21.33%;" class="snap-photo" onclick="openModal(this)">
+                            <img src="./snap/diagonal.jpeg" alt="스냅 사진 3" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 4px; cursor: pointer;">
+                        </div>
+                    </div>
+                    <div class="gallery-item" style="cursor: pointer; position: relative;">
+                        <div style="position: absolute; top: 10px; left: 10px; background-color: rgba(0,0,0,0.7); color: white; padding: 5px 10px; border-radius: 4px; z-index: 2;">동영상</div>
+                        <img
+                            src="./snap/0.jpeg"
+                            alt="스냅 앨범 샘플"
+                            style="width: 100%; border-radius: 8px;"
+                        >
+                        <div class="overlay">스냅 앨범 샘플</div>
+                    </div>
+                </div>
+                <div style="width: 48%;">
+                    <h4 style="text-align: center;">원판 앨범 샘플</h4>
+                    <!-- 원판 사진 3장 -->
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                        <div style="width: 32%; position: relative; padding-bottom: 21.33%;" class="snap-photo" onclick="openModal(this)">
+                            <img src="./family/0.jpeg" alt="원판 사진 1" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 4px; cursor: pointer;">
+                        </div>
+                        <div style="width: 32%; position: relative; padding-bottom: 21.33%;" class="snap-photo" onclick="openModal(this)">
+                            <img src="./family/9.jpeg" alt="원판 사진 2" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 4px; cursor: pointer;">
+                        </div>
+                        <div style="width: 32%; position: relative; padding-bottom: 21.33%;" class="snap-photo" onclick="openModal(this)">
+                            <img src="./family/diagonal.jpeg" alt="원판 사진 3" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 4px; cursor: pointer;">
+                        </div>
+                    </div>
+                    <div class="gallery-item" style="cursor: pointer; position: relative;">
+                        <div style="position: absolute; top: 10px; left: 10px; background-color: rgba(0,0,0,0.7); color: white; padding: 5px 10px; border-radius: 4px; z-index: 2;">동영상</div>
+                        <img
+                            src="./family/0.jpeg"
+                            alt="원판 앨범 샘플"
+                            style="width: 100%; border-radius: 8px;"
+                        >
+                        <div class="overlay">원판 앨범 샘플</div>
+                    </div>
+                </div>
+            </div>
         </section>
         <section id="EVENT" class="content-section" style="display: none;">
             <h3>EVENT 1 - 리뷰 포스팅</h3>
@@ -164,14 +220,14 @@
             <div class="center-content">
                   <p></p>
                   <p>
-                    <a href="http://pf.kakao.com/_xjAvfn/chat" target="_blank" rel="noopener" class="fancy-link" onclick="fbq('track', 'Purchase');">
+                    <a href="http://pf.kakao.com/_xjAvfn/chat" target="_blank" rel="noopener" class="fancy-link" onclick="fbq('track', 'ViewContent');">
                       <img src="kakao_logo.png" alt="KakaoTalk">
                       <!-- <span>카카오톡 상담</span> -->
                       <span>카톡 상담</span>
                     </a>
                   </p>
                   <p>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSf-LWt9fFy1HFqq6UNKzWIIEt41rXUSuv_uirpNyAtHNqi8bg/viewform" target="_blank" rel="noopener" class="fancy-link" onclick="fbq('track', 'Purchase');">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSf-LWt9fFy1HFqq6UNKzWIIEt41rXUSuv_uirpNyAtHNqi8bg/viewform" target="_blank" rel="noopener" class="fancy-link" onclick="fbq('track', 'ViewContent');">
                       <img src="contract_logo.png" alt="Contract">
                       <span>계약서 작성</span>
                     </a>
@@ -218,7 +274,7 @@
         <div class="social-icons">
             <a href="https://www.instagram.com/cosbos.wedding.film" target="_blank" onclick="fbq('track', 'ViewContent');"><img src="insta_logo.png" alt="Instagram"></a>
             <a href="https://www.youtube.com/@cosbos.weddingfilm" target="_blank" onclick="fbq('track', 'ViewContent');"><img src="youtube_logo.png" alt="YouTube"></a>
-            <a href="http://pf.kakao.com/_xjAvfn/chat" target="_blank" onclick="fbq('track', 'Purchase');"><img src="kakao_logo.png" alt="KakaoTalk"></a>
+            <a href="http://pf.kakao.com/_xjAvfn/chat" target="_blank" onclick="fbq('track', 'ViewContent');"><img src="kakao_logo.png" alt="KakaoTalk"></a>
             <a href="https://linktr.ee/cosbos" target="_blank" onclick="fbq('track', 'ViewContent');"><img src="linktree_logo.png" alt="Linktree"></a>
             <a href="https://soomgo.com/profile/users/4565961" target="_blank" onclick="fbq('track', 'ViewContent');"><img src="soomgo_logo.png" alt="Soomgo"></a>
         </div>

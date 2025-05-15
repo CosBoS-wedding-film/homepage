@@ -43,12 +43,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (forceInit === 'true') {
     // 저장된 activeSection이 돌잔치인지 확인
     const activeSection = localStorage.getItem('activeSection');
-    if (activeSection === '돌잔치') {
+    if (activeSection === '돌잔치' || activeSection === '+SNAP') {
       // 페이지 로드 후 약간 지연시켜 돌잔치 섹션 재설정
       setTimeout(() => {
-        const dolSection = document.querySelector('#돌잔치');
-        if (dolSection) {
-          setupDoljanchiContent(dolSection);
+        if (activeSection === '돌잔치') {
+          const dolSection = document.querySelector('#돌잔치');
+          if (dolSection) {
+            setupDoljanchiContent(dolSection);
+          }
         }
       }, 100);
     }
@@ -88,6 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       pageButton.addEventListener('click', () => {
         currentPage = i;
+        fbq('track', 'ViewContent');
         renderGalleryItems();
         createPagination();
       });
@@ -179,6 +182,39 @@ document.addEventListener('DOMContentLoaded', () => {
   
       container.appendChild(wrapper);
     });
+  }
+
+  // SNAP 섹션의 갤러리 아이템에 클릭 이벤트 추가
+  const snapSection = document.getElementById('+SNAP');
+  if (snapSection) {
+    const galleryItems = snapSection.querySelectorAll('.gallery-item');
+    if (galleryItems.length >= 2) {
+      // 스냅 앨범 샘플 비디오 (첫 번째 gallery-item)
+      galleryItems[0].addEventListener('click', () => {
+        const videoId = "jbw3xXqPROI?si=ujZRc5b7CJSS2Cqz";
+        const title = "스냅 앨범 샘플";
+        fbq('track', 'ViewContent');
+        const url = `video.html?videoId=${encodeURIComponent(videoId)}&title=${encodeURIComponent(title)}`;
+        window.open(url, '_blank');
+      });
+      
+      // 원판 앨범 샘플 비디오 (두 번째 gallery-item)
+      galleryItems[1].addEventListener('click', () => {
+        const videoId = "kRNCfCSpcbc?si=N6Dp3MBR8vKY9uCO";
+        const title = "원판 앨범 샘플";
+        fbq('track', 'ViewContent');
+        const url = `video.html?videoId=${encodeURIComponent(videoId)}&title=${encodeURIComponent(title)}`;
+        window.open(url, '_blank');
+      });
+      
+      // 애니메이션 적용
+      galleryItems.forEach(item => {
+        setTimeout(() => {
+          item.style.opacity = 1;
+          item.classList.add('show');
+        }, 100);
+      });
+    }
   }
 
 }); // DOMContentLoaded 이벤트 종료
@@ -290,4 +326,36 @@ function showSection(sectionId) {
 function navigateToHomePage() {
   showSection('gallery');
   window.scrollTo(0, 0);
+}
+
+// 사진 클릭 시 모달로 확대해서 보여주는 함수
+function openModal(element) {
+  const imgSrc = element.querySelector('img').src;
+  const imgAlt = element.querySelector('img').alt;
+  
+  // 기존 모달 요소 가져오기
+  const modal = document.getElementById('modal');
+  const modalImg = document.getElementById('modal-img');
+  const captionText = document.getElementById('caption');
+  
+  // 모달 설정
+  modal.style.display = 'block';
+  modalImg.src = imgSrc;
+  captionText.innerHTML = imgAlt;
+  
+  // 이벤트 추적
+  fbq('track', 'ViewContent');
+  
+  // 모달 닫기 버튼 이벤트
+  const closeBtn = document.getElementsByClassName('close')[0];
+  closeBtn.onclick = function() {
+    modal.style.display = 'none';
+  }
+  
+  // 모달 바깥 클릭 시 닫기
+  modal.onclick = function(event) {
+    if (event.target === modal) {
+      modal.style.display = 'none';
+    }
+  }
 }

@@ -54,7 +54,7 @@
 <body>
     <header>
         <div>
-            <img src="cosbos.png" alt="CosBoS Logo" class="header-logo" onclick="navigateToHomePage()">
+            <img src="cosbos.png" alt="CosBoS Logo" class="header-logo" onclick="fbq('track', 'ViewContent'); navigateToHomePage()">
         </div>
         <nav>
             <ul>
@@ -63,6 +63,7 @@
                 <li><a href="index.html" onclick="fbq('track', 'ViewContent'); return navigateWithSection('EVENT')">EVENT</a></li>
                 <li><a href="index.html" onclick="fbq('track', 'ViewContent'); return navigateWithSection('RESERVATION')">RESERVATION</a></li>
                 <li><a href="index.html" onclick="fbq('track', 'ViewContent'); return navigateWithSection('REVIEWS')">REVIEWS</a></li>
+                <li><a href="index.html" onclick="fbq('track', 'ViewContent'); return navigateWithSection('+SNAP')">+SNAP</a></li>
                 <li><a href="index.html" onclick="fbq('track', 'ViewContent'); return navigateWithSection('돌잔치')">돌잔치</a></li>
             </ul>
         </nav>
@@ -78,11 +79,14 @@
     </main>
 
     <footer>
+        <p>TEL : 010-5924-7037</p>
+        <p>사업자등록번호 : 227-78-00415 </p>
+        <p>COPYRIGHT © COSBOS_WEDDING_FILM ALL RIGHTS RESERVED.</p>
         <div class="footer-content">
             <div class="social-icons">
                 <a href="https://www.instagram.com/cosbos.wedding.film" target="_blank" onclick="fbq('track', 'ViewContent');"><img src="insta_logo.png" alt="Instagram" class="social-icon"></a>
                 <a href="https://www.youtube.com/@cosbos.weddingfilm" target="_blank" onclick="fbq('track', 'ViewContent');"><img src="youtube_logo.png" alt="YouTube" class="social-icon"></a>
-                <a href="http://pf.kakao.com/_xjAvfn/chat" target="_blank" onclick="fbq('track', 'Purchase');"><img src="kakao_logo.png" alt="KakaoTalk" class="social-icon"></a>
+                <a href="http://pf.kakao.com/_xjAvfn/chat" target="_blank" onclick="fbq('track', 'ViewContent');"><img src="kakao_logo.png" alt="KakaoTalk" class="social-icon"></a>
                 <a href="https://linktr.ee/cosbos" target="_blank" onclick="fbq('track', 'ViewContent');"><img src="linktree_logo.png" alt="Linktree" class="social-icon"></a>
                 <a href="https://soomgo.com/profile/users/4565961" target="_blank" onclick="fbq('track', 'ViewContent');"><img src="soomgo_logo.png" alt="Soomgo" class="social-icon"></a>
             </div>
