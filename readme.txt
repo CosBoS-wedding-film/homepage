@@ -37,3 +37,10 @@ feat: refine Meta Pixel events (Lead, Purchase mapping) / menu change (카톡 �
 - Set 'Purchase' event only on 계약서 작성 button (index.html, video.html)
 - All other clicks remain 'ViewContent'
 - Updated documentation in readme_metapixel_googlepixel.txt
+
+
+
+
+250529-3
+
+docs: adding EVENT (discount of 200,000 won by adding channel)
