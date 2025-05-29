@@ -4,8 +4,8 @@ github
 
 250514
 
-feat: remove 'PRODUCT' VAT, add '+SNAP' section, fix all Meta Pixel events to 'ViewContent', Fix video web page
-- remove 'PRODUCT' VAT
+feat: remove 'PRICE' VAT, add '+SNAP' section, fix all Meta Pixel events to 'ViewContent', Fix video web page
+- remove 'PRICE' VAT
 - add '+SNAP' section
     - Created '+SNAP' section for snap & group album services
     - Implemented 1x3 layout for sample photos and 1x2 for videos
@@ -21,7 +21,19 @@ feat: remove 'PRODUCT' VAT, add '+SNAP' section, fix all Meta Pixel events to 'V
 
 250529
 
-feat: integrate Google Tag Manager (GTM-KTZXF9S6)
-- Added GTM script to <head> and noscript iframe to <body> for index.html and video.html
+feat: integrate Google Tag Manager (GTM-KTZXF9S6) & change snap price to 550,000
+
+- Added GTM script to <head> and noscript iframe to <body> in index.html, video.html
+- Changed snap price display: 770,000 → 550,000
 - Placement follows Meta Pixel code for proper load order
 - No other files modified
+
+
+250529-2
+
+feat: refine Meta Pixel events (Lead, Purchase mapping) / menu change (카톡 상담, 계약서 작성 box) / +etc to 스냅 / add event3 / menu font size gets larger / remove below kakao icon among 5
+
+- Set 'Lead' event only on 카톡 상담 button (index.html, video.html)
+- Set 'Purchase' event only on 계약서 작성 button (index.html, video.html)
+- All other clicks remain 'ViewContent'
+- Updated documentation in readme_metapixel_googlepixel.txt

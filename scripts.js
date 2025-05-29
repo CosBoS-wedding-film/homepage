@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (forceInit === 'true') {
     // 저장된 activeSection이 돌잔치인지 확인
     const activeSection = localStorage.getItem('activeSection');
-    if (activeSection === '돌잔치' || activeSection === '+SNAP') {
+    if (activeSection === '돌잔치' || activeSection === '스냅') {
       // 페이지 로드 후 약간 지연시켜 돌잔치 섹션 재설정
       setTimeout(() => {
         if (activeSection === '돌잔치') {
@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // SNAP 섹션의 갤러리 아이템에 클릭 이벤트 추가
-  const snapSection = document.getElementById('+SNAP');
+  const snapSection = document.getElementById('스냅');
   if (snapSection) {
     const galleryItems = snapSection.querySelectorAll('.gallery-item');
     if (galleryItems.length >= 2) {

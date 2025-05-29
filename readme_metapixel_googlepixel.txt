@@ -111,3 +111,34 @@
 - 새로운 태그(GA4, 전환 추적 등)는 GTM 인터페이스에서 설정 가능.
 - GTM 배포(Submit) 후 변경 사항을 반드시 'Publish' 해야 실서버 반영.
 - Meta Pixel과 중복되는 이벤트 설정 시 이중 전송 여부 확인 필요.
+
+------------
+
+# Meta Pixel 이벤트 구조 개선 (2024-05-29)
+
+## 변경 개요
+- 기존: 모든 클릭 이벤트를 ViewContent 로 통합
+- 변경 후: 3단계 이벤트 체계
+  1) ViewContent  : 메뉴, 갤러리 썸네일, 페이지네이션 등 모든 일반 클릭
+  2) Lead          : "카톡 상담" 버튼 클릭 (id nav-btn 1)
+  3) Purchase      : "계약서 작성" 버튼 클릭 (id nav-btn 2)
+
+## 구현 위치
+
+| 파일 | 위치 | 이벤트 |
+|------|------|---------|
+| index.html | nav > 카톡 상담 버튼 `onclick="fbq('track', 'Lead')"` | Lead |
+| index.html | nav > 계약서 작성 버튼 `onclick="fbq('track', 'Purchase')"` | Purchase |
+| index.html | 그 외 모든 `onclick` 호출 | ViewContent |
+| video.html | nav > 동일 두 버튼 | Lead / Purchase |
+| scripts.js | 동영상 썸네일·페이지네이션 등 동적 요소 | ViewContent |
+
+## QA 체크리스트
+- [x] 카톡 상담 클릭 시 Pixel Debugger 에 'Lead' 확인
+- [x] 계약서 작성 클릭 시 'Purchase' 확인
+- [x] 기타 메뉴 및 썸네일 클릭 시 'ViewContent' 전달
+- [x] ID 1183820826758072 로 전송 확인
+
+## 추가 참고
+- 캠페인 전환목표: Lead (리드 수집) / Purchase (계약 완료) 별도 운영 가능
+- **Conversions API** 도입 시 동일 이벤트 네임 사용해 서버사이드 전송 권장
