@@ -49,3 +49,9 @@ docs: adding EVENT (discount of 200,000 won by adding channel)
 250529-4
 
 docs: change the ABOUT part (sentence and linktree composition)
+
+
+
+250530-5
+
+docs: adding meta pixel to linktree
