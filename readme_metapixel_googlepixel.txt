@@ -87,3 +87,27 @@
 - 후기 페이지 방문
 - 카카오톡 상담 버튼 클릭
 - 계약서 작성 버튼 클릭
+
+------------
+
+# 구글 태그 매니저(GTM) 구현 문서
+
+## 개요
+- 사이트 전체에 Google Tag Manager 컨테이너(GTM-KTZXF9S6)를 추가해 Meta Pixel 외의 추가 스크립트를 중앙집중식으로 관리할 수 있도록 함.
+- 모든 페이지에 `<head>` 스크립트와 `<body>` 시작 직후 `noscript` iframe 을 삽입.
+- 삽입 위치는 Meta Pixel 코드 바로 아래로 통일해 로딩 순서를 보장.
+
+## 파일별 구현 내역
+
+### 1. index.html
+- `<head>`: GTM 초기화 스크립트 추가 (라인 번호 약 22~29)
+- `<body>`: GTM noscript iframe 추가 (라인 번호 약 60~62)
+
+### 2. video.html
+- `<head>`: GTM 초기화 스크립트 추가 (라인 번호 약 24~31)
+- `<body>`: GTM noscript iframe 추가 (라인 번호 약 47~49)
+
+## 주의 사항 & 향후 작업
+- 새로운 태그(GA4, 전환 추적 등)는 GTM 인터페이스에서 설정 가능.
+- GTM 배포(Submit) 후 변경 사항을 반드시 'Publish' 해야 실서버 반영.
+- Meta Pixel과 중복되는 이벤트 설정 시 이중 전송 여부 확인 필요.

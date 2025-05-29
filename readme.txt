@@ -15,3 +15,13 @@ feat: remove 'PRODUCT' VAT, add '+SNAP' section, fix all Meta Pixel events to 'V
 - Fix video web page
     - Before this commit, there are no texts above 5 icon.
     - I added the texts for making the same with the other pages.
+
+
+
+
+250529
+
+feat: integrate Google Tag Manager (GTM-KTZXF9S6)
+- Added GTM script to <head> and noscript iframe to <body> for index.html and video.html
+- Placement follows Meta Pixel code for proper load order
+- No other files modified
