@@ -55,3 +55,8 @@ docs: change the ABOUT part (sentence and linktree composition)
 250530-5
 
 docs: adding meta pixel to linktree
+
+
+250604
+
+docs: Integrating EVENT 3 and 4 to EVENT 3 / Make Default Discount for 2025 wedding with 33% but I increased the original price from 770,000 to 880,000.
