@@ -64,3 +64,7 @@ docs: Integrating EVENT 3 and 4 to EVENT 3 / Make Default Discount for 2025 wedd
 250607
 
 docs: change the price and event sentences
+
+250607 - 2
+
+docs: adding some text for making within 3days event
