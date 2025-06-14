@@ -68,3 +68,8 @@ docs: change the price and event sentences
 250607 - 2
 
 docs: adding some text for making within 3days event
+
+
+250614
+
+docs: remove the SNAP and 1yearVideo / Move picture certification from snap to about
