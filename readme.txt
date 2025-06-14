@@ -73,3 +73,7 @@ docs: adding some text for making within 3days event
 250614
 
 docs: remove the SNAP and 1yearVideo / Move picture certification from snap to about
+
+250614 - 2
+
+docs: devide the option free event as two for adding fast contract / change sending video event from 3Day to 5Day
