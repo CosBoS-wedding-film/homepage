@@ -81,3 +81,11 @@ docs: devide the option free event as two for adding fast contract / change send
 250616
 
 docs: move contract from main page to product (advise by g)
+
+250619
+
+docs: remove time limit event (PRDUCT & EVENT area)
+
+250619 - 2
+
+docs: change PRODUCT option menu (adding original video & change the jimber coverage)
