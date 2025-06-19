@@ -77,3 +77,7 @@ docs: remove the SNAP and 1yearVideo / Move picture certification from snap to a
 250614 - 2
 
 docs: devide the option free event as two for adding fast contract / change sending video event from 3Day to 5Day
+
+250616
+
+docs: move contract from main page to product (advise by g)
