@@ -89,3 +89,7 @@ docs: remove time limit event (PRDUCT & EVENT area)
 250619 - 2
 
 docs: change PRODUCT option menu (adding original video & change the jimber coverage)
+
+250628
+
+docs: main price change from 880,000 to 770,000
