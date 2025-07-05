@@ -93,3 +93,6 @@ docs: change PRODUCT option menu (adding original video & change the jimber cove
 250628
 
 docs: main price change from 880,000 to 770,000
+
+250706
+docs: fast making option change from 5 days to 10 days because I only do the cosbos mainly in weekend so it has high probability to make the next weekend.
