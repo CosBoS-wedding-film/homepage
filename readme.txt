@@ -91,3 +91,7 @@ docs: whole change for high-end wedding video mimicking The First Day
 250707 - 2
 
 docs: remove blog review & adding event of 10% discount when the day contract
+
+250707 - 3
+
+docs: change from 1p2cam to 1p3cam
