@@ -87,3 +87,7 @@ docs: fast making option change from 5 days to 10 days because I only do the cos
 250707
 
 docs: whole change for high-end wedding video mimicking The First Day
+
+250707 - 2
+
+docs: remove blog review & adding event of 10% discount when the day contract
