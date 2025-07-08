@@ -99,3 +99,7 @@ docs: change from 1p2cam to 1p3cam
 250708
 
 decs: price is exactly the same with the the first day (minimum 990,000). but I will starting 50% discount, but I will make it as 0% discount. Premium Video is the anwser.
+
+250708 - 2
+
+decs: 1+1 discount from 70,000 to 30,000
