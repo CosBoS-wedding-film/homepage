@@ -102,4 +102,8 @@ decs: price is exactly the same with the the first day (minimum 990,000). but I 
 
 250708 - 2
 
-decs: 1+1 discount from 70,000 to 30,000
+docs: 1+1 discount from 70,000 to 30,000
+
+250710
+
+docs: remove photo time for 990,000
