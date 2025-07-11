@@ -107,3 +107,7 @@ docs: 1+1 discount from 70,000 to 30,000
 250710
 
 docs: remove photo time for 990,000
+
+250712
+
+docs: wedding ceremony time range
