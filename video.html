@@ -6,6 +6,24 @@
     <title>코스보스 웨딩필름</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500;600&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1183820826758072');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1183820826758072&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
     <style>
         /* 이 페이지에만 적용되는 비디오 스타일 */
         .video-page-container {
@@ -21,11 +39,12 @@
         }
 
         .video-title {
-            text-align: center;
+            display: none;
+            /* text-align: center;
             font-size: 1.5rem;
             margin-bottom: 2rem;
             font-family: 'Cormorant', serif;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.1em; */
         }
 
         .video-container {
@@ -75,18 +94,20 @@
         <!-- Mobile Navigation Sheet -->
         <nav class="mobile-nav" id="mobileNav">
             <a href="index.html">Home</a>
-            <a href="index.html#PRODUCT">Product</a>
-            <a href="index.html#CONTACT">Contact</a>
-            <a href="index.html#RESERVATION">Reservation</a>
+            <a href="index.html#films">Films</a>
+            <a href="product/index.html">Product</a>
+            <a href="contact/index.html">Contact</a>
+            <a href="reservation/index.html">Reservation</a>
             <a href="https://www.instagram.com/cosbos.wedding.film/" target="_blank">Insta</a>
         </nav>
 
         <!-- Mobile Horizontal Navigation -->
         <div class="mobile-horizontal-nav">
             <a href="index.html">Home</a>
-            <a href="index.html#PRODUCT">Product</a>
-            <a href="index.html#CONTACT">Contact</a>
-            <a href="index.html#RESERVATION">Reservation</a>
+            <a href="index.html#films">Films</a>
+            <a href="product/index.html">Product</a>
+            <a href="contact/index.html">Contact</a>
+            <a href="reservation/index.html">Reservation</a>
             <a href="https://www.instagram.com/cosbos.wedding.film/" target="_blank">Insta</a>
         </div>
 
@@ -97,9 +118,10 @@
             </div>
             <nav class="desktop-nav">
                 <a href="index.html">Home</a>
-                <a href="index.html#PRODUCT">Product</a>
-                <a href="index.html#CONTACT">Contact</a>
-                <a href="index.html#RESERVATION">Reservation</a>
+                <a href="index.html#films">Films</a>
+                <a href="product/index.html">Product</a>
+                <a href="contact/index.html">Contact</a>
+                <a href="reservation/index.html">Reservation</a>
                 <a href="https://www.instagram.com/cosbos.wedding.film/" target="_blank">Insta</a>
             </nav>
         </div>
@@ -127,13 +149,12 @@
         </div>
 
         <!-- Company Info -->
-        <div class="company-info">
+        <div class="company-info numeric-content">
             <p><strong>Company. CosBoS WEDDING FILM</strong></p>
-            <p>TEL : 010-5924-7037</p>
-            <p>사업자등록번호 : 227-78-00415</p>
-            <p>E-mail: <a href="mailto:cosbos.wedding.film@gmail.com">cosbos.wedding.film@gmail.com</a></p>
-            <p class="copyright">COPYRIGHT © COSBOS_WEDDING_FILM ALL RIGHTS RESERVED.</p>
+            <p>Business number: 227-78-00415</p>
+            <p>E-mail: cosbos.wedding.film@gmail.com</p>
         </div>
+        <p style="margin-top:40px;font-size:13px;color:#9ca3af;" class="numeric-content">Copyright © CosBoS WEDDING FILM All Rights Reserved.</p>
     </footer>
 
     <script>

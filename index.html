@@ -7,6 +7,24 @@
     <meta name="description" content="코스보스 웨딩필름 - 당신의 눈부신 순간, 세월에 바래지 않을 한 편의 이야기로 기록합니다.">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500;600&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1183820826758072');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1183820826758072&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
 </head>
 <body>
     <header>
@@ -24,7 +42,8 @@
 
         <!-- Mobile Navigation Sheet -->
         <nav class="mobile-nav" id="mobileNav">
-            <a href="index.html">Home</a>
+            <a href="#home">Home</a>
+            <a href="#films">Films</a>
             <a href="product/index.html">Product</a>
             <a href="contact/index.html">Contact</a>
             <a href="reservation/index.html">Reservation</a>
@@ -33,7 +52,8 @@
 
         <!-- Mobile Horizontal Navigation -->
         <div class="mobile-horizontal-nav">
-            <a href="index.html">Home</a>
+            <a href="#home">Home</a>
+            <a href="#films">Films</a>
             <a href="product/index.html">Product</a>
             <a href="contact/index.html">Contact</a>
             <a href="reservation/index.html">Reservation</a>
@@ -43,10 +63,11 @@
         <!-- Desktop Header -->
         <div class="desktop-header">
             <div class="desktop-logo">
-                <h1 onclick="window.location.href='index.html'">C o s B o S</h1>
+                <h1 onclick="window.showSection ? window.showSection('home') : window.location.href='index.html'">C o s B o S</h1>
             </div>
             <nav class="desktop-nav">
-                <a href="index.html">Home</a>
+                <a href="#home">Home</a>
+                <a href="#films">Films</a>
                 <a href="product/index.html">Product</a>
                 <a href="contact/index.html">Contact</a>
                 <a href="reservation/index.html">Reservation</a>
@@ -56,99 +77,27 @@
     </header>
 
     <main>
-        <!-- Gallery Section (Home) -->
-        <section id="gallery" class="content-section show">
-            <div class="photo-grid">
-            </div>
-        </section>
-
-        <!-- Product Section -->
-        <!-- Contact Section -->
-        <section id="contact" class="content-section" style="display: none;">
-            <div class="contact-container">
-                <div class="contact-form-wrapper">
-                    <div class="contact-header">
-                        <p>궁금한 점이 있으시거나</p>
-                        <h2>촬영 문의를<br>남겨주세요</h2>
-                        <p>빠른 시간 내에 연락드리겠습니다.</p>
-                    </div>
-                    <form class="contact-form" id="contactForm">
-                        <div class="form-group">
-                            <label for="date">예식일자</label>
-                            <input type="date" id="date" name="date" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="time">예식시간</label>
-                            <input type="time" id="time" name="time" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="venue">예식장</label>
-                            <input type="text" id="venue" name="venue" placeholder="예식장명을 입력해주세요" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="contact">연락처</label>
-                            <input type="tel" id="contact" name="contact" placeholder="연락 가능한 번호를 입력해주세요" required>
-                        </div>
-                        <button type="submit" class="submit-btn">문의하기</button>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Contact Modal -->
-            <div class="modal" id="contactModal">
-                <div class="modal-content">
-                    <h3>문의가 접수되었습니다</h3>
-                    <p>빠른 시간 내에 연락드리겠습니다.</p>
-                    <button onclick="closeContactModal()">확인</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Reservation Section -->
-        <section id="reservation" class="content-section" style="display: none;">
-            <div class="reservation-container">
-                <h1>Reservation</h1>
-                <div class="reservation-content">
-                    <p>촬영 예약 및 상담은 아래 링크를 통해 진행해주세요.</p>
-                    <div class="divider-text">•</div>
-                    <div class="reservation-message">
-                        <p>Google Form을 통해 상세한 정보를 남겨주시면<br>빠른 상담이 가능합니다.</p>
-                    </div>
-                    <div class="reservation-button">
-                        <a href="https://forms.gle/example" target="_blank" class="reservation-link">예약 문의하기</a>
+        <!-- Home Section (Concept) -->
+        <section id="home" class="content-section show">
+            <div class="home-container">
+                <div class="concept-content">
+                    <h1 class="concept-title">CONCEPT</h1>
+                    <div class="mini-divider"></div>
+                    <div class="concept-description">
+                        끝없는 시공간 속 우연한 한 점, <br>
+                        그 소중한 찰나를 영원으로 담습니다.
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- FAQ Section -->
-        <section id="faq" class="content-section" style="display: none;">
-            <div class="faq-container">
-                <h1>FAQ</h1>
-                <div class="faq-list">
-                    <div class="faq-item">
-                        <h3>자주 묻는 질문들</h3>
-                        <span class="faq-author">CosBoS</span>
-                    </div>
-                    <div class="faq-item">
-                        <h3>예약 과정 안내</h3>
-                        <span class="faq-author">CosBoS</span>
-                    </div>
-                    <div class="faq-item">
-                        <h3>1인 vs 2인 촬영 비교</h3>
-                        <span class="faq-author">CosBoS</span>
-                    </div>
-                    <div class="faq-item">
-                        <h3>전달 시기 안내</h3>
-                        <span class="faq-author">CosBoS</span>
-                    </div>
-                    <div class="faq-item">
-                        <h3>할인 이벤트</h3>
-                        <span class="faq-author">CosBoS</span>
-                    </div>
-                </div>
+        <!-- Films Section (Gallery) -->
+        <section id="films" class="content-section" style="display: none;">
+            <div class="photo-grid" id="films-grid">
             </div>
         </section>
+
+
     </main>
 
     <footer>
@@ -159,13 +108,12 @@
         </div>
 
         <!-- Company Info -->
-        <div class="company-info">
+        <div class="company-info numeric-content">
             <p><strong>Company. CosBoS WEDDING FILM</strong></p>
-            <p>TEL : 010-5924-7037</p>
-            <p>사업자등록번호 : 227-78-00415</p>
-            <p>E-mail: <a href="mailto:cosbos.wedding.film@gmail.com">cosbos.wedding.film@gmail.com</a></p>
-            <p class="copyright">COPYRIGHT © COSBOS_WEDDING_FILM ALL RIGHTS RESERVED.</p>
+            <p>Business number: 227-78-00415</p>
+            <p>E-mail: cosbos.wedding.film@gmail.com</p>
         </div>
+        <p style="margin-top:40px;font-size:13px;color:#9ca3af;" class="numeric-content">Copyright © CosBoS WEDDING FILM All Rights Reserved.</p>
     </footer>
 
     <script src="scripts.js"></script>

@@ -7,11 +7,29 @@
     <meta name="description" content="코스보스 웨딩필름 - 본식 상품 구성">
     <link rel="stylesheet" href="../styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500;600&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1183820826758072');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1183820826758072&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
     <style>
         .product-page {
             min-height: 100vh;
             background-color: white;
-            padding: 120px 20px 60px;
+            padding: 60px 20px 60px;
             font-family: 'Cormorant', serif;
         }
         
@@ -191,6 +209,7 @@
         <!-- Mobile Navigation Sheet -->
         <nav class="mobile-nav" id="mobileNav">
             <a href="../index.html">Home</a>
+            <a href="../index.html#films">Films</a>
             <a href="../product/index.html">Product</a>
             <a href="../contact/index.html">Contact</a>
             <a href="../reservation/index.html">Reservation</a>
@@ -200,6 +219,7 @@
         <!-- Mobile Horizontal Navigation -->
         <div class="mobile-horizontal-nav">
             <a href="../index.html">Home</a>
+            <a href="../index.html#films">Films</a>
             <a href="../product/index.html">Product</a>
             <a href="../contact/index.html">Contact</a>
             <a href="../reservation/index.html">Reservation</a>
@@ -213,6 +233,7 @@
             </div>
             <nav class="desktop-nav">
                 <a href="../index.html">Home</a>
+                <a href="../index.html#films">Films</a>
                 <a href="../product/index.html">Product</a>
                 <a href="../contact/index.html">Contact</a>
                 <a href="../reservation/index.html">Reservation</a>
@@ -224,23 +245,14 @@
     <main>
         <div class="product-page">
             <div class="product-container">
-                <h1 class="concept-title">CONCEPT</h1>
-                
-                <div class="concept-description">
-                    끝없는 시공간 속 우연한 한 점, <br>
-                    그 소중한 찰나를 영원으로 담습니다.
-                </div>
-
-                <div class="divider"></div>
-
                 <h2 class="package-title">본식 상품 구성</h2>
 
                 <div class="package">
                     <div class="package-info">
                         <h3 class="package-name">Classic</h3>
-                        <div class="package-price">990,000원 (vat포함)</div>
                     </div>
-                    <div class="package-details">
+                    <div class="package-details numeric-content">
+                        <div>990,000원</div>
                         <div>1인 3캠</div>
                         <div>신부대기실, 하객맞이, 본식</div>
                         <div>ALL 4K (UHD) 화질</div>
@@ -253,9 +265,9 @@
                 <div class="package">
                     <div class="package-info">
                         <h3 class="package-name">Premium</h3>
-                        <div class="package-price">1,540,000원 (vat포함)</div>
                     </div>
-                    <div class="package-details">
+                    <div class="package-details numeric-content">
+                        <div>1,540,000원</div>
                         <div>2인 4캠</div>
                         <div>웨딩카하차, 신부대기실, 하객맞이, 본식</div>
                         <div>ALL 4K (UHD) 화질</div>
@@ -267,15 +279,16 @@
 
                 <div class="additional-options">
                     <h3 class="additional-title">추가 옵션</h3>
-                    <div class="options-list">
-                        <div>인터뷰 [5만원]</div>
-                        <div>짐벌 [5만원]</div>
+                    <div class="options-list numeric-content">
+                        <div>인터뷰 - 50,000원</div>
+                        <div>짐벌 - 50,000원</div>
+                        <div>식후 10일 내 영상 전송 - 50,000원</div>
                     </div>
                 </div>
 
                 <div class="notice-section">
                     <h3 class="notice-title">※ NOTICE ※</h3>
-                    <ul class="notice-list">
+                    <ul class="notice-list numeric-content">
                         <li>제작 기간은 약 3개월(최대 100일) 정도 소요됩니다.</li>
                         <li>모든 상품가는 정찰제로 부가세가 포함된 금액입니다.</li>
                         <li>서울 외 지역은 출장비가 별도로 발생됩니다.</li>
@@ -287,18 +300,18 @@
     </main>
 
     <footer class="bg-white border-t border-gray-100">
-        <div class="max-w-7xl mx-auto px-4 py-12 lg:px-6">
+        <div class="max-w-7xl mx-auto px-4 py-12 lg:px-6" style="text-align:center;">
             <div class="footer-icons" style="display:flex;justify-content:center;gap:24px;margin-bottom:24px;">
                 <a href="https://www.instagram.com/cosbos.wedding.film/" target="_blank"><img src="../insta_logo.png" alt="Instagram" style="width:24px;height:24px;"></a>
                 <a href="https://www.youtube.com/@cosbos.weddingfilm" target="_blank" onclick="fbq('track', 'ViewContent');"><img src="../youtube_logo.png" alt="YouTube" style="width:24px;height:24px;"></a>
             </div>
-            <div class="text-center text-sm text-gray-600 space-y-2">
-                <p class="font-medium">Company. CosBoS WEDDING FILM</p>
-                <p>TEL : 010-5924-7037</p>
-                <p>사업자등록번호 : 227-78-00415</p>
-                <p>E-mail: <a href="mailto:cosbos.wedding.film@gmail.com" class="hover:text-black transition-colors">cosbos.wedding.film@gmail.com</a></p>
-                <p class="pt-4 text-xs text-gray-500">Copyright © CosBoS WEDDING FILM All Rights Reserved.</p>
+
+            <div class="company-info numeric-content">
+                <p><strong>Company. CosBoS WEDDING FILM</strong></p>
+                <p>Business number: 227-78-00415</p>
+                <p>E-mail: cosbos.wedding.film@gmail.com</p>
             </div>
+            <p style="margin-top:40px;font-size:13px;color:#9ca3af;" class="numeric-content">Copyright © CosBoS WEDDING FILM All Rights Reserved.</p>
         </div>
     </footer>
 

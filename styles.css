@@ -259,7 +259,6 @@ main {
 /* Content Sections */
 .content-section {
   opacity: 0;
-  transition: opacity 0.3s ease;
   min-height: calc(100vh - 112px);
 }
 
@@ -274,7 +273,7 @@ main {
 }
 
 /* Gallery Styles */
-#gallery {
+#films {
   min-height: 100vh;
   padding-bottom: 2rem;
 }
@@ -1062,27 +1061,19 @@ footer {
 }
 
 .company-info {
-  font-size: 0.875rem;
-  color: #6b7280;
-  line-height: 1.5;
+  text-align: center;
 }
 
 .company-info p {
-  margin-bottom: 0.5rem;
+  margin: 4px 0;
+  color: #6b7280;
+  font-size: 14px;
+  line-height: 1.6;
+  font-family: 'Cormorant', serif;
 }
 
 .company-info strong {
-  font-weight: 500;
-}
-
-.company-info a {
-  color: #6b7280;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.company-info a:hover {
-  color: #000;
+  color: #374151;
 }
 
 .copyright {
@@ -1164,7 +1155,7 @@ footer {
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
@@ -1182,7 +1173,7 @@ footer {
 }
 
 .content-section.show {
-  animation: fadeIn 0.5s ease-out;
+  animation: fadeIn 0.8s ease-out;
 }
 
 .mobile-nav.active {
@@ -1325,21 +1316,93 @@ input:focus {
 .pagination button {
   margin: 0 5px;
   padding: 8px 12px;
-  background-color: #f5f5f5;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  background-color: #8B7355;
+  color: white;
+  border: 1px solid #8B7355;
+  border-radius: 0;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
-  font-family: 'Cormorant', serif;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 .pagination button:hover {
-  background-color: #C8A080;
+  background-color: #7A5F45;
   color: white;
 }
 
 .pagination button.active {
-  background-color: #C8A080;
+  background-color: #7A5F45;
   color: white;
   font-weight: bold;
+}
+
+/* Font Classes for Numbers and Mixed Content */
+.numeric-content, 
+.company-info,
+.package-price,
+.package-details,
+.notice-list,
+.options-list {
+  font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, system-ui, sans-serif !important;
+}
+
+/* Home/Concept Section */
+.home-container {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 3.5rem 1rem 4rem;
+  min-height: calc(100vh - 112px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+@media (min-width: 1024px) {
+  .home-container {
+    padding: 12rem 1.5rem;
+    min-height: calc(100vh - 160px);
+  }
+}
+
+.concept-content {
+  text-align: center;
+}
+
+.concept-title {
+  font-family: 'Cormorant', serif;
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  color: #333;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+@media (min-width: 1024px) {
+  .concept-title {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.concept-description {
+  font-size: 0.875rem;
+  line-height: 1.8;
+  color: #333;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+  .concept-description {
+    font-size: 1rem;
+    line-height: 2;
+  }
+}
+
+/* Mini divider under Concept */
+.mini-divider {
+  width: 1.5rem; /* roughly one-character width */
+  height: 1px;
+  background-color: #9ca3af;
+  margin: 0.75rem auto 1.5rem;
 }

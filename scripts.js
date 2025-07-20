@@ -1,6 +1,87 @@
 document.addEventListener('DOMContentLoaded', () => {
   console.log('DOMContentLoaded 이벤트 발생');
 
+  // 즉시 showSection 함수 정의
+  window.showSection = function(sectionId) {
+    console.log('섹션 전환 시도:', sectionId);
+    
+    // 대상 섹션 미리 찾기
+    const targetSection = document.getElementById(sectionId);
+    // 이미 표시 중이라면 추가 처리 없이 스크롤만 보장하고 종료
+    if (targetSection && targetSection.classList.contains('show')) {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+      return;
+    }
+    
+    // 강제 스크롤 최상단 이동 (여러 방법으로 보장)
+    document.body.scrollTop = 0; // Safari용
+    document.documentElement.scrollTop = 0; // Chrome, Firefox용
+    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: 'auto' });
+    
+    // 모든 섹션 숨기기 (display와 show 클래스 모두 처리)
+    document.querySelectorAll('.content-section').forEach(section => {
+      // Flicker 방지를 위해 films 섹션의 그리드를 미리 비움
+      if (section.id === 'films') {
+        const grid = document.getElementById('films-grid');
+        if (grid) grid.innerHTML = '';
+      }
+      section.style.display = 'none';
+      section.classList.remove('show');
+    });
+    
+    // 대상 섹션 보이기
+    if (targetSection) {
+      // display를 먼저 block으로 설정
+      targetSection.style.display = 'block';
+      
+      // 다시 한 번 스크롤 보장
+      setTimeout(() => {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        window.scrollTo(0, 0);
+      }, 5);
+      
+      // 약간의 지연 후 show 클래스 추가 (CSS 애니메이션을 위해)
+      requestAnimationFrame(() => {
+        targetSection.classList.add('show');
+        console.log('섹션 표시 성공:', sectionId);
+        
+        // 마지막으로 스크롤 보장
+        setTimeout(() => {
+          document.body.scrollTop = 0;
+          document.documentElement.scrollTop = 0;
+          window.scrollTo(0, 0);
+        }, 50);
+      });
+      
+      // Films 섹션이면 갤러리 렌더링 (지연 없이 즉시 실행)
+      if (sectionId === 'films') {
+        currentPage = 1; // 항상 첫 페이지부터 시작
+        renderGalleryItems();
+        // 갤러리 렌더링 후에도 스크롤 보장
+        setTimeout(() => {
+          document.body.scrollTop = 0;
+          document.documentElement.scrollTop = 0;
+          window.scrollTo(0, 0);
+        }, 50);
+      }
+    } else {
+      console.error('섹션을 찾을 수 없음:', sectionId);
+    }
+    
+    // 모바일 메뉴 닫기
+    const mobileNav = document.getElementById('mobileNav');
+    if (mobileNav) {
+      mobileNav.classList.remove('active');
+    }
+    
+    // URL 해시 업데이트
+    if (window.location.hash !== '#' + sectionId) {
+      window.location.hash = sectionId;
+    }
+  };
+
   // 비디오 정보 배열 (원본 homepage 전체 목록)
   const videos = [
     { filename: "edit_name_crop_W250309C_1240_여의_한혜지_더파티움.jpg",         videoId: "j2WsRI5N_kU?si=-sF3OK3fks7ibZXt", title: "더파티움" },
@@ -39,14 +120,10 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentPage = 1;
   const totalPages = Math.ceil(videos.length / itemsPerPage);
 
-  // photoGrid 가져오기
-  const photoGrid = document.querySelector('#gallery .photo-grid');
-  console.log('photoGrid 요소 찾기:', photoGrid);
-
-  if (!photoGrid) {
-    console.error('photoGrid를 찾을 수 없습니다!');
-    return;
-  }
+  // DOM 요소 확인
+  console.log('모든 content-section:', document.querySelectorAll('.content-section'));
+  console.log('films 섹션:', document.getElementById('films'));
+  console.log('films-grid:', document.getElementById('films-grid'));
 
   // 갤러리 아이템 생성 함수
   function createGalleryItems(container, items) {
@@ -88,6 +165,15 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderGalleryItems() {
     console.log('renderGalleryItems 시작');
     
+    // photoGrid 가져오기
+    const photoGrid = document.getElementById('films-grid');
+    if (!photoGrid) {
+      console.error('films-grid를 찾을 수 없습니다');
+      return;
+    }
+    
+    console.log('photoGrid 찾음:', photoGrid);
+    
     // 기존 아이템 삭제
     photoGrid.innerHTML = '';
     
@@ -96,10 +182,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const endIndex = Math.min(startIndex + itemsPerPage, videos.length);
     const currentVideos = videos.slice(startIndex, endIndex);
     
-    console.log('현재 페이지 비디오:', currentVideos);
+    console.log('현재 페이지 비디오:', currentVideos.length, '개');
     
     // 아이템 생성
     createGalleryItems(photoGrid, currentVideos);
+    
+    // 렌더 직후 스크롤을 한 번 더 최상단으로
+    setTimeout(() => {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+      window.scrollTo(0, 0);
+    }, 0);
     
     // 애니메이션 적용
     setTimeout(() => {
@@ -139,14 +232,14 @@ document.addEventListener('DOMContentLoaded', () => {
         currentPage = i;
         renderGalleryItems();
         createPagination();
-        // scroll to top of gallery
-        window.scrollTo({top:0, behavior:'smooth'});
+        // 스크롤을 맨 위로 이동
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       });
       
       paginationContainer.appendChild(pageButton);
     }
     
-    const gallerySection = document.querySelector('#gallery');
+    const gallerySection = document.querySelector('#films');
     if (gallerySection) {
       gallerySection.appendChild(paginationContainer);
     }
@@ -162,39 +255,70 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 초기 렌더링
-  console.log('초기 갤러리 렌더링 시작');
-  renderGalleryItems();
-  createPagination();
+  // 테스트 함수 추가 (브라우저 콘솔에서 사용 가능)
+  window.testFilms = function() {
+    console.log('Films 테스트 시작');
+    window.showSection('films');
+  };
   
-  console.log('초기화 완료');
+  window.testShowSection = function(sectionId) {
+    console.log('섹션 테스트:', sectionId);
+    window.showSection(sectionId);
+  };
 
-  // body loaded 표시하여 CSS 숨김 해제
+  // 초기화
+  createPagination();
   document.body.classList.add('loaded');
+
+  // 해시 처리 함수
+  function handleHashChange() {
+    const hash = window.location.hash.replace('#', '');
+    console.log('해시 변경 감지:', hash);
+    
+    // 강제 스크롤 최상단 이동 (여러 방법으로 보장)
+    document.body.scrollTop = 0; // Safari용
+    document.documentElement.scrollTop = 0; // Chrome, Firefox용
+    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: 'auto' });
+    
+    if (hash && hash !== '') {
+      window.showSection(hash);
+    } else {
+      window.showSection('home');
+    }
+  }
+
+  // 초기 해시 처리
+  handleHashChange();
+  
+  // 해시 변경 이벤트 리스너
+  window.addEventListener('hashchange', handleHashChange);
+
+  // 페이지 로드 완료 후 해시로 인한 기본 스크롤 동작을 무력화하기 위해 한 번 더 스크롤을 최상단으로 이동
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+      window.scrollTo(0, 0);
+    }, 20);
+  });
+
+  // 네비게이션 이벤트 처리
+  document.addEventListener('click', (e) => {
+    if (e.target.tagName === 'A' && e.target.getAttribute('href')?.startsWith('#')) {
+      e.preventDefault();
+      const sectionId = e.target.getAttribute('href').substring(1);
+      console.log('네비게이션 클릭:', sectionId);
+      window.showSection(sectionId);
+    }
+  });
 });
 
 // 전역 함수들
-function showSection(sectionId) {
-  console.log('showSection 호출:', sectionId);
-  
-  // 모든 섹션 숨기기
-  const sections = document.querySelectorAll('.content-section');
-  sections.forEach(section => {
-    section.style.display = 'none';
-    section.classList.remove('show');
-  });
-  
-  // 선택된 섹션 보이기
-  const targetSection = document.getElementById(sectionId);
-  if (targetSection) {
-    targetSection.style.display = 'block';
-    targetSection.classList.add('show');
-  }
-  
-  // 페이지 상단으로 스크롤
-  window.scrollTo(0, 0);
-}
-
 function navigateToHomePage() {
-  showSection('gallery');
+  if (window.showSection) {
+    window.showSection('home');
+  } else {
+    window.location.href = 'index.html';
+  }
 }
