@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product - C o s B o S</title>
+    <meta name="description" content="코스보스 웨딩필름 - 본식 상품 구성">
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500;600&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .product-page {
+            min-height: 100vh;
+            background-color: white;
+            padding: 120px 20px 60px;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        
+        .product-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .concept-title {
+            font-family: 'Cormorant', serif;
+            font-size: 16px;
+            letter-spacing: 2px;
+            color: #333;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+        
+        .concept-description {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 80px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .package-title {
+            font-size: 18px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 60px;
+        }
+        
+        .package {
+            margin-bottom: 80px;
+            text-align: left;
+        }
+        
+        .package-name {
+            font-family: 'Cormorant', serif;
+            font-size: 36px;
+            font-weight: 400;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .package-price {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 40px;
+        }
+        
+        .package-details {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+        
+        .package-specs {
+            font-size: 14px;
+            line-height: 2;
+            color: #666;
+        }
+        
+        .package-specs div {
+            margin-bottom: 8px;
+        }
+        
+        .additional-options {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid #eee;
+        }
+        
+        .additional-title {
+            font-size: 18px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
+        .options-list {
+            font-size: 14px;
+            line-height: 2;
+            color: #666;
+            text-align: left;
+        }
+        
+        .notice-section {
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid #eee;
+        }
+        
+        .notice-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
+        .notice-list {
+            font-size: 13px;
+            line-height: 1.8;
+            color: #666;
+            text-align: left;
+        }
+        
+        .notice-list li {
+            margin-bottom: 8px;
+            list-style: none;
+            position: relative;
+            padding-left: 10px;
+        }
+        
+        .notice-list li:before {
+            content: "-";
+            position: absolute;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="mobile-header">
+            <button class="menu-toggle" id="menuToggle">
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+            </button>
+            <div class="logo">
+                <h1 onclick="window.location.href='../index.html'">C o s B o S</h1>
+            </div>
+            <div class="spacer"></div>
+        </div>
+
+        <!-- Mobile Navigation Sheet -->
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../product/index.html">Product</a>
+            <a href="../contact/index.html">Contact</a>
+            <a href="../reservation/index.html">Reservation</a>
+            <a href="../faq/index.html">FAQ</a>
+            <a href="https://www.instagram.com/cosbos.wedding.film/" target="_blank">Insta</a>
+        </nav>
+
+        <!-- Mobile Horizontal Navigation -->
+        <div class="mobile-horizontal-nav">
+            <a href="../index.html">Home</a>
+            <a href="../product/index.html">Product</a>
+            <a href="../contact/index.html">Contact</a>
+            <a href="../reservation/index.html">Reservation</a>
+            <a href="../faq/index.html">FAQ</a>
+            <a href="https://www.instagram.com/cosbos.wedding.film/" target="_blank">Insta</a>
+        </div>
+
+        <!-- Desktop Header -->
+        <div class="desktop-header">
+            <div class="desktop-logo">
+                <h1 onclick="window.location.href='../index.html'">C o s B o S</h1>
+            </div>
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../product/index.html">Product</a>
+                <a href="../contact/index.html">Contact</a>
+                <a href="../reservation/index.html">Reservation</a>
+                <a href="../faq/index.html">FAQ</a>
+                <a href="https://www.instagram.com/cosbos.wedding.film/" target="_blank">Insta</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="product-page">
+            <div class="product-container">
+                <h1 class="concept-title">LIGHT OF FILM CONCEPT</h1>
+                
+                <div class="concept-description">
+                    오래보아도 빛이 바래지 않는 영상을 제작합니다. <br>
+                    자연스럽고 생생한 순간들을 두 사람만의 분위기로 기록할 수 있도록.
+                </div>
+
+                <h2 class="package-title">본식 상품 구성</h2>
+
+                <div class="package">
+                    <h3 class="package-name">Classic</h3>
+                    <div class="package-price">99만원 (vat포함)</div>
+                    
+                    <div class="package-details">
+                        <div class="package-specs">
+                            <div>1인 3캠</div>
+                            <div>신부대기실, 하객맞이, 본식</div>
+                            <div>ALL 4K(UHD) 화질</div>
+                            <div>고품질 오디오 레코딩 장비 2대</div>
+                            <div>하이라이트 영상 1편</div>
+                            <div>풀 영상 1편</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="package">
+                    <h3 class="package-name">Premium</h3>
+                    <div class="package-price">154만원 (vat포함)</div>
+                    
+                    <div class="package-details">
+                        <div class="package-specs">
+                            <div>2인 4캠</div>
+                            <div>신부대기실, 하객맞이, 본식</div>
+                            <div>ALL 4K(UHD) 화질</div>
+                            <div>고품질 오디오 레코딩 장비 2대</div>
+                            <div>하이라이트 영상 1편</div>
+                            <div>풀 영상 1편</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="additional-options">
+                    <h3 class="additional-title">추가 옵션</h3>
+                    <div class="options-list">
+                        <div>미니 하이라이트 제작 [10만원]</div>
+                        <div>페턴 촬영 [10만원]</div>
+                        <div>메이크업샵 촬영 [30만원]</div>
+                        <div>애프터파티 촬영 [별도 문의]</div>
+                    </div>
+                </div>
+
+                <div class="notice-section">
+                    <h3 class="notice-title">※ NOTICE ※</h3>
+                    <ul class="notice-list">
+                        <li>제작 기간은 약 3개월(최대 100일) 정도 소요됩니다.</li>
+                        <li>모든 상품가는 정찰제로 부가세가 포함된 금액입니다.</li>
+                        <li>서울 외 지역은 출장비가 별도로 발생됩니다.</li>
+                        <li>짝꿍 할인 이벤트는 상시 진행하며 각 3만원 페이백 및 할인 혜택이 있습니다.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 py-12 lg:px-6">
+            <div class="flex justify-center gap-6 mb-8">
+                <a href="https://www.instagram.com/cosbos.wedding.film/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors" aria-label="Instagram">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1112.324 0 6.162 6.162 0 01-12.324 0zM12 16a4 4 0 110-8 4 4 0 010 8zm4.965-10.405a1.44 1.44 0 112.881.001 1.44 1.44 0 01-2.881-.001z"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="text-center text-sm text-gray-600 space-y-2">
+                <p class="font-medium">Company. CosBoS WEDDING FILM</p>
+                <p>TEL : 010-5924-7037</p>
+                <p>사업자등록번호 : 227-78-00415</p>
+                <p>E-mail: <a href="mailto:cosbos.wedding.film@gmail.com" class="hover:text-black transition-colors">cosbos.wedding.film@gmail.com</a></p>
+                <p class="pt-4 text-xs text-gray-500">Copyright © CosBoS WEDDING FILM All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../scripts.js"></script>
+</body>
+</html> 

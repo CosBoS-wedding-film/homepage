@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation - C o s B o S</title>
+    <meta name="description" content="코스보스 웨딩필름 - 예약 문의">
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500;600&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .reservation-page {
+            min-height: 100vh;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 20px 60px;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        
+        .reservation-container {
+            max-width: 600px;
+            text-align: center;
+        }
+        
+        .reservation-title {
+            font-family: 'Cormorant', serif;
+            font-size: 48px;
+            font-weight: 400;
+            color: #333;
+            margin-bottom: 60px;
+            letter-spacing: 2px;
+        }
+        
+        .reservation-content {
+            font-size: 16px;
+            line-height: 2;
+            color: #666;
+            margin-bottom: 60px;
+        }
+        
+        .divider {
+            width: 40px;
+            height: 1px;
+            background-color: #ccc;
+            margin: 60px auto;
+        }
+        
+        .description-text {
+            font-size: 16px;
+            line-height: 2;
+            color: #666;
+            margin-bottom: 40px;
+        }
+        
+        .contact-text {
+            font-size: 16px;
+            line-height: 2;
+            color: #666;
+            margin-bottom: 80px;
+        }
+        
+        .reservation-button {
+            display: inline-block;
+            padding: 16px 40px;
+            background-color: #8B7355;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 0;
+            transition: background-color 0.3s ease;
+            margin-bottom: 80px;
+        }
+        
+        .reservation-button:hover {
+            background-color: #7A5F45;
+            color: white;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #f5f5f5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .social-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="mobile-header">
+            <button class="menu-toggle" id="menuToggle">
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+            </button>
+            <div class="logo">
+                <h1 onclick="window.location.href='../index.html'">C o s B o S</h1>
+            </div>
+            <div class="spacer"></div>
+        </div>
+
+        <!-- Mobile Navigation Sheet -->
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../product/index.html">Product</a>
+            <a href="../contact/index.html">Contact</a>
+            <a href="../reservation/index.html">Reservation</a>
+            <a href="../faq/index.html">FAQ</a>
+            <a href="https://www.instagram.com/cosbos.wedding.film/" target="_blank">Insta</a>
+        </nav>
+
+        <!-- Mobile Horizontal Navigation -->
+        <div class="mobile-horizontal-nav">
+            <a href="../index.html">Home</a>
+            <a href="../product/index.html">Product</a>
+            <a href="../contact/index.html">Contact</a>
+            <a href="../reservation/index.html">Reservation</a>
+            <a href="../faq/index.html">FAQ</a>
+            <a href="https://www.instagram.com/cosbos.wedding.film/" target="_blank">Insta</a>
+        </div>
+
+        <!-- Desktop Header -->
+        <div class="desktop-header">
+            <div class="desktop-logo">
+                <h1 onclick="window.location.href='../index.html'">C o s B o S</h1>
+            </div>
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../product/index.html">Product</a>
+                <a href="../contact/index.html">Contact</a>
+                <a href="../reservation/index.html">Reservation</a>
+                <a href="../faq/index.html">FAQ</a>
+                <a href="https://www.instagram.com/cosbos.wedding.film/" target="_blank">Insta</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="reservation-page">
+            <div class="reservation-container">
+                <h1 class="reservation-title">RESERVATION</h1>
+                
+                <div class="reservation-content">
+                    일정 가능 여부를 안내받은 후 작성하는 페이지입니다.<br>
+                    (일정문의는 Contact 페이지를 이용해주세요.)
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="description-text">
+                    빛나는 두 분의 소중한 날,<br>
+                    코스보스웨딩필름을 선택해주셔서 진심으로 감사드립니다.
+                </div>
+
+                <div class="contact-text">
+                    신청을 완료하시면 내용 확인 후<br>
+                    최종 예약 정보를 카카오톡으로 안내해드립니다.
+                </div>
+
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSf-LWt9fFy1HFqq6UNKzWIIEt41rXUSuv_uirpNyAtHNqi8bg/viewform" target="_blank" class="reservation-button">
+                    예약신청
+                </a>
+
+                <div class="social-icons">
+                    <a href="http://pf.kakao.com/_xjAvfn/chat" target="_blank" class="social-icon" aria-label="KakaoTalk">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 3C6.477 3 2 6.477 2 10.5c0 2.54 1.74 4.756 4.38 6.033-.17.707-.547 2.27-.574 2.397-.034.16.06.277.196.277.107 0 .174-.036.577-.358.404-.322 2.365-1.604 2.84-1.927.487.07.987.108 1.498.108 5.523 0 10-3.477 10-7.5S17.523 3 12 3z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/cosbos.wedding.film/" target="_blank" class="social-icon" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1112.324 0 6.162 6.162 0 01-12.324 0zM12 16a4 4 0 110-8 4 4 0 010 8zm4.965-10.405a1.44 1.44 0 112.881.001 1.44 1.44 0 01-2.881-.001z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../scripts.js"></script>
+</body>
+</html> 

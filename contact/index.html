@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - C o s B o S</title>
+    <meta name="description" content="코스보스 웨딩필름 - 연락처">
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500;600&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      // EmailJS 초기화 (공개키)
+      emailjs.init("tyrkyYFc7DLrGOkWD");
+    </script>
+    <style>
+        .contact-wrapper{max-width:640px;margin:0 auto;padding:120px 20px 60px;text-align:center;font-family:'Noto Sans KR',sans-serif;}
+        .contact-note{font-size:18px;line-height:1.7;color:#4b5563;margin-bottom:60px;}
+        .contact-note small{font-size:14px;color:#9ca3af;}
+        .contact-form-2026 label{display:block;text-align:left;font-size:15px;margin-bottom:8px;color:#374151;}
+        .contact-form-2026 input{width:100%;border:1px solid #e5e7eb;border-radius:4px;padding:12px 14px;font-size:15px;box-sizing:border-box;margin-bottom:32px;}
+        .phone-group{display:flex;justify-content:space-between;gap:12px;margin-bottom:32px;}
+        .phone-group input{flex:1;min-width:0;text-align:center;}
+        .submit-btn-main{background:#6b5444;color:#fff;border:none;border-radius:2px;font-family:'Cormorant',serif;font-size:16px;letter-spacing:0.08em;padding:12px 48px;cursor:pointer;transition:opacity .3s;}
+        .submit-btn-main:hover{opacity:.85;}
+        .divider-line{margin:100px 0 60px;height:1px;background:#e5e7eb;border:0;}
+        .footer-icons{display:flex;justify-content:center;gap:28px;margin-bottom:24px;}
+        .footer-icons img{width:28px;height:28px;}
+        .company-info p{margin:4px 0;color:#6b7280;font-size:14px;line-height:1.6;}
+        .company-info strong{color:#374151;}
+        /* Loading State */
+        body:not(.loaded) {
+            overflow: hidden;
+        }
+        body:not(.loaded) .content-section {
+            opacity: 0;
+        }
+    </style>
+    <style>
+      /* SweetAlert2 custom styles */
+      .swal-popup{font-family:'Noto Sans KR',sans-serif;border-radius:6px;padding:40px 20px;}
+      .swal-confirm{background:#36302a !important;border:0 !important;border-radius:2px !important;font-family:'Cormorant',serif;font-size:16px;letter-spacing:0.08em;padding:8px 32px !important;}
+    </style>
+</head>
+<body class="loaded">
+    <header>
+        <div class="mobile-header">
+            <button class="menu-toggle" id="menuToggle">
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+            </button>
+            <div class="logo">
+                <h1 onclick="window.location.href='../index.html'">C o s B o S</h1>
+            </div>
+            <div class="spacer"></div>
+        </div>
+
+        <!-- Mobile Navigation Sheet -->
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../product/index.html">Product</a>
+            <a href="../contact/index.html">Contact</a>
+            <a href="../reservation/index.html">Reservation</a>
+            <a href="../faq/index.html">FAQ</a>
+            <a href="https://www.instagram.com/cosbos.wedding.film/" target="_blank">Insta</a>
+        </nav>
+
+        <!-- Mobile Horizontal Navigation -->
+        <div class="mobile-horizontal-nav">
+            <a href="../index.html">Home</a>
+            <a href="../product/index.html">Product</a>
+            <a href="../contact/index.html">Contact</a>
+            <a href="../reservation/index.html">Reservation</a>
+            <a href="../faq/index.html">FAQ</a>
+            <a href="https://www.instagram.com/cosbos.wedding.film/" target="_blank">Insta</a>
+        </div>
+
+        <!-- Desktop Header -->
+        <div class="desktop-header">
+            <div class="desktop-logo">
+                <h1 onclick="window.location.href='../index.html'">C o s B o S</h1>
+            </div>
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../product/index.html">Product</a>
+                <a href="../contact/index.html">Contact</a>
+                <a href="../reservation/index.html">Reservation</a>
+                <a href="../faq/index.html">FAQ</a>
+                <a href="https://www.instagram.com/cosbos.wedding.film/" target="_blank">Insta</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="contact-wrapper">
+            <p class="contact-note">아래 양식에 맞게 작성해주시면<br>예약 가능 여부를 문자로 안내드립니다.<br><small>(AM 08:00 - PM 22:00)</small></p>
+            <form class="contact-form-2026" id="contactForm">
+                <label>예식날짜</label>
+                <input type="date" name="date" required>
+                <label>예식시간</label>
+                <input type="time" name="time" required>
+                <label>예식장소</label>
+                <input type="text" name="venue" placeholder="예식장명을 입력해주세요" required>
+                <label>연락처</label>
+                <div class="phone-group">
+                    <input type="tel" maxlength="3" required>
+                    <input type="tel" maxlength="4" required>
+                    <input type="tel" maxlength="4" required>
+                </div>
+                <label>예약자 성함</label>
+                <input type="text" name="name" placeholder="예약자 성함을 입력해주세요" required>
+                <button type="submit" class="submit-btn-main">작성</button>
+            </form>
+            <hr class="divider-line">
+            <div class="footer-icons">
+                <a href="https://www.instagram.com/cosbos.wedding.film/" target="_blank"><img src="../insta_logo.png" alt="Instagram"></a>
+            </div>
+            <div class="company-info">
+                <p><strong>Company. CosBoS WEDDING FILM</strong></p>
+                <p>Business number: 227-78-00415</p>
+                <p>E-mail: cosbos.wedding.film@gmail.com</p>
+            </div>
+            <p style="margin-top:40px;font-size:13px;color:#9ca3af;">Copyright © CosBoS WEDDING FILM All Rights Reserved.</p>
+        </div>
+    </main>
+
+    <script src="../scripts.js"></script>
+    <script>
+      // EmailJS 폼 전송 처리
+      document.getElementById('contactForm').addEventListener('submit',function(e){
+        e.preventDefault();
+        const phoneInputs=this.querySelectorAll('.phone-group input');
+        const phone=`${phoneInputs[0].value}-${phoneInputs[1].value}-${phoneInputs[2].value}`;
+        const params={
+          date:this.date.value,
+          time:this.time.value,
+          venue:this.venue.value,
+          contact:phone
+        };
+        emailjs.send('cosbos250720','template_cxupggi',params)
+          .then(()=>{
+            Swal.fire({
+              text:'정상적으로 접수되었습니다',
+              confirmButtonText:'확인',
+              width:420,
+              customClass:{
+                popup:'swal-popup',
+                confirmButton:'swal-confirm'
+              }
+            });
+            this.reset();
+          })
+          .catch(err=>{console.error(err);alert('전송 오류가 발생했습니다. 다시 시도해주세요.');});
+      });
+    </script>
+</body>
+</html> 
