@@ -33,3 +33,6 @@ feat: change the mobile font / contact modifying
 
 250721-3
 docs: from '그 무수한 우연 속의 너와 나' to '그 무수한 우연 속 너와 나'
+
+250721-4
+feat: kakaotalk icon is inserted between insta and youtube
