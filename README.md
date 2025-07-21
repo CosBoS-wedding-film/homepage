@@ -19,3 +19,6 @@ feat: modifying several things
 feat: finish to make new homepage with 13h (250720_0330 to 250720_1640)
 
 #TODO: 데스크톱에서는 글꼴 아주 마음에 들게 잘 됐는데, 모바일에서 Cormorant가 안 먹는 건 그냥 일반적인 글꼴로 보이는 게 좀 아쉽다. 나중에 해결해보자.
+
+250721
+feat: change the mobile font for matching with desktop (just trying. I don't know if it works well)

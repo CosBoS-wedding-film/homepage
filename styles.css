@@ -1406,3 +1406,20 @@ input:focus {
   background-color: #9ca3af;
   margin: 0.75rem auto 1.5rem;
 }
+
+/* Mobile Font Fix - 모바일에서만 한글 폰트를 세리프체로 변경 */
+@media (max-width: 767px) {
+  body, 
+  .brand-font, 
+  h1, h2, h3, h4, h5, h6,
+  .mobile-nav a,
+  .mobile-horizontal-nav a,
+  .desktop-nav a,
+  .video-title,
+  .cta-button,
+  .company-info p,
+  .concept-title,
+  .concept-description {
+    font-family: 'Cormorant', 'Noto Serif KR', serif !important;
+  }
+}
