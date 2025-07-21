@@ -1419,7 +1419,20 @@ input:focus {
   .cta-button,
   .company-info p,
   .concept-title,
-  .concept-description {
+  .concept-description,
+  .numeric-content,
+  .company-info,
+  .package-price,
+  .package-details,
+  .notice-list,
+  .options-list,
+  .pagination button,
+  .contact-form-2026 input,
+  .contact-form-2026 label,
+  .contact-note,
+  .phone-group input,
+  .submit-btn-main,
+  p, span, div, section, article, aside, main, footer {
     font-family: 'Cormorant', 'Noto Serif KR', serif !important;
   }
 }

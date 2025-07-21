@@ -21,4 +21,12 @@ feat: finish to make new homepage with 13h (250720_0330 to 250720_1640)
 #TODO: 데스크톱에서는 글꼴 아주 마음에 들게 잘 됐는데, 모바일에서 Cormorant가 안 먹는 건 그냥 일반적인 글꼴로 보이는 게 좀 아쉽다. 나중에 해결해보자.
 
 250721
-feat: change the mobile font for matching with desktop (just trying. I don't know if it works well)
+feat: change the mobile font for matching with desktop (just trying. I don't know if it works well) / contact page's name variable adding (there is name section, but it is not deliveried to gmailjs)
+
+250721-2
+feat: change the mobile font / contact modifying
+- change the mobile font for product, contact, reservation as well (before, only home font is changed)
+- contact 
+    - year cannot be 6 number, only 4 number.
+    - name variable adding (previous version is not working)
+    - phone number start with 010 (user can remove)

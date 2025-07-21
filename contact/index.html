@@ -122,14 +122,14 @@
             <p class="contact-note">아래 양식에 맞게 작성해주시면<br>예약 가능 여부를 문자로 안내드립니다.</p>
             <form class="contact-form-2026" id="contactForm">
                 <label>예식날짜</label>
-                <input type="date" name="date" required>
+                <input type="date" name="date" min="2024-01-01" max="2030-12-31" required>
                 <label>예식시간</label>
                 <input type="time" name="time" required>
                 <label>예식장소</label>
                 <input type="text" name="venue" placeholder="예식장명을 입력해주세요" required>
                 <label>연락처</label>
                 <div class="phone-group">
-                    <input type="tel" maxlength="3" required>
+                    <input type="tel" maxlength="3" value="010" required>
                     <input type="tel" maxlength="4" required>
                     <input type="tel" maxlength="4" required>
                 </div>
@@ -162,7 +162,8 @@
           date:this.date.value,
           time:this.time.value,
           venue:this.venue.value,
-          contact:phone
+          contact:phone,
+          name:this.name.value
         };
         emailjs.send('cosbos250720','template_cxupggi',params)
           .then(()=>{
