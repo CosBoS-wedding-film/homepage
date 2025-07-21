@@ -30,3 +30,6 @@ feat: change the mobile font / contact modifying
     - year cannot be 6 number, only 4 number.
     - name variable adding (previous version is not working)
     - phone number start with 010 (user can remove)
+
+250721-3
+docs: from '그 무수한 우연 속의 너와 나' to '그 무수한 우연 속 너와 나'
