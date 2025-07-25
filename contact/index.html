@@ -127,6 +127,12 @@
                 <input type="time" name="time" required>
                 <label>예식장소</label>
                 <input type="text" name="venue" placeholder="예식장명을 입력해주세요" required>
+                <label>상품 선택</label>
+                <select name="package" required style="width:100%;border:1px solid #e5e7eb;border-radius:4px;padding:12px 14px;font-size:15px;box-sizing:border-box;margin-bottom:32px;font-family:'Cormorant','Noto Serif KR',serif;background-color:white;">
+                    <option value="">상품을 선택해주세요</option>
+                    <option value="standard">Standard (1인 3캠)</option>
+                    <option value="premium">Premium (2인 4캠)</option>
+                </select>
                 <label>연락처</label>
                 <div class="phone-group">
                     <input type="tel" maxlength="3" value="010" required>
@@ -163,6 +169,7 @@
           date:this.date.value,
           time:this.time.value,
           venue:this.venue.value,
+          package:this.package.value,
           contact:phone,
           name:this.name.value
         };
