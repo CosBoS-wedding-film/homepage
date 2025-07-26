@@ -51,7 +51,7 @@
         .divider-line{margin:100px 0 60px;height:1px;background:#e5e7eb;border:0;}
         .footer-icons{display:flex;justify-content:center;gap:24px;margin-bottom:24px;}
         .footer-icons img{width:24px;height:24px;}
-        .company-info p{margin:4px 0;color:#6b7280;font-size:14px;line-height:1.6;font-family:'Cormorant',serif;}
+        .company-info p{margin:4px 0;color:#6b7280;font-size:14px;line-height:1.6;font-family:'Cormorant','Noto Serif KR',serif;}
         .company-info strong{color:#374151;}
         /* Loading State */
         body:not(.loaded) {
@@ -128,9 +128,8 @@
                 <label>예식장소</label>
                 <input type="text" name="venue" placeholder="예식장명을 입력해주세요" required>
                 <label>상품 선택</label>
-                <select name="package" required style="width:100%;border:1px solid #e5e7eb;border-radius:4px;padding:12px 14px;font-size:15px;box-sizing:border-box;margin-bottom:32px;font-family:'Cormorant','Noto Serif KR',serif;background-color:white;">
-                    <option value="">상품을 선택해주세요</option>
-                    <option value="standard">Standard (1인 3캠)</option>
+                <select name="package" required style="width:100%;border:1px solid #e5e7eb;border-radius:4px;padding:12px 14px;font-size:15px;box-sizing:border-box;margin-bottom:32px;font-family:'Cormorant','Noto Serif KR',serif;background-color:white;color:#333;">
+                    <option value="standard" selected>Standard (1인 3캠)</option>
                     <option value="premium">Premium (2인 4캠)</option>
                 </select>
                 <label>연락처</label>
@@ -173,6 +172,7 @@
           contact:phone,
           name:this.name.value
         };
+        console.log('전송될 데이터:', params);
         emailjs.send('cosbos250720','template_cxupggi',params)
           .then(()=>{
             Swal.fire({

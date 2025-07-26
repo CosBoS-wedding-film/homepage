@@ -39,3 +39,6 @@ feat: kakaotalk icon is inserted between insta and youtube
 
 250721-5
 feat: modifying kakaotalk address (previous version was wrong)
+
+250725
+docs: add 'package' for contact menu

@@ -1438,3 +1438,16 @@ input:focus {
     font-family: 'Cormorant', 'Noto Serif KR', serif !important;
   }
 }
+
+/* Contact 메뉴 강조 - 연한 초록색 */
+.mobile-nav a[href*="contact"],
+.mobile-horizontal-nav a[href*="contact"],
+.desktop-nav a[href*="contact"] {
+  color: #22c55e !important; /* 연한 초록색 */
+}
+
+.mobile-nav a[href*="contact"]:hover,
+.mobile-horizontal-nav a[href*="contact"]:hover,
+.desktop-nav a[href*="contact"]:hover {
+  color: #16a34a !important; /* 호버 시 더 진한 초록색 */
+}
