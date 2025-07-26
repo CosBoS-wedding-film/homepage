@@ -42,3 +42,9 @@ feat: modifying kakaotalk address (previous version was wrong)
 
 250725
 docs: add 'package' for contact menu
+
+250726
+feat: change the contact color and product choice part
+
+250726 - 2
+feat: change the variable from standard to standard (1인 3캠)
