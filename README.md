@@ -51,3 +51,6 @@ feat: change the variable from standard to standard (1인 3캠)
 
 250730
 feat: add context for contract menu & owner option 200,000 won
+
+250730 - 2
+feat: mention highlight in contract page
