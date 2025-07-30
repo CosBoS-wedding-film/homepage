@@ -48,3 +48,6 @@ feat: change the contact color and product choice part
 
 250726 - 2
 feat: change the variable from standard to standard (1인 3캠)
+
+250730
+feat: add context for contract menu & owner option 200,000 won
