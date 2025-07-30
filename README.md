@@ -54,3 +54,9 @@ feat: add context for contract menu & owner option 200,000 won
 
 250730 - 2
 feat: mention highlight in contract page
+
+250730 - 3
+docs: reduced the contact menu's empty space 
+
+250730 - 4
+feat: remove folder of 'thumbnail_only_16to9' because I directly use the youtube thumnail. But, the outer design is perfectly the same with before one.

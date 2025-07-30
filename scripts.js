@@ -130,15 +130,21 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('갤러리 아이템 생성 시작, 아이템 수:', items.length);
     
     items.forEach(({ filename, videoId, title }, index) => {
-      console.log(`아이템 ${index + 1} 생성:`, filename);
+      console.log(`아이템 ${index + 1} 생성:`, title);
       
       const wrapper = document.createElement('div');
       wrapper.className = 'gallery-item';
 
-      // 썸네일 이미지
+      // videoId에서 ?si= 파라미터 제거
+      const cleanVideoId = videoId.split('?')[0];
+
+      // 유튜브 썸네일 이미지
       const img = document.createElement('img');
-      img.src = `./thumbnail_only_16to9/${filename}`;
+      img.src = `https://img.youtube.com/vi/${cleanVideoId}/maxresdefault.jpg`;
       img.alt = title;
+      img.style.width = '100%';
+      img.style.height = '100%';
+      img.style.objectFit = 'cover';
       wrapper.appendChild(img);
 
       // 오버레이 제목
@@ -147,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
       overlay.textContent = title;
       wrapper.appendChild(overlay);
 
-      // 클릭 이벤트
+      // 클릭 이벤트 - 비디오 재생
       wrapper.addEventListener('click', () => {
         console.log('클릭됨:', title);
         const url = `video.html?videoId=${encodeURIComponent(videoId)}&title=${encodeURIComponent(title)}`;
