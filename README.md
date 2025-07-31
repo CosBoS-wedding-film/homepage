@@ -78,3 +78,9 @@ docs: reduced the contact menu's empty space
 
 250730 - 4
 feat: remove folder of 'thumbnail_only_16to9' because I directly use the youtube thumnail. But, the outer design is perfectly the same with before one.
+
+250730 - 5
+docs: reduced the contract hook text.
+
+250731
+docs: from 3CAM to 4CAM / contact menu's promotion context is added
