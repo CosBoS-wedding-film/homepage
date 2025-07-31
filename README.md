@@ -87,3 +87,6 @@ docs: from 3CAM to 4CAM / contact menu's promotion context is added
 
 250731 - 2
 docs: contact form 3CAM, 4CAM to 4CAM, 5CAM
+
+250801
+docs: change the text from 'gaseongbee' to '50year' for contract menu
