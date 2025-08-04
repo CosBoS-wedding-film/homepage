@@ -93,3 +93,6 @@ docs: change the text from 'gaseongbee' to '50year' for contract menu
 
 250803
 docs: 짝궁할인도 중복 가능하다는 것 뺐다. 악용하는 사람(250927_김도연)이 있어서. 50% 할인으로 판매할 때는 짝궁할인 고객은 40% 할인 가격으로 받도록 한다. 그럼 6만원 할인 및 페이백 해도 4만원 이득.
+
+250805
+docs: change the variable name for gmailJS (fix the error of 3can to 4cam, 4cam to 5cam)

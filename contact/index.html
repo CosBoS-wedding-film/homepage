@@ -168,7 +168,7 @@
         e.preventDefault();
         const phoneInputs=this.querySelectorAll('.phone-group input');
         const phone=`${phoneInputs[0].value}-${phoneInputs[1].value}-${phoneInputs[2].value}`;
-        const packageText = this.package.value === 'standard' ? 'Standard (1인 3캠)' : 'Premium (2인 4캠)';
+        const packageText = this.package.value === 'standard' ? 'Standard (1인 4캠)' : 'Premium (2인 5캠)';
         const params={
           date:this.date.value,
           time:this.time.value,
