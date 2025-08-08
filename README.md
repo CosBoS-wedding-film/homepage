@@ -96,3 +96,9 @@ docs: 짝궁할인도 중복 가능하다는 것 뺐다. 악용하는 사람(250
 
 250805
 docs: change the variable name for gmailJS (fix the error of 3can to 4cam, 4cam to 5cam)
+
+250126
+fix: rename package option from 'standard' to 'classic' and update corresponding JavaScript variables
+- Changed HTML option value from 'standard' to 'classic' in contact form
+- Updated JavaScript logic to use 'classic' instead of 'standard' for package text generation
+- Maintained correct pricing: Classic (1인 4캠) 495,000원, Premium (2인 5캠) 770,000원
