@@ -102,3 +102,9 @@ fix: rename package option from 'standard' to 'classic' and update corresponding
 - Changed HTML option value from 'standard' to 'classic' in contact form
 - Updated JavaScript logic to use 'classic' instead of 'standard' for package text generation
 - Maintained correct pricing: Classic (1인 4캠) 495,000원, Premium (2인 5캠) 770,000원
+
+250814
+feat: remove 50% discount
+
+250903
+docs: adding 2days discount & change the price & remove the additional tax
