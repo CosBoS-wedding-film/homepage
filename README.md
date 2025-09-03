@@ -108,3 +108,6 @@ feat: remove 50% discount
 
 250903
 docs: adding 2days discount & change the price & remove the additional tax
+
+250903-1
+docs: false finishing reservation added (2509, 2604, 2607, 2608, 2610, 2612)
