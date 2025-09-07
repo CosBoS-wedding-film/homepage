@@ -111,3 +111,7 @@ docs: adding 2days discount & change the price & remove the additional tax
 
 250903-1
 docs: false finishing reservation added (2509, 2604, 2607, 2608, 2610, 2612)
+
+250908
+add: 아이티컨벤션수원
+feat: remove the thumbnail file name because I don't use this file but directly use the youtube image
