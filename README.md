@@ -109,9 +109,15 @@ feat: remove 50% discount
 250903
 docs: adding 2days discount & change the price & remove the additional tax
 
-250903-1
+250903-2
 docs: false finishing reservation added (2509, 2604, 2607, 2608, 2610, 2612)
 
 250908
 add: 아이티컨벤션수원
 feat: remove the thumbnail file name because I don't use this file but directly use the youtube image
+
+250908-2
+docs: event set 0913 0914
+
+250912
+docs: 스틸컷 한 장 추가
