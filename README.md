@@ -120,4 +120,7 @@ feat: remove the thumbnail file name because I don't use this file but directly 
 docs: event set 0913 0914
 
 250912
-docs: 스틸컷 한 장 추가
+docs: 스틸컷 한 장 추가 (썸네일용)
+
+250913
+docs: change the font for the part of contract
