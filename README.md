@@ -127,3 +127,6 @@ docs: change the font for the part of contract
 
 250913-2
 docs: change the finish reservation date of 2025
+
+250913-3
+docs: mobile font as well
