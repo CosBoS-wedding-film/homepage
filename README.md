@@ -124,3 +124,6 @@ docs: 스틸컷 한 장 추가 (썸네일용)
 
 250913
 docs: change the font for the part of contract
+
+250913-2
+docs: change the finish reservation date of 2025
