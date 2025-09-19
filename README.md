@@ -136,3 +136,6 @@ docs: event off
 
 250919
 docs: event on & explain 4cam detail for contact menu
+
+250919-2
+docs: fix error
