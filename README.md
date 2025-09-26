@@ -142,3 +142,6 @@ docs: fix error
 
 250919-3
 docs: almost finish booking fake
+
+250927
+docs: event change to 0927
