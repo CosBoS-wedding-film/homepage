@@ -145,3 +145,9 @@ docs: almost finish booking fake
 
 250927
 docs: event change to 0927
+
+250929
+docs: event off & something change & remove fast edit option (it is not suitable with my PhD student life)
+
+251005
+docs: event on
