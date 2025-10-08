@@ -84,6 +84,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 비디오 정보 배열 (원본 homepage 전체 목록)
   const videos = [
+    {videoId: "j_UntDFHU0Y?si=1MDwJwqUGG1M7UoI", title: "더파티움안양"},
+    {videoId: "mOn2M40v-qg?si=-Vt3xNMrBuGqs6F6", title: "삼산월드컨벤션"},
+    {videoId: "46NGN04yd_A?si=sJ8cYNWQwzJK2Qkj", title: "메리빌리아"},
+    {videoId: "axq1UQNzb4U?si=q3IjmGFj0bKVZKpN", title: "루이비스컨벤션문정"},
+    {videoId: "WXagI7BEfJA?si=C9fqH1VT9tiVNJkl", title: "벨라루체서울"},
+    {videoId: "dRhStsPfD88?si=yC9S_WlhSiQ-Tqwd", title: "더블유아이컨벤션수원"},
     {videoId: "UzJ8p8m5M64?si=9Fn6Pk85tyXXt5io", title: "아이티컨벤션수원"},
     {videoId: "j2WsRI5N_kU?si=-sF3OK3fks7ibZXt", title: "더파티움"},
     {videoId: "RdbtJ32zGZ4?si=Ex20hqd6tisZqWHV", title: "오엔리버스테이션"},

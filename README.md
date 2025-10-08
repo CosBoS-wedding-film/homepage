@@ -151,3 +151,7 @@ docs: event off & something change & remove fast edit option (it is not suitable
 
 251005
 docs: event on
+
+251008
+docs: change the contact text like Steve Jobs (Why >> How >> What, but not perfect yet)
+feat: add the 6 highlight (2507-1, 2508-2, 2509-3)
