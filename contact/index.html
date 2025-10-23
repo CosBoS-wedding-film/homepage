@@ -178,11 +178,13 @@
         const phoneInputs=this.querySelectorAll('.phone-group input');
         const phone=`${phoneInputs[0].value}-${phoneInputs[1].value}-${phoneInputs[2].value}`;
         const packageText = this.package.value === 'classic' ? 'Classic (1인 4캠)' : 'Premium (2인 5캠)';
+        const price = this.package.value === 'classic' ? '495,000' : '770,000';
         const params={
           date:this.date.value,
           time:this.time.value,
           venue:this.venue.value,
           package:packageText,
+          price:price,
           contact:phone,
           name:this.name.value
         };
