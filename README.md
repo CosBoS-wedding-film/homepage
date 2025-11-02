@@ -159,6 +159,7 @@ feat: add the 6 highlight (2507-1, 2508-2, 2509-3)
 251008 - 2
 feat: remove 250824(WI Convention Suwon) because of poor quality
 
+
 251012
 docs: event on
 
@@ -173,4 +174,10 @@ docs: event on
 
 
 251023
+docs: event on
+
+251023 - 2
+feat: add parameter of 'price' for automatically set the price on EmailJS template
+
+251102
 docs: event on
