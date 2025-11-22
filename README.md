@@ -181,3 +181,6 @@ feat: add parameter of 'price' for automatically set the price on EmailJS templa
 
 251102
 docs: event on
+
+251123
+docs: event on
