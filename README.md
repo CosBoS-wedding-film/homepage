@@ -184,3 +184,7 @@ docs: event on
 
 251123
 docs: event on
+
+
+251128
+docs: Change discount percent from 50% to 40%
