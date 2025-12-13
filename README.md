@@ -207,4 +207,7 @@ docs: event on
 fix: 40% discount font change (same with others)
 
 251213 - 3
-fix: 40% discount font change (same with others)
+fix: again, 40% discount font change (same with others)
+
+251213 - 4
+fix: again and again, 40% discount font change (same with others), and parameter value of discount percent is changed from percent to discount_percent
