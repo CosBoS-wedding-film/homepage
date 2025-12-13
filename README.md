@@ -197,3 +197,8 @@ docs: event on
 
 251205 - 2
 feat: Adding parameter 'discount' for emailJS. This is automatically receive the HTML's discount percentage.
+
+
+251213
+feat: 40% discount font change (same with others)
+docs: event on
