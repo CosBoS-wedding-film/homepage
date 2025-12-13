@@ -205,3 +205,6 @@ docs: event on
 
 251213 - 2
 fix: 40% discount font change (same with others)
+
+251213 - 3
+fix: 40% discount font change (same with others)
