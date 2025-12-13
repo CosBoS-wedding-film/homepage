@@ -202,3 +202,6 @@ feat: Adding parameter 'discount' for emailJS. This is automatically receive the
 251213
 feat: 40% discount font change (same with others)
 docs: event on
+
+251213 - 2
+fix: 40% discount font change (same with others)
