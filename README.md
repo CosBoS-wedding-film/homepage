@@ -214,3 +214,9 @@ fix: again and again, 40% discount font change (same with others), and parameter
 
 251213 - 5
 feat: automatically calculating the price from percentage for EmailJS
+
+251214
+on
+
+251218
+on
