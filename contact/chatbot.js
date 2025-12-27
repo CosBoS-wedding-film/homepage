@@ -98,6 +98,23 @@ document.addEventListener('DOMContentLoaded', function() {
     chatbotClose.addEventListener('click', closeChatbot);
   }
   
+  // iOS 키보드 대응 - 헤더 고정
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', () => {
+      if (chatbotWindow.classList.contains('open')) {
+        const keyboardHeight = window.innerHeight - window.visualViewport.height;
+        chatbotWindow.style.height = `${window.visualViewport.height * 0.7}px`;
+        chatbotWindow.style.bottom = `${keyboardHeight}px`;
+      }
+    });
+    
+    window.visualViewport.addEventListener('scroll', () => {
+      if (chatbotWindow.classList.contains('open')) {
+        chatbotWindow.style.bottom = `${window.innerHeight - window.visualViewport.height - window.visualViewport.offsetTop}px`;
+      }
+    });
+  }
+  
   // 메시지 추가 함수
   function addMessage(text, isUser) {
     const msg = document.createElement('div');
