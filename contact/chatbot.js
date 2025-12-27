@@ -235,7 +235,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   // Google Sheets로 대화 기록 저장
-  const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyMQTxjfQ9givtZPVyQulTwqAIZXaMmXUcuPPuSrgpPtbBEQ6zxRAMyskrBrq2D4mbNNw/exec';
+  const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxhcnIvKqUo5JyRykpRb187IxmxXjNsZlULtiH24t_lmttxcSzjn8a096yaQI8k4dta8g/exec';
   
   function sendChatLog() {
     if (conversationLog.length === 0) return;
