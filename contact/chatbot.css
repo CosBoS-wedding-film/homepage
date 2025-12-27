@@ -31,17 +31,17 @@
 
 .chatbot-window {
   position: fixed;
-  top: 0;
+  top: 60px;
   left: 0;
   right: 0;
   bottom: 0;
   width: 100%;
-  height: 100%;
+  height: calc(100% - 60px);
   max-width: 100%;
-  max-height: 100%;
+  max-height: calc(100% - 60px);
   background: #fdfcfb;
-  border-radius: 0;
-  box-shadow: none;
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
   z-index: 9998;
   display: flex;
   flex-direction: column;
