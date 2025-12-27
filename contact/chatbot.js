@@ -232,22 +232,27 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   // 대화 내역 이메일 전송
+  // Google Sheets로 대화 기록 저장
+  const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyMQTxjfQ9givtZPVyQulTwqAIZXaMmXUcuPPuSrgpPtbBEQ6zxRAMyskrBrq2D4mbNNw/exec';
+  
   function sendChatLog() {
     if (window.chatLogSent || conversationLog.length === 0) return;
     window.chatLogSent = true;
     
     const logText = conversationLog.map(m => `[${m.time}] ${m.role}: ${m.text}`).join('\n');
     
-    emailjs.send('cosbos250720', 'template_cxupggi', {
-      name: (customerData?.name || '익명') + ' (AI상담)',
-      date: customerData?.date || '-',
-      time: customerData?.time || '-',
-      venue: customerData?.venue || '-',
-      package: customerData?.package || '-',
-      price: customerData?.price || '-',
-      contact: customerData?.contact || '-',
-      discount_percent: '40',
-      chat_log: logText
+    fetch(SHEETS_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: customerData?.name || '익명',
+        date: customerData?.date || '-',
+        venue: customerData?.venue || '-',
+        package: customerData?.package || '-',
+        contact: customerData?.contact || '-',
+        chatLog: logText
+      })
     }).catch(err => console.log('Chat log send failed:', err));
   }
   

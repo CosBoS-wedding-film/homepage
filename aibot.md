@@ -10,8 +10,9 @@
 - 키 이름: `aibot`
 
 ## 대화 기록
-- 챗봇 닫을 때 EmailJS로 자동 전송
-- 수신: `cosbos.wedding.film@gmail.com`
+- 챗봇 닫을 때 Google Sheets로 자동 저장
+- 스프레드시트: `AI챗봇 대화기록`
+- Apps Script URL: 배포 → 배포 관리에서 확인
 
 ## 파일 구조
 ```
