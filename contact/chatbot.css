@@ -31,17 +31,17 @@
 
 .chatbot-window {
   position: fixed;
-  top: 0;
+  top: auto;
   left: 0;
   right: 0;
   bottom: 0;
   width: 100%;
-  height: 100%;
+  height: 70vh;
   max-width: 100%;
-  max-height: 100%;
+  max-height: 70vh;
   background: #fdfcfb;
-  border-radius: 0;
-  box-shadow: none;
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
   z-index: 9998;
   display: flex;
   flex-direction: column;
@@ -95,11 +95,11 @@
 
 .chat-message {
   max-width: 85%;
-  padding: 12px 16px;
+  padding: 10px 14px;
   border-radius: 16px;
   font-family: 'Noto Sans KR', sans-serif;
-  font-size: 14px;
-  line-height: 1.6;
+  font-size: 13px;
+  line-height: 1.5;
   animation: chatFadeIn 0.3s ease;
 }
 @keyframes chatFadeIn {
