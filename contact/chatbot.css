@@ -145,12 +145,16 @@
 .chatbot-input {
   flex: 1;
   border: 1px solid #e5ddd5;
-  border-radius: 24px;
-  padding: 12px 18px;
+  border-radius: 18px;
+  padding: 10px 16px;
   font-family: 'Noto Sans KR', sans-serif;
-  font-size: 14px;
+  font-size: 16px; /* iOS 자동 줌 방지 */
   outline: none;
   transition: border-color 0.2s;
+  resize: none;
+  min-height: 20px;
+  max-height: 80px;
+  line-height: 1.4;
 }
 .chatbot-input:focus {
   border-color: #6b5444;

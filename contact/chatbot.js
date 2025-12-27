@@ -227,9 +227,6 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // 이벤트 리스너
   chatbotSend.addEventListener('click', handleSend);
-  chatbotInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') handleSend();
-  });
   
   // 외부에서 AI 상담 시작 (폼 제출 후 호출)
   window.startAiConsult = function() {
