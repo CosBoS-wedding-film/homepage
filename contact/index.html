@@ -68,6 +68,8 @@
       .swal-popup{font-family:'Noto Sans KR',sans-serif;border-radius:6px;padding:40px 20px;}
       .swal-confirm{background:#36302a !important;border:0 !important;border-radius:2px !important;font-family:'Cormorant',serif;font-size:16px;letter-spacing:0.08em;padding:8px 32px !important;}
     </style>
+    <!-- AI Chatbot -->
+    <link rel="stylesheet" href="chatbot.css">
 </head>
 <body class="loaded">
     <header>
@@ -171,7 +173,28 @@
         </div>
     </main>
 
+    <!-- AI Chatbot -->
+    <button class="chatbot-toggle" id="chatbotToggle" aria-label="채팅 열기">
+      <svg class="chat-icon" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.2L4 17.2V4h16v12z"/><circle cx="8" cy="10" r="1.5"/><circle cx="12" cy="10" r="1.5"/><circle cx="16" cy="10" r="1.5"/></svg>
+      <svg class="close-icon" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+    
+    <div class="chatbot-window" id="chatbotWindow">
+      <div class="chatbot-header">CosBoS 상담</div>
+      <div class="chatbot-messages" id="chatbotMessages">
+        <div class="chat-message bot">안녕하세요! 코스보스 웨딩필름입니다 ✧ 궁금하신 점이 있으시면 편하게 물어보세요.</div>
+      </div>
+      <div class="chatbot-input-area">
+        <input type="text" class="chatbot-input" id="chatbotInput" placeholder="메시지를 입력하세요..." />
+        <button class="chatbot-send" id="chatbotSend" aria-label="전송">
+          <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+        </button>
+      </div>
+    </div>
+
     <script src="../scripts.js?v=20241008"></script>
+    <script src="config.js"></script>
+    <script src="chatbot.js"></script>
     <script>
       // 프로모션 설정 (한 곳에서 관리)
       const DISCOUNT_PERCENT = 40; // 할인율 (%)
