@@ -229,15 +229,16 @@ document.addEventListener('DOMContentLoaded', function() {
     
     addMessage(reply, false);
     chatbotSend.disabled = false;
+    
+    // 매 대화마다 저장
+    sendChatLog();
   }
   
-  // 대화 내역 이메일 전송
   // Google Sheets로 대화 기록 저장
   const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyMQTxjfQ9givtZPVyQulTwqAIZXaMmXUcuPPuSrgpPtbBEQ6zxRAMyskrBrq2D4mbNNw/exec';
   
   function sendChatLog() {
-    if (window.chatLogSent || conversationLog.length === 0) return;
-    window.chatLogSent = true;
+    if (conversationLog.length === 0) return;
     
     const logText = conversationLog.map(m => `[${m.time}] ${m.role}: ${m.text}`).join('\n');
     
