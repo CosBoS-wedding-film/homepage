@@ -2,7 +2,7 @@
 // 코스보스 AI 챗봇 설정
 // ============================================
 
-const GEMINI_API_KEY = 'AIzaSyBUdm2klisyS0jyoXlA6FIn-nyMBrd97oI';
+const GEMINI_API_KEY = 'AIzaSyBVYb741j2ca1DtZKztmXj41Xr6LDX1dmA';
 
 // AI 시스템 프롬프트 (챗봇이 알고 있을 정보)
 const SYSTEM_PROMPT = `당신은 코스보스(CosBoS) 웨딩필름의 친절한 상담 AI입니다.
