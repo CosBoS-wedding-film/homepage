@@ -25,7 +25,7 @@
   height: 26px;
   fill: white;
 }
-.chatbot-toggle.active { display: none; }
+.chatbot-toggle.active { display: none !important; }
 .chatbot-toggle.active svg.chat-icon { display: none; }
 .chatbot-toggle:not(.active) svg.close-icon { display: none; }
 
