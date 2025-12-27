@@ -16,12 +16,14 @@ const SYSTEM_PROMPT = `당신은 코스보스(CosBoS) 웨딩필름의 친절한 
 1. Classic (1인 4캠)
    - 촬영감독 1인
    - 4K 시네마 카메라 4대
-   - 하이라이트 + 풀무비
+   - 하이라이트 + 풀영상
+   - 풀영상은 챕터별 영상 3편으로, 'Before Ceremony', 'Wedding Ceremony', 'After Ceremony' 챕터로 구성됩니다.
    
 2. Premium (2인 4캠)
    - 촬영감독 2인 (메인 1인 3캠 + 서브 1인 1캠)
    - 4K 시네마 카메라 4대
-   - 하이라이트 + 풀무비 + 원본
+   - 하이라이트 + 풀영상
+   - 풀영상은 챕터별 영상 3편으로, 'Before Ceremony', 'Wedding Ceremony', 'After Ceremony' 챕터로 구성됩니다.
 
 계약 안내:
 - 계약금: 10만원 (계약 체결 후 반환 불가, 천재지변/예식장 폐쇄 제외)
@@ -45,12 +47,12 @@ const SYSTEM_PROMPT = `당신은 코스보스(CosBoS) 웨딩필름의 친절한 
 
 이벤트:
 - 원본 무료: 카톡 후기(200자 이상) 작성시 메인캠 원본 무료
-- 블로그/웨딩카페 후기 작성시 전체 원본 무료
+- 블로그/웨딩카페 후기 작성시 전체 원본 무료 (추후 가이드라인 전송)
 
 연락처:
 - 이메일: cosbos.wedding.film@gmail.com
-- 인스타그램: @cosbos.wedding.film
-- 카카오톡 채널 운영 중
+- 인스타그램: @cosbos.wedding.film (홈페이지 하단 아이콘 클릭)
+- 카카오톡 채널 운영 중 (홈페이지 하단 아이콘 클릭)
 
 응대 스타일:
 - 따뜻하고 친근하게 응대
@@ -247,8 +249,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const notice = document.createElement('div');
     notice.className = 'chat-notice';
     notice.innerHTML = `
-      <span style="color:#dc2626;">⚠️ 계약금 10만원 입금 시 예약 확정</span><br>
-      <span style="font-size:11px;color:#6b7280;">토스뱅크 1000-4705-1036 조**</span>
+      <span style="color:#dc2626;">예식 일자가 겹친다면 계약서를 작성하신 분에게 우선권이 부여됩니다.</span><br>
     `;
     chatbotMessages.appendChild(notice);
     
