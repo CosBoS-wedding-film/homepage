@@ -80,6 +80,10 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // 챗봇 닫기 함수
   function closeChatbot() {
+    // 대화 내역 있으면 이메일 전송
+    if (conversationLog.length > 0) {
+      sendChatLog();
+    }
     chatbotToggle.classList.remove('active');
     chatbotWindow.classList.remove('open');
   }
@@ -225,28 +229,23 @@ document.addEventListener('DOMContentLoaded', function() {
     
     addMessage(reply, false);
     chatbotSend.disabled = false;
-    
-    // 대화 5회 이상이면 이메일 전송 (한 번만)
-    if (conversationLog.length >= 10 && !window.chatLogSent) {
-      sendChatLog();
-    }
   }
   
   // 대화 내역 이메일 전송
   function sendChatLog() {
-    if (!customerData || window.chatLogSent) return;
+    if (window.chatLogSent || conversationLog.length === 0) return;
     window.chatLogSent = true;
     
     const logText = conversationLog.map(m => `[${m.time}] ${m.role}: ${m.text}`).join('\n');
     
     emailjs.send('cosbos250720', 'template_cxupggi', {
-      name: customerData.name + ' (AI상담내역)',
-      date: customerData.date,
-      time: customerData.time,
-      venue: customerData.venue,
-      package: customerData.package,
-      price: customerData.price,
-      contact: customerData.contact,
+      name: (customerData?.name || '익명') + ' (AI상담)',
+      date: customerData?.date || '-',
+      time: customerData?.time || '-',
+      venue: customerData?.venue || '-',
+      package: customerData?.package || '-',
+      price: customerData?.price || '-',
+      contact: customerData?.contact || '-',
       discount_percent: '40',
       chat_log: logText
     }).catch(err => console.log('Chat log send failed:', err));
