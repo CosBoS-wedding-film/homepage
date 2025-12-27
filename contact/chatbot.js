@@ -98,22 +98,32 @@ document.addEventListener('DOMContentLoaded', function() {
     chatbotClose.addEventListener('click', closeChatbot);
   }
   
-  // iOS 키보드 대응 - 헤더 고정
-  if (window.visualViewport) {
-    window.visualViewport.addEventListener('resize', () => {
-      if (chatbotWindow.classList.contains('open')) {
-        const keyboardHeight = window.innerHeight - window.visualViewport.height;
-        chatbotWindow.style.height = `${window.visualViewport.height * 0.7}px`;
-        chatbotWindow.style.bottom = `${keyboardHeight}px`;
-      }
-    });
-    
-    window.visualViewport.addEventListener('scroll', () => {
-      if (chatbotWindow.classList.contains('open')) {
-        chatbotWindow.style.bottom = `${window.innerHeight - window.visualViewport.height - window.visualViewport.offsetTop}px`;
-      }
-    });
+  // iOS 키보드 대응 - 챗봇 열면 body 스크롤 막기
+  function lockBody() {
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.width = '100%';
+    document.body.style.top = `-${window.scrollY}px`;
   }
+  
+  function unlockBody() {
+    const scrollY = document.body.style.top;
+    document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.width = '';
+    document.body.style.top = '';
+    window.scrollTo(0, parseInt(scrollY || '0') * -1);
+  }
+  
+  // 챗봇 열릴 때 body 고정
+  const observer = new MutationObserver(() => {
+    if (chatbotWindow.classList.contains('open')) {
+      lockBody();
+    } else {
+      unlockBody();
+    }
+  });
+  observer.observe(chatbotWindow, { attributes: true, attributeFilter: ['class'] });
   
   // 메시지 추가 함수
   function addMessage(text, isUser) {
