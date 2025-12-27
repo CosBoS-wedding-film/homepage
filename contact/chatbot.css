@@ -31,12 +31,12 @@
 
 .chatbot-window {
   position: fixed;
-  bottom: 96px;
-  right: 24px;
-  width: 360px;
-  max-width: calc(100vw - 48px);
-  height: 480px;
-  max-height: calc(100vh - 140px);
+  bottom: 80px;
+  right: 16px;
+  width: 320px;
+  max-width: calc(100vw - 32px);
+  height: 380px;
+  max-height: calc(100vh - 180px);
   background: #fdfcfb;
   border-radius: 16px;
   box-shadow: 0 12px 48px rgba(0,0,0,0.15);
