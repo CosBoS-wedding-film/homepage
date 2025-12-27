@@ -1451,3 +1451,21 @@ input:focus {
 .desktop-nav a[href*="contact"]:hover {
   color: #16a34a !important; /* 호버 시 더 진한 초록색 */
 }
+
+/* Contact Form 2026 - 모든 input 동일 스타일 */
+.contact-form-2026 input[type="date"],
+.contact-form-2026 input[type="time"],
+.contact-form-2026 input[type="text"] {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  padding: 12px 14px;
+  font-size: 15px;
+  margin-bottom: 32px;
+  font-family: 'Cormorant', 'Noto Serif KR', serif;
+  background-color: white;
+  color: #333;
+  -webkit-appearance: none;
+  appearance: none;
+}
