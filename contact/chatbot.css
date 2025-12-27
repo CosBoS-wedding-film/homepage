@@ -179,6 +179,43 @@
   fill: white;
 }
 
+/* 예약 안내 고정 메시지 */
+.chat-notice {
+  background: #fef3f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+/* 빠른 응답 버튼 */
+.quick-replies {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+.quick-reply-btn {
+  background: white;
+  border: 1px solid #d4c8be;
+  border-radius: 20px;
+  padding: 10px 16px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 13px;
+  color: #6b5444;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+}
+.quick-reply-btn:hover {
+  background: #f5f0eb;
+  border-color: #6b5444;
+}
+
 @media (max-width: 480px) {
   .chatbot-window {
     bottom: 0;

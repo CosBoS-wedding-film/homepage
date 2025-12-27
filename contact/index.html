@@ -66,7 +66,8 @@
     <style>
       /* SweetAlert2 custom styles */
       .swal-popup{font-family:'Noto Sans KR',sans-serif;border-radius:6px;padding:40px 20px;}
-      .swal-confirm{background:#36302a !important;border:0 !important;border-radius:2px !important;font-family:'Cormorant',serif;font-size:16px;letter-spacing:0.08em;padding:8px 32px !important;}
+      .swal-confirm{background:#6b5444 !important;border:0 !important;border-radius:2px !important;font-family:'Cormorant',serif;font-size:16px;letter-spacing:0.08em;padding:8px 32px !important;}
+      .swal-cancel{background:#e5e7eb !important;color:#374151 !important;border:0 !important;border-radius:2px !important;font-family:'Cormorant',serif;font-size:16px;letter-spacing:0.08em;padding:8px 32px !important;}
     </style>
     <!-- AI Chatbot -->
     <link rel="stylesheet" href="chatbot.css">
@@ -125,15 +126,7 @@
         <div class="contact-wrapper">
             <p class="contact-note" style="color: #16a34a;">아래 양식에 맞게 작성해 주시면<br>예약 가능 여부를 문자로 안내해 드립니다.<br><span style="color: #000000;">
                 
-            <!-- 예약마감달 -->   
-            <!-- <span style="color: red;">2025년</span> 예약 마감된 달: 1 ~ 9월 <br> <span style="color: red;">2026년</span> 예약 마감된 달: 4, 7, 8, 10, 12월</span></p> -->   
-            <!-- 예약마감달 -->
-            <span style="color: black;"></br> 순간을 영원히 기록하고 싶다는 바람, </br> 그 바람으로부터 영상을 시작했습니다. </br> </br> "50년이 지나도 아름답게 기억될 시네마틱 영상" </br> 이것이 코스보스 웨딩필름의 지향점입니다. </br> </br> 모든 원본 영상이 소중한 역사라고 믿기에 </br> 4대의 4K 카메라 원본을 무료로 제공합니다.</span></p>
-
-            <!-- 오늘단하루 프로모션 -->   
-            <hr class="divider-line" style="margin: 40px 0 32px 0; border: none; border-top: 1.5px solid #e5e7eb; width: 100%;">
-            <p class="contact-note promo-text"><b>12월 20일 자정 마감 팝업 이벤트 </br></br>** <span id="discountPercent">40</span>% 할인 (정가 및 구성은 Product 페이지 참고) ** </br>** 옵션 2가지 무료 (대표지정, 인터뷰) ** </br></b></p>
-            <hr class="divider-line" style="margin: 40px 0 32px 0; border: none; border-top: 1.5px solid #e5e7eb; width: 100%;">
+            <span style="color: black;"></br> 순간을 영원히 기록하고 싶다는 바람, </br> 그 바람으로부터 영상을 시작했습니다. </br> </br> "50년이 지나도 아름답게 기억될 시네마틱 영상" </br> 이것이 코스보스 웨딩필름의 지향점입니다. </br> </br> 모든 영상이 소중한 역사라고 믿기에 </br> 4대의 4K 카메라로 본식의 모든 부분을 빠짐없이 담습니다.</span></p>
            
             <p class="contact-note">후기: <a href="https://www.instagram.com/cosbos.wedding.film/" target="_blank">Instagram</a>의 하이라이트</p>
             <form class="contact-form-2026" id="contactForm">
@@ -146,7 +139,7 @@
                 <label>상품 선택</label>
                 <select name="package" required style="width:100%;border:1px solid #e5e7eb;border-radius:4px;padding:12px 14px;font-size:15px;box-sizing:border-box;margin-bottom:32px;font-family:'Cormorant','Noto Serif KR',serif;background-color:white;color:#333;">
                     <option value="classic" selected>Classic (1인 4캠)</option>
-                    <option value="premium">Premium (2인 5캠)</option>
+                    <option value="premium">Premium (2인 4캠)</option>
                 </select>
                 <label>연락처</label>
                 <div class="phone-group">
@@ -156,7 +149,7 @@
                 </div>
                 <label>예약자 성함</label>
                 <input type="text" name="name" placeholder="예약자 성함을 입력해주세요" required>
-                <button type="submit" class="submit-btn-main" onclick="fbq('track', 'Lead');">작성</button>
+                <button type="submit" class="submit-btn-main" onclick="fbq('track', 'Lead');">제출</button>
             </form>
             <hr class="divider-line">
             <div class="footer-icons">
@@ -219,33 +212,74 @@
       // EmailJS 폼 전송 처리
       document.getElementById('contactForm').addEventListener('submit',function(e){
         e.preventDefault();
-        const phoneInputs=this.querySelectorAll('.phone-group input');
+        const form = this;
+        const phoneInputs=form.querySelectorAll('.phone-group input');
         const phone=`${phoneInputs[0].value}-${phoneInputs[1].value}-${phoneInputs[2].value}`;
-        const packageText = this.package.value === 'classic' ? 'Classic (1인 4캠)' : 'Premium (2인 5캠)';
-        const originalPrice = ORIGINAL_PRICE[this.package.value];
+        const packageText = form.package.value === 'classic' ? 'Classic (1인 4캠)' : 'Premium (2인 4캠)';
+        const originalPrice = ORIGINAL_PRICE[form.package.value];
         const price = calculateDiscountedPrice(originalPrice, DISCOUNT_PERCENT);
         const params={
-          date:this.date.value,
-          time:this.time.value,
-          venue:this.venue.value,
+          date:form.date.value,
+          time:form.time.value,
+          venue:form.venue.value,
           package:packageText,
           price:price,
           discount_percent:DISCOUNT_PERCENT,
           contact:phone,
-          name:this.name.value
+          name:form.name.value
         };
+        
+        // 폼 데이터 저장 (챗봇에서 사용)
+        window.customerData = {
+          name: form.name.value,
+          date: form.date.value,
+          time: form.time.value,
+          venue: form.venue.value,
+          package: packageText,
+          price: price,
+          contact: phone
+        };
+        
         emailjs.send('cosbos250720','template_cxupggi',params)
           .then(()=>{
             Swal.fire({
-              text:'정상적으로 접수되었습니다',
-              confirmButtonText:'확인',
+              html:`
+                <div style="position:relative;text-align:center;">
+                  <button id="swalCloseX" style="position:absolute;top:-15px;right:-5px;background:none;border:none;font-size:24px;color:#9ca3af;cursor:pointer;padding:4px;outline:none;">&times;</button>
+                  <p style="font-size:16px;margin-bottom:16px;">[접수 완료] 주말에 연락드리겠습니다.</p>
+                  <p style="font-size:13px;color:#dc2626;margin-bottom:20px;">
+                    ⚠️ 성수기 예약 57%가 일정 겹침으로 불발됩니다.<br>
+                    계약서 작성 후 계약금 10만원 입금 시 예약 확정<br>
+                    (대표와 상담한 주의 일요일 23:59까지 환불 가능)
+                  </p>
+                  <p style="font-size:12px;color:#6b7280;margin-bottom:24px;">토스뱅크 1000-4705-1036 조**</p>
+                  <a href="https://docs.google.com/forms/d/e/1FAIpQLSf-LWt9fFy1HFqq6UNKzWIIEt41rXUSuv_uirpNyAtHNqi8bg/viewform" target="_blank" style="display:block;background:#374151;color:#fff;border:none;border-radius:2px;padding:12px 24px;text-decoration:none;width:100%;box-sizing:border-box;margin-bottom:10px;font-size:14px;">
+                    📋 계약서 작성
+                  </a>
+                  <button id="swalAiBtn" style="background:#6b5444;color:#fff;border:none;border-radius:2px;padding:14px 24px;cursor:pointer;width:100%;">
+                    <span style="font-size:15px;display:block;">☺️ AI 상담</span>
+                    <span style="font-size:11px;color:rgba(255,255,255,0.8);display:block;margin-top:4px;">(모든 내용 검토 후 필요한 부분은<br>주말에 대표가 직접 답변드립니다)</span>
+                  </button>
+                </div>
+              `,
+              showConfirmButton: false,
+              showCancelButton: false,
+              showCloseButton: false,
               width:420,
               customClass:{
-                popup:'swal-popup',
-                confirmButton:'swal-confirm'
+                popup:'swal-popup'
+              },
+              didOpen: () => {
+                document.getElementById('swalAiBtn').addEventListener('click', () => {
+                  Swal.close();
+                  if (window.startAiConsult) window.startAiConsult();
+                });
+                document.getElementById('swalCloseX').addEventListener('click', () => {
+                  Swal.close();
+                });
               }
             });
-            this.reset();
+            form.reset();
           })
           .catch(err=>{console.error(err);alert('전송 오류가 발생했습니다. 다시 시도해주세요.');});
       });

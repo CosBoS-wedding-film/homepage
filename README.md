@@ -224,6 +224,14 @@ on
 251220
 on
 
-251227
-feat: chatbot test 1
-to 3
+251227-1
+feat: add AI chatbot (API key secured)
+
+251227-2
+feat: add chatbot config
+
+251227-3
+refactor: simplify chatbot - remove config.js
+
+251227-4
+docs: No Discount Version for branding and auto

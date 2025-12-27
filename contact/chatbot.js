@@ -13,36 +13,52 @@ const SYSTEM_PROMPT = `당신은 코스보스(CosBoS) 웨딩필름의 친절한 
 - 4대의 4K 카메라 원본 무료 제공
 
 상품 구성:
-1. Classic (1인 4캠): 정가 99만원
+1. Classic (1인 4캠): 정가 99만원 → 40% 할인 59.4만원
    - 4K 시네마 카메라 4대
    - 하이라이트 + 풀무비 + 원본
    
-2. Premium (2인 5캠): 정가 154만원
+2. Premium (2인 5캠): 정가 154만원 → 40% 할인 92.4만원
    - 촬영감독 2인
    - 4K 시네마 카메라 5대
    - 하이라이트 + 풀무비 + 원본
 
-현재 프로모션: 40% 할인 이벤트 진행중
-- Classic: 59.4만원
-- Premium: 92.4만원
-- 추가 옵션 2가지 무료 (대표지정, 인터뷰)
+현재 프로모션: 40% 할인 + 옵션 2가지 무료 (대표지정, 인터뷰)
+
+계약 안내:
+- 계약금: 10만원 (주말 상담 후 환불 가능)
+- 계좌: 토스뱅크 1000-4705-1036 조**
+- 잔금: 촬영 직후 완납
+
+계약서 주요 내용:
+- 영상 납품: 예식일 기준 100일 이내
+- 영상 보존: 전달일 기준 1개월 후 자동 삭제
+- 촬영 시간: 본식 1시간 전 ~ 신랑신부 퇴장
+- 환불: 계약금은 계약 체결 후 반환 불가 (천재지변/예식장 폐쇄 제외)
+
+추가 옵션:
+- 인터뷰: 양가 부모님 + 지인 인터뷰 (무선마이크 사용)
+- 원판: 포토타임까지 촬영 (+10만원 또는 식권)
+- 연회장: 연회장/폐백 촬영 (원판 필수)
+- 웨딩카 하차: 본식 2시간 30분 전부터 촬영
+- 2주 이내 영상 전송: 빠른 편집
+
+이벤트:
+- 짝꿍할인: 소개시 3만원 페이백, 소개받은 분 3만원 할인
+- 원본 무료: 카톡 후기(200자 이상) 작성시 메인캠 원본 무료
 
 연락처:
 - 이메일: cosbos.wedding.film@gmail.com
 - 인스타그램: @cosbos.wedding.film
 - 카카오톡 채널 운영 중
 
-예약 안내:
-- 이 페이지의 예약 폼을 작성하시면 문자로 예약 가능 여부를 안내드립니다.
-
 응대 스타일:
 - 따뜻하고 친근하게 응대
-- 간결하고 명확한 답변
-- 필요시 예약 폼 작성을 안내
-- 모르는 질문은 카카오톡이나 이메일로 문의 안내`;
+- 간결하고 명확한 답변 (2-3문장)
+- 계약금 입금을 자연스럽게 유도
+- 복잡한 질문은 "대표님께서 주말에 자세히 안내드릴게요" 라고 안내`;
 
 // ============================================
-// 챗봇 초기화 (페이지 로드 시 자동 실행)
+// 챗봇 초기화
 // ============================================
 document.addEventListener('DOMContentLoaded', function() {
   const chatbotToggle = document.getElementById('chatbotToggle');
@@ -51,9 +67,11 @@ document.addEventListener('DOMContentLoaded', function() {
   const chatbotInput = document.getElementById('chatbotInput');
   const chatbotSend = document.getElementById('chatbotSend');
   
-  if (!chatbotToggle) return; // 챗봇 요소가 없으면 종료
+  if (!chatbotToggle) return;
   
   let chatHistory = [];
+  let conversationLog = []; // 대화 내역 저장 (이메일용)
+  let customerData = null;
   
   // 토글 버튼 클릭
   chatbotToggle.addEventListener('click', () => {
@@ -71,6 +89,13 @@ document.addEventListener('DOMContentLoaded', function() {
     msg.textContent = text;
     chatbotMessages.appendChild(msg);
     chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    
+    // 대화 내역 저장
+    conversationLog.push({
+      role: isUser ? '고객' : 'AI',
+      text: text,
+      time: new Date().toLocaleTimeString('ko-KR')
+    });
   }
   
   // 타이핑 표시
@@ -92,21 +117,33 @@ document.addEventListener('DOMContentLoaded', function() {
   async function sendToGemini(userMessage) {
     chatHistory.push({ role: 'user', parts: [{ text: userMessage }] });
     
+    // 고객 정보가 있으면 시스템 프롬프트에 추가
+    let contextPrompt = SYSTEM_PROMPT;
+    if (customerData) {
+      contextPrompt += `\n\n현재 상담 중인 고객 정보:
+- 이름: ${customerData.name}
+- 예식일: ${customerData.date} ${customerData.time}
+- 예식장: ${customerData.venue}
+- 선택상품: ${customerData.package}
+- 할인가: ${customerData.price}원
+- 연락처: ${customerData.contact}`;
+    }
+    
     const requestBody = {
       contents: [
-        { role: 'user', parts: [{ text: SYSTEM_PROMPT }] },
+        { role: 'user', parts: [{ text: contextPrompt }] },
         { role: 'model', parts: [{ text: '네, 코스보스 웨딩필름 상담 AI로서 친절하게 도와드리겠습니다.' }] },
         ...chatHistory
       ],
       generationConfig: {
         temperature: 0.7,
-        maxOutputTokens: 500,
+        maxOutputTokens: 300,
       }
     };
     
     try {
       const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`,
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.0-flash:generateContent?key=${GEMINI_API_KEY}`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -115,10 +152,8 @@ document.addEventListener('DOMContentLoaded', function() {
       );
       
       const data = await response.json();
-      console.log('API Response:', data); // 디버깅용
       
       if (!response.ok) {
-        console.error('API Error:', data);
         throw new Error(data.error?.message || 'API 오류');
       }
       
@@ -128,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function() {
       return botReply;
     } catch (error) {
       console.error('Gemini API Error:', error);
-      return `오류: ${error.message}`;
+      return '연결 오류가 발생했어요. 카카오톡으로 문의해 주세요!';
     }
   }
   
@@ -147,6 +182,31 @@ document.addEventListener('DOMContentLoaded', function() {
     
     addMessage(reply, false);
     chatbotSend.disabled = false;
+    
+    // 대화 5회 이상이면 이메일 전송 (한 번만)
+    if (conversationLog.length >= 10 && !window.chatLogSent) {
+      sendChatLog();
+    }
+  }
+  
+  // 대화 내역 이메일 전송
+  function sendChatLog() {
+    if (!customerData || window.chatLogSent) return;
+    window.chatLogSent = true;
+    
+    const logText = conversationLog.map(m => `[${m.time}] ${m.role}: ${m.text}`).join('\n');
+    
+    emailjs.send('cosbos250720', 'template_cxupggi', {
+      name: customerData.name + ' (AI상담내역)',
+      date: customerData.date,
+      time: customerData.time,
+      venue: customerData.venue,
+      package: customerData.package,
+      price: customerData.price,
+      contact: customerData.contact,
+      discount_percent: '40',
+      chat_log: logText
+    }).catch(err => console.log('Chat log send failed:', err));
   }
   
   // 이벤트 리스너
@@ -154,5 +214,77 @@ document.addEventListener('DOMContentLoaded', function() {
   chatbotInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') handleSend();
   });
+  
+  // 외부에서 AI 상담 시작 (폼 제출 후 호출)
+  window.startAiConsult = function() {
+    customerData = window.customerData;
+    
+    // 챗봇 열기
+    chatbotToggle.classList.add('active');
+    chatbotWindow.classList.add('open');
+    
+    // 기존 메시지 초기화
+    chatbotMessages.innerHTML = '';
+    chatHistory = [];
+    conversationLog = [];
+    window.chatLogSent = false;
+    
+    // 예약 안내 고정 메시지
+    const notice = document.createElement('div');
+    notice.className = 'chat-notice';
+    notice.innerHTML = `
+      <span style="color:#dc2626;">⚠️ 계약금 10만원 입금 시 예약 확정</span><br>
+      <span style="font-size:11px;color:#6b7280;">토스뱅크 1000-4705-1036 조**</span>
+    `;
+    chatbotMessages.appendChild(notice);
+    
+    // AI 인사 메시지
+    if (customerData) {
+      const greeting = `${customerData.name}님, ${customerData.date} ${customerData.venue}에서 ${customerData.package}로 문의해 주셨네요! ✧ 궁금하신 점 편하게 물어보세요.`;
+      addMessage(greeting, false);
+    } else {
+      addMessage('안녕하세요! 코스보스 웨딩필름입니다 ✧ 궁금하신 점 있으시면 편하게 물어보세요.', false);
+    }
+    
+    // 빠른 응답 버튼 추가
+    addQuickReplies();
+    
+    chatbotInput.focus();
+  };
+  
+  // 빠른 응답 버튼
+  function addQuickReplies() {
+    const quickReplies = [
+      '계약서 작성 및 계약금 입금을 완료했어요.',
+      '대표님께 남기고 싶은 말이 있어요.',
+      '상품 구성이 궁금해요.',
+      '현재 진행되는 할인 및 이벤트를 알고 싶어요.'
+    ];
+    
+    const container = document.createElement('div');
+    container.className = 'quick-replies';
+    
+    quickReplies.forEach(text => {
+      const btn = document.createElement('button');
+      btn.className = 'quick-reply-btn';
+      btn.textContent = text;
+      btn.addEventListener('click', async () => {
+        // 버튼 컨테이너 제거
+        container.remove();
+        
+        // 메시지 전송
+        addMessage(text, true);
+        chatbotSend.disabled = true;
+        showTyping();
+        const reply = await sendToGemini(text);
+        hideTyping();
+        addMessage(reply, false);
+        chatbotSend.disabled = false;
+      });
+      container.appendChild(btn);
+    });
+    
+    chatbotMessages.appendChild(container);
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+  }
 });
-
