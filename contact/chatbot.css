@@ -31,10 +31,10 @@
 
 .chatbot-window {
   position: fixed;
-  top: 15%;
+  top: 120px;
   left: 10px;
   right: 10px;
-  bottom: 15%;
+  bottom: 120px;
   width: auto;
   height: auto;
   max-width: none;
