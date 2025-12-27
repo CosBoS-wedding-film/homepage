@@ -10,41 +10,42 @@ const SYSTEM_PROMPT = `당신은 코스보스(CosBoS) 웨딩필름의 친절한 
 코스보스 정보:
 - 시네마틱 웨딩 영상 전문 업체
 - 슬로건: "50년이 지나도 아름답게 기억될 시네마틱 영상"
-- 4대의 4K 카메라 원본 무료 제공
+- 4대의 4K 카메라로 본식의 모든 부분을 빠짐없이 촬영
 
 상품 구성:
-1. Classic (1인 4캠): 정가 99만원 → 40% 할인 59.4만원
+1. Classic (1인 4캠)
+   - 촬영감독 1인
+   - 4K 시네마 카메라 4대
+   - 하이라이트 + 풀무비
+   
+2. Premium (2인 4캠)
+   - 촬영감독 2인 (메인 1인 3캠 + 서브 1인 1캠)
    - 4K 시네마 카메라 4대
    - 하이라이트 + 풀무비 + 원본
-   
-2. Premium (2인 5캠): 정가 154만원 → 40% 할인 92.4만원
-   - 촬영감독 2인
-   - 4K 시네마 카메라 5대
-   - 하이라이트 + 풀무비 + 원본
-
-현재 프로모션: 40% 할인 + 옵션 2가지 무료 (대표지정, 인터뷰)
 
 계약 안내:
-- 계약금: 10만원 (주말 상담 후 환불 가능)
+- 계약금: 10만원 (계약 체결 후 반환 불가, 천재지변/예식장 폐쇄 제외)
 - 계좌: 토스뱅크 1000-4705-1036 조**
-- 잔금: 촬영 직후 완납
+- 잔금: 예식 3일 전까지 완납
 
 계약서 주요 내용:
 - 영상 납품: 예식일 기준 100일 이내
 - 영상 보존: 전달일 기준 1개월 후 자동 삭제
 - 촬영 시간: 본식 1시간 전 ~ 신랑신부 퇴장
-- 환불: 계약금은 계약 체결 후 반환 불가 (천재지변/예식장 폐쇄 제외)
+- 수정 요청: 재생 오류/명백한 편집 문제 시에만 가능, 전송 후 3일 이내
 
-추가 옵션:
-- 인터뷰: 양가 부모님 + 지인 인터뷰 (무선마이크 사용)
-- 원판: 포토타임까지 촬영 (+10만원 또는 식권)
-- 연회장: 연회장/폐백 촬영 (원판 필수)
-- 웨딩카 하차: 본식 2시간 30분 전부터 촬영
-- 2주 이내 영상 전송: 빠른 편집
+출장비:
+- 무료: 서울, 수도권(분당/수원/부천/일산/안양/광명/의정부), 인천/송도
+- 5만원: 파주/포천/강화/양평/동두천/여주/이천/화성/안성/평택/오산/가평
+- 15만원: 원주/횡성/철원/화천/춘천/홍천
+- 20만원: 강릉/속초, 충청지역
+- 30만원: 전북/경북
+- 35만원: 전남/경남
+- 40만원: 제주
 
 이벤트:
-- 짝꿍할인: 소개시 3만원 페이백, 소개받은 분 3만원 할인
 - 원본 무료: 카톡 후기(200자 이상) 작성시 메인캠 원본 무료
+- 블로그/웨딩카페 후기 작성시 전체 원본 무료
 
 연락처:
 - 이메일: cosbos.wedding.film@gmail.com
@@ -54,8 +55,8 @@ const SYSTEM_PROMPT = `당신은 코스보스(CosBoS) 웨딩필름의 친절한 
 응대 스타일:
 - 따뜻하고 친근하게 응대
 - 간결하고 명확한 답변 (2-3문장)
-- 계약금 입금을 자연스럽게 유도
-- 복잡한 질문은 "대표님께서 주말에 자세히 안내드릴게요" 라고 안내`;
+- 계약서 작성을 자연스럽게 유도
+- 복잡한 질문은 "대표님께서 연락드릴 때 자세히 안내드릴게요" 라고 안내`;
 
 // ============================================
 // 챗봇 초기화
@@ -67,11 +68,19 @@ document.addEventListener('DOMContentLoaded', function() {
   const chatbotInput = document.getElementById('chatbotInput');
   const chatbotSend = document.getElementById('chatbotSend');
   
+  const chatbotClose = document.getElementById('chatbotClose');
+  
   if (!chatbotToggle) return;
   
   let chatHistory = [];
   let conversationLog = []; // 대화 내역 저장 (이메일용)
   let customerData = null;
+  
+  // 챗봇 닫기 함수
+  function closeChatbot() {
+    chatbotToggle.classList.remove('active');
+    chatbotWindow.classList.remove('open');
+  }
   
   // 토글 버튼 클릭
   chatbotToggle.addEventListener('click', () => {
@@ -81,6 +90,11 @@ document.addEventListener('DOMContentLoaded', function() {
       chatbotInput.focus();
     }
   });
+  
+  // 헤더 X 버튼 클릭
+  if (chatbotClose) {
+    chatbotClose.addEventListener('click', closeChatbot);
+  }
   
   // 메시지 추가 함수
   function addMessage(text, isUser) {
@@ -255,10 +269,8 @@ document.addEventListener('DOMContentLoaded', function() {
   // 빠른 응답 버튼
   function addQuickReplies() {
     const quickReplies = [
-      '계약서 작성 및 계약금 입금을 완료했어요.',
-      '대표님께 남기고 싶은 말이 있어요.',
-      '상품 구성이 궁금해요.',
-      '현재 진행되는 할인 및 이벤트를 알고 싶어요.'
+      '(예시) 상품 구성이 궁금해요.',
+      '(예시) 대표님께 남기고 싶은 말이 있어요.',
     ];
     
     const container = document.createElement('div');
