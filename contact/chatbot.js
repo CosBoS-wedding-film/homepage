@@ -238,7 +238,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbwPCY-453V9h6fZtApd00TMcv2YzoBHCl-oK8j0It9CiIWnzGbSxBIg_pXxiDvE79Pwdw/exec';
   
   function sendChatLog() {
-    if (conversationLog.length === 0) return;
+    // 폼 데이터 없으면 저장 안 함
+    if (!customerData || conversationLog.length === 0) return;
     
     const logText = conversationLog.map(m => `[${m.time}] ${m.role}: ${m.text}`).join('\n');
     
@@ -247,11 +248,11 @@ document.addEventListener('DOMContentLoaded', function() {
       mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        name: customerData?.name || '익명',
-        date: customerData?.date || '-',
-        venue: customerData?.venue || '-',
-        package: customerData?.package || '-',
-        contact: customerData?.contact || '-',
+        name: customerData.name,
+        date: customerData.date,
+        venue: customerData.venue,
+        package: customerData.package,
+        contact: customerData.contact,
         chatLog: logText
       })
     }).catch(err => console.log('Chat log send failed:', err));
