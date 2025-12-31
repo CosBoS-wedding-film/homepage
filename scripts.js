@@ -84,6 +84,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 비디오 정보 배열 (원본 homepage 전체 목록)
   const videos = [
+    {videoId: "Fm0oYBgEEoA?si=OVqRp3ZKvxV-mJW1", title: "ICT밸리컨벤션"},
+    {videoId: "A4-sR_JGyCA?si=ofNJtuQROxac_Muu", title: "더컨벤션반포"},
+    {videoId: "hgJZfVILZMo?si=pG--iwsBlmro25T9", title: "웨딩더낙원"},
+    {videoId: "zwLBrx14NuI?si=SezNXz6MwtDhCpjp", title: "운현궁"},
+    {videoId: "O1kKHsjxcdk?si=9x4xpXwIYfRDqMpG", title: "더레이나의정부"},
     {videoId: "j_UntDFHU0Y?si=1MDwJwqUGG1M7UoI", title: "더파티움안양"},
     {videoId: "mOn2M40v-qg?si=-Vt3xNMrBuGqs6F6", title: "삼산월드컨벤션"},
     {videoId: "46NGN04yd_A?si=sJ8cYNWQwzJK2Qkj", title: "메리빌리아"},

@@ -235,3 +235,9 @@ refactor: simplify chatbot - remove config.js
 
 251227-4
 docs: No Discount Version for branding and auto
+
+251230
+docs: still cut remove because I start to edit in Premiere, not Lightroom. So the still cut is just screenshot.
+
+251231
+docs: adding 6 video and change some text
