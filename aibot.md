@@ -1,25 +1,28 @@
 # AI 챗봇 설정 정보
 
-## API 키 보안
-- **Gemini API 키**: `chatbot.js` 5번째 줄
-- **도메인 제한**: `https://cosbos-wedding-film.github.io/*` 에서만 작동
-- 키 노출되어도 다른 사이트에서 사용 불가
+## API 키 보안 (Cloudflare Workers)
+- **API 키 저장**: Cloudflare Workers 환경변수 (코드에 노출 X)
+- **Worker URL**: `https://chatbot.cosbos-wedding-film-88f.workers.dev`
+- **관리**: [Cloudflare Dashboard](https://dash.cloudflare.com) → Workers & Pages → chatbot → Settings → Variables
 
-## 키 관리
-- [Google Cloud Console](https://console.cloud.google.com/apis/credentials) 에서 관리
-- 키 이름: `aibot`
+## Cloudflare란?
+- 무료 서버리스 함수 서비스
+- GitHub Pages에서 API 키를 숨기기 위해 사용
+- 클라이언트 → Cloudflare → Gemini API (API 키는 Cloudflare에만 저장)
+
+## 키 변경 방법
+1. [Google AI Studio](https://aistudio.google.com/apikey)에서 새 키 발급
+2. Cloudflare Dashboard → chatbot → Settings → Variables
+3. GEMINI_API_KEY 수정 → Save
 
 ## 대화 기록
 - 챗봇 닫을 때 Google Sheets로 자동 저장
 - 스프레드시트: `AI챗봇 대화기록`
-- Apps Script URL: 배포 → 배포 관리에서 확인
 
 ## 파일 구조
 ```
 contact/
 ├── index.html    # 챗봇 HTML
 ├── chatbot.css   # 스타일
-├── chatbot.js    # 로직 + API 키
-└── aibot.md      # 이 파일
+├── chatbot.js    # 로직 (API 키 없음, Cloudflare URL만)
 ```
-

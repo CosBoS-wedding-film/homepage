@@ -2,8 +2,8 @@
 // 코스보스 AI 챗봇 설정
 // ============================================
 
-// API 키는 Netlify 환경변수에 저장 (코드에 노출 X)
-const CHAT_API_URL = '/.netlify/functions/chat';
+// API 키는 Cloudflare Workers에 저장 (코드에 노출 X)
+const CHAT_API_URL = 'https://chatbot.cosbos-wedding-film-88f.workers.dev';
 
 // AI 시스템 프롬프트 (챗봇이 알고 있을 정보)
 const SYSTEM_PROMPT = `당신은 코스보스(CosBoS) 웨딩필름의 친절한 상담 AI입니다.
