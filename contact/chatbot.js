@@ -266,7 +266,7 @@ document.addEventListener('DOMContentLoaded', function() {
       return botReply;
     } catch (error) {
       console.error('Gemini API Error:', error);
-      return '현재 연결이 불안정합니다. 대표님께 남기실 말씀이 있으시다면 채팅창에 적어주세요. 대화 내용은 저장됩니다.';
+      return '현재 연결이 불안정합니다. 대표님께 남기실 말씀이 있으시다면 채팅창에 적어주세요. 추후 대표님께서 메시지 내용 모두 확인 후 답변드릴 예정입니다.';
     }
   }
   
@@ -340,7 +340,7 @@ document.addEventListener('DOMContentLoaded', function() {
     notice.className = 'chat-notice';
     notice.innerHTML = `
       <span style="color:#dc2626;">예식 일자가 겹친다면 계약서를 작성하신 분에게 우선권이 부여됩니다.</span><br>
-      <a href="https://docs.google.com/document/d/1zqGzWoLxvKqL9a1cYQ_Y0c4wLqLyLqPx/edit" target="_blank" style="color:#6b5444; text-decoration:underline;">📄 계약서 보기</a>
+      <a href="https://docs.google.com/forms/d/1EzQ5QqhpNCteELl0BkTOEYBkFr-Zok0W_9fTnRrAsJ0/viewform" target="_blank" style="color:#6b5444; text-decoration:underline;">📄 계약서 작성하기</a>
     `;
     chatbotMessages.appendChild(notice);
     
