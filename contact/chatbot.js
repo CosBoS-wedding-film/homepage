@@ -291,7 +291,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   // Google Sheets로 대화 기록 저장
-  const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbwn2sTV3lR8B-li9Ibna2towcUD5iAMMcqP01WhHRo2r4HrVpUCwO02THoVBHIMWnHn5Q/exec';
+  const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbydwFyQVh4rMvuLDnHSGNyDJTZ7HSzMayZa37eMkrAa8sD01VkjaRUeclw6lgR8K6FDmQ/exec';
   
   function sendChatLog() {
     // 폼 데이터 없으면 저장 안 함
