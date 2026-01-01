@@ -55,21 +55,30 @@ GitHub에서 코드를 push하면 자동으로 실행되는 빌드/배포 시스
 
 ## 커스텀 도메인 설정
 
-### 도메인 구매
-1. [Namecheap](https://namecheap.com), [GoDaddy](https://godaddy.com), [가비아](https://gabia.com) 등에서 도메인 구매
-2. 예: `cosbos.com` (연 1-2만원)
+### 도메인 구매 내역
+- **도메인**: `cosbos-wedding-film.com`
+- **구매처**: [가비아](https://gabia.com)
+- **가격**: 19,800원/년 (부가세 1,800원 포함)
+- **구매일**: 2026.01.01 19:30
+- **만료일**: 2027.01.01 (갱신 필요)
 
-### GitHub Pages에 연결
-1. 도메인 DNS 설정에서 CNAME 레코드 추가:
-   - Host: `www`
-   - Value: `cosbos-wedding-film.github.io`
-2. A 레코드 추가 (GitHub IP):
-   - `185.199.108.153`
-   - `185.199.109.153`
-   - `185.199.110.153`
-   - `185.199.111.153`
-3. GitHub repo → Settings → Pages → Custom domain에 도메인 입력
-4. Enforce HTTPS 체크
+### 가비아 DNS 설정 (완료)
+**A 레코드 4개:**
+| 타입 | 호스트 | 값 | TTL |
+|------|--------|-----|-----|
+| A | @ | 185.199.108.153 | 600 |
+| A | @ | 185.199.109.153 | 600 |
+| A | @ | 185.199.110.153 | 600 |
+| A | @ | 185.199.111.153 | 600 |
+
+**CNAME 레코드 1개:**
+| 타입 | 호스트 | 값 | TTL |
+|------|--------|-----|-----|
+| CNAME | www | cosbos-wedding-film.github.io. | 600 |
+
+### GitHub Pages 설정
+1. Settings → Pages → Custom domain: `cosbos-wedding-film.com`
+2. Enforce HTTPS 체크 ✅
 
 ---
 

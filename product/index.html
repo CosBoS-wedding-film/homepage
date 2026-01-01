@@ -137,6 +137,14 @@
         .package-details div {
             margin-bottom: 8px;
         }
+
+        /* 모바일에서 Classic/Premium 밑 내용 가운데 정렬 */
+        @media (max-width: 767px) {
+            .package-info,
+            .package-details {
+                text-align: center;
+            }
+        }
         
         .additional-options {
             margin-top: 60px;
@@ -249,7 +257,7 @@
 
                 <div class="package">
                     <div class="package-info">
-                        <h3 class="package-name">Signature </h3>
+                        <h3 class="package-name">Classic </h3>
                     </div>
                     <div class="package-details numeric-content">
                         <div>590,000원</div>
