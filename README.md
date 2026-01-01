@@ -1,243 +1,94 @@
-# version2 homepage is made on 250720
+# CosBoS Wedding Film Homepage
+
+코스보스 웨딩필름 홈페이지
+
+## 사이트 주소
+https://cosbos-wedding-film.github.io/homepage/
+
+---
+
+## AI 챗봇 설정
+
+### API 키 보안 (GitHub Secrets + Actions)
+- **API 키 저장**: GitHub Secrets (repo 코드에 없음)
+- **빌드 시**: `__GEMINI_API_KEY__` → 실제 키로 치환됨
+- **Google 스캔**: repo에 키 없으니 revoke 안 함 ✅
+
+### GitHub Actions란?
+GitHub에서 코드를 push하면 자동으로 실행되는 빌드/배포 시스템
+
+**왜 사용하나?**
+- GitHub Pages = 정적 호스팅 (코드 그대로 배포)
+- API 키를 코드에 넣으면 → GitHub에 노출 → Google이 감지해서 키 막음
+- **해결책**: GitHub Secrets에 키 저장 → Actions가 빌드할 때 키 주입 → 배포
+
+**작동 방식:**
+```
+[GitHub Secrets] ← API 키 저장 (코드에 없음)
+    ↓ push하면 Actions 실행
+[chatbot.js] ← __GEMINI_API_KEY__ → 실제 키로 치환
+    ↓ 
+[GitHub Pages] ← 배포된 파일에만 키 있음
+```
+
+### GitHub Pages 설정
+- Settings → Pages → Source: **GitHub Actions** 선택 필수!
+- "Deploy from a branch" 선택하면 키 주입 안 됨
+
+### API 키 변경 방법
+1. [Google AI Studio](https://aistudio.google.com/apikey)에서 새 키 발급
+2. GitHub repo → Settings → Secrets and variables → Actions
+3. GEMINI_API_KEY 수정
+4. 다시 push하면 자동 배포
+
+### GitHub Secrets 설정
+1. GitHub repo → Settings → Secrets and variables → Actions
+2. New repository secret
+3. Name: `GEMINI_API_KEY`
+4. Value: (API 키)
+
+### 대화 기록
+- 챗봇 닫을 때 Google Sheets로 자동 저장
+- 스프레드시트: `AI챗봇 대화기록`
+
+---
+
+## 커스텀 도메인 설정
+
+### 도메인 구매
+1. [Namecheap](https://namecheap.com), [GoDaddy](https://godaddy.com), [가비아](https://gabia.com) 등에서 도메인 구매
+2. 예: `cosbos.com` (연 1-2만원)
+
+### GitHub Pages에 연결
+1. 도메인 DNS 설정에서 CNAME 레코드 추가:
+   - Host: `www`
+   - Value: `cosbos-wedding-film.github.io`
+2. A 레코드 추가 (GitHub IP):
+   - `185.199.108.153`
+   - `185.199.109.153`
+   - `185.199.110.153`
+   - `185.199.111.153`
+3. GitHub repo → Settings → Pages → Custom domain에 도메인 입력
+4. Enforce HTTPS 체크
+
+---
+
+## 파일 구조
+```
+homepage/
+├── index.html          # 메인 페이지
+├── contact/
+│   ├── index.html      # 문의 폼 + 챗봇
+│   ├── chatbot.css     # 챗봇 스타일
+│   └── chatbot.js      # 챗봇 로직 (__GEMINI_API_KEY__ 플레이스홀더)
+├── product/
+│   └── index.html      # 상품 페이지
+├── reservation/
+│   └── index.html      # 예약 현황
+├── .github/
+│   └── workflows/
+│       └── deploy.yml  # GitHub Actions (빌드 시 키 주입 + 배포)
+├── commit_log.md       # 커밋 기록
+└── README.md           # 이 파일
+```
 
-
-
-
-Type        키워드	사용 시점
-feat	    새로운 기능 추가
-fix	        버그 수정
-docs	    문서 수정
-style	    코드 스타일 변경 (코드 포매팅, 세미콜론 누락 등). 기능 수정이 없는 경우
-design	    사용자 UI 디자인 변경 (CSS 등)
-test	    테스트 코드, 리팩토링 테스트 코드 추가
-refactor	코드 리팩토링
-build	    빌드 파일 수정
-ci	        CI 설정 파일 수정
-perf	    성능 개선
-chore	    빌드 업무 수정, 패키지 매니저 수정 (gitignore 수정 등)
-rename	    파일 혹은 폴더명을 수정만 한 경우
-remove	    파일을 삭제만 한 경우
-
-
-
-
-github log
-
-250720
-feat: homepage version 2
-
-Imitating 'LIGHT OF FILM'
-
-
-250720 - 2
-feat: modifying several things 
-
-
-250720 - 3
-feat: finish to make new homepage with 13h (250720_0330 to 250720_1640)
-
-#TODO: 데스크톱에서는 글꼴 아주 마음에 들게 잘 됐는데, 모바일에서 Cormorant가 안 먹는 건 그냥 일반적인 글꼴로 보이는 게 좀 아쉽다. 나중에 해결해보자.
-
-250721
-feat: change the mobile font for matching with desktop (just trying. I don't know if it works well) / contact page's name variable adding (there is name section, but it is not deliveried to gmailjs)
-
-250721-2
-feat: change the mobile font / contact modifying
-- change the mobile font for product, contact, reservation as well (before, only home font is changed)
-- contact 
-    - year cannot be 6 number, only 4 number.
-    - name variable adding (previous version is not working)
-    - phone number start with 010 (user can remove)
-
-250721-3
-docs: from '그 무수한 우연 속의 너와 나' to '그 무수한 우연 속 너와 나'
-
-250721-4
-feat: kakaotalk icon is inserted between insta and youtube
-
-250721-5
-feat: modifying kakaotalk address (previous version was wrong)
-
-250725
-docs: add 'package' for contact menu
-
-250726
-feat: change the contact color and product choice part
-
-250726 - 2
-feat: change the variable from standard to standard (1인 3캠)
-
-250730
-feat: add context for contract menu & owner option 200,000 won
-
-250730 - 2
-feat: mention highlight in contract page
-
-250730 - 3
-docs: reduced the contact menu's empty space 
-
-250730 - 4
-feat: remove folder of 'thumbnail_only_16to9' because I directly use the youtube thumnail. But, the outer design is perfectly the same with before one.
-
-250730 - 5
-docs: reduced the contract hook text.
-
-250731
-docs: from 3CAM to 4CAM / contact menu's promotion context is added
-
-250731 - 2
-docs: contact form 3CAM, 4CAM to 4CAM, 5CAM
-
-250801
-docs: change the text from 'gaseongbee' to '50year' for contract menu
-
-250803
-docs: 짝궁할인도 중복 가능하다는 것 뺐다. 악용하는 사람(250927_김도연)이 있어서. 50% 할인으로 판매할 때는 짝궁할인 고객은 40% 할인 가격으로 받도록 한다. 그럼 6만원 할인 및 페이백 해도 4만원 이득.
-
-250805
-docs: change the variable name for gmailJS (fix the error of 3can to 4cam, 4cam to 5cam)
-
-250808
-fix: rename package option from 'standard' to 'classic' and update corresponding JavaScript variables
-- Changed HTML option value from 'standard' to 'classic' in contact form
-- Updated JavaScript logic to use 'classic' instead of 'standard' for package text generation
-- Maintained correct pricing: Classic (1인 4캠) 495,000원, Premium (2인 5캠) 770,000원
-
-250814
-feat: remove 50% discount
-
-250903
-docs: adding 2days discount & change the price & remove the additional tax
-
-250903-2
-docs: false finishing reservation added (2509, 2604, 2607, 2608, 2610, 2612)
-
-250908
-add: 아이티컨벤션수원
-feat: remove the thumbnail file name because I don't use this file but directly use the youtube image
-
-250908-2
-docs: event set 0913 0914
-
-250912
-docs: 스틸컷 한 장 추가 (썸네일용)
-
-250913
-docs: change the font for the part of contract
-
-250913-2
-docs: change the finish reservation date of 2025
-
-250913-3
-docs: mobile font as well
-
-250914
-docs: event off
-
-250919
-docs: event on & explain 4cam detail for contact menu
-
-250919-2
-docs: fix error
-
-250919-3
-docs: almost finish booking fake
-
-250927
-docs: event change to 0927
-
-250929
-docs: event off & something change & remove fast edit option (it is not suitable with my PhD student life)
-
-251005
-docs: event on
-
-251008
-docs: change the contact text like Steve Jobs (Why >> How >> What, but not perfect yet)
-feat: add the 6 highlight (2507-1, 2508-2, 2509-3)
-
-251008 - 2
-feat: remove 250824(WI Convention Suwon) because of poor quality
-
-
-251012
-docs: event on
-
-
-251019
-docs: event on
-
-
-251020
-docs: event on
-
-
-
-251023
-docs: event on
-
-251023 - 2
-feat: add parameter of 'price' for automatically set the price on EmailJS template
-
-251102
-docs: event on
-
-251123
-docs: event on
-
-
-251130
-docs: Change discount percent from 50% to 40%
-docs: event on
-
-
-251205
-docs: event on
-
-
-251205 - 2
-feat: Adding parameter 'discount' for emailJS. This is automatically receive the HTML's discount percentage.
-
-
-251213
-feat: 40% discount font change (same with others)
-docs: event on
-
-251213 - 2
-fix: 40% discount font change (same with others)
-
-251213 - 3
-fix: again, 40% discount font change (same with others)
-
-251213 - 4
-fix: again and again, 40% discount font change (same with others), and parameter value of discount percent is changed from percent to discount_percent
-
-251213 - 5
-feat: automatically calculating the price from percentage for EmailJS
-
-251214
-on
-
-251218
-on
-
-251220
-on
-
-251227-1
-feat: add AI chatbot (API key secured)
-
-251227-2
-feat: add chatbot config
-
-251227-3
-refactor: simplify chatbot - remove config.js
-
-251227-4
-docs: No Discount Version for branding and auto
-
-251230
-docs: still cut remove because I start to edit in Premiere, not Lightroom. So the still cut is just screenshot.
-
-251231
-docs: adding 6 video and change some text
