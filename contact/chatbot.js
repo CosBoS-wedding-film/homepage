@@ -131,6 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
   let chatHistory = [];
   let conversationLog = []; // 대화 내역 저장 (이메일용)
   let customerData = null;
+  let sessionId = null; // 대화 세션 ID (같은 대화창 구분용)
   
   // 챗봇 닫기 함수
   function closeChatbot() {
@@ -294,7 +295,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   function sendChatLog() {
     // 폼 데이터 없으면 저장 안 함
-    if (!customerData || conversationLog.length === 0) return;
+    if (!customerData || conversationLog.length === 0 || !sessionId) return;
     
     const logText = conversationLog.map(m => `[${m.time}] ${m.role}: ${m.text}`).join('\n');
     
@@ -303,6 +304,7 @@ document.addEventListener('DOMContentLoaded', function() {
       mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
+        sessionId: sessionId, // 대화 세션 ID (같은 세션이면 같은 행 업데이트)
         name: customerData.name,
         date: customerData.date,
         venue: customerData.venue,
@@ -329,6 +331,9 @@ document.addEventListener('DOMContentLoaded', function() {
     chatHistory = [];
     conversationLog = [];
     window.chatLogSent = false;
+    
+    // 새 세션 ID 생성 (타임스탬프 + 랜덤)
+    sessionId = Date.now() + '-' + Math.random().toString(36).substr(2, 9);
     
     // 예약 안내 고정 메시지
     const notice = document.createElement('div');
