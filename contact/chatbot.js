@@ -2,7 +2,8 @@
 // 코스보스 AI 챗봇 설정
 // ============================================
 
-const GEMINI_API_KEY = 'AIzaSyBo3HMFWynjLLF8Hn_SLNso4ldW1Ssaxdk';
+// API 키는 Netlify 환경변수에 저장 (코드에 노출 X)
+const CHAT_API_URL = '/.netlify/functions/chat';
 
 // AI 시스템 프롬프트 (챗봇이 알고 있을 정보)
 const SYSTEM_PROMPT = `당신은 코스보스(CosBoS) 웨딩필름의 친절한 상담 AI입니다.
@@ -160,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (typing) typing.remove();
   }
   
-  // Gemini API 호출
+  // Gemini API 호출 (Netlify Function 경유 - API 키 보호)
   async function sendToGemini(userMessage) {
     chatHistory.push({ role: 'user', parts: [{ text: userMessage }] });
     
@@ -189,14 +190,12 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     
     try {
-      const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(requestBody)
-        }
-      );
+      // Netlify Function 호출 (API 키는 서버에서 처리)
+      const response = await fetch(CHAT_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(requestBody)
+      });
       
       const data = await response.json();
       
