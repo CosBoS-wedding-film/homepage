@@ -47,9 +47,17 @@ GitHub에서 코드를 push하면 자동으로 실행되는 빌드/배포 시스
 3. Name: `GEMINI_API_KEY`
 4. Value: (API 키)
 
-### 대화 기록
-- 챗봇 닫을 때 Google Sheets로 자동 저장
+### 대화 기록 (Google Sheets)
+- 매 대화마다 Google Sheets로 자동 저장
 - 스프레드시트: `AI챗봇 대화기록`
+- **세션 ID 기반**: 같은 대화창이면 같은 행에 누적, 새 대화창이면 새 행 추가
+- 스프레드시트 헤더: `세션ID | 타임스탬프 | 이름 | 예식일 | 예식장 | 상품 | 연락처 | 대화내역`
+
+### Google Apps Script 수정 시
+1. 스프레드시트 → 확장 프로그램 → Apps Script
+2. 코드 수정 후 저장
+3. **배포 → 배포 관리 → 연필 아이콘 → 새 버전 → 배포**
+4. URL 바뀌면 `chatbot.js`의 `SHEETS_URL` 업데이트 필요
 
 ---
 
