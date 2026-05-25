@@ -1407,6 +1407,33 @@ input:focus {
   margin: 0.75rem auto 1.5rem;
 }
 
+.home-feature-divider {
+  width: 0.75rem;
+  margin: 1.5rem auto 3rem;
+}
+
+.home-feature-video {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.home-feature-item {
+  aspect-ratio: 9 / 16;
+  width: min(72vw, 280px);
+  opacity: 1;
+  transform: none;
+  text-decoration: none;
+  color: inherit;
+}
+
+.home-feature-item img {
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.04);
+}
+
 /* Mobile Font Fix - 모바일에서만 한글 폰트를 세리프체로 변경 */
 @media (max-width: 767px) {
   body, 

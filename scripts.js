@@ -330,6 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
       window.showSection(sectionId);
     }
   });
+
 });
 
 // 전역 함수들
