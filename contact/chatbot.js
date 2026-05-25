@@ -220,8 +220,6 @@ document.addEventListener('DOMContentLoaded', function() {
 - 이름: ${customerData.name}
 - 예식일: ${customerData.date} ${customerData.time}
 - 예식장: ${customerData.venue}
-- 선택상품: ${customerData.package}
-- 할인가: ${customerData.price}원
 - 연락처: ${customerData.contact}`;
     }
     
@@ -302,7 +300,6 @@ document.addEventListener('DOMContentLoaded', function() {
         name: customerData.name,
         date: customerData.date,
         venue: customerData.venue,
-        package: customerData.package,
         contact: customerData.contact,
         chatLog: logText
       })
@@ -340,7 +337,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // AI 인사 메시지
     if (customerData) {
-      const greeting = `${customerData.name}님, ${customerData.date} ${customerData.venue}에서 ${customerData.package}로 문의해 주셨네요! ✧ 궁금하신 점 편하게 물어보세요.`;
+      const greeting = `${customerData.name}님, ${customerData.date} ${customerData.venue} 예식으로 문의해 주셨네요! ✧ 궁금하신 점 편하게 물어보세요.`;
       addMessage(greeting, false);
     } else {
       addMessage('안녕하세요! 코스보스 웨딩필름입니다 ✧ 궁금하신 점 있으시면 편하게 물어보세요.', false);
