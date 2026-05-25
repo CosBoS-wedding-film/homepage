@@ -47,8 +47,9 @@
         .contact-parent-note{font-family:'Noto Sans KR',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;font-size:13px;color:#6b5444;line-height:1.9;max-width:600px;margin:-40px auto 60px;}
         .contact-form-2026 label{display:block;text-align:left;font-size:15px;margin-bottom:8px;color:#374151;}
         .contact-form-2026 input{width:100%;border:1px solid #e5e7eb;border-radius:4px;padding:12px 14px;font-size:15px;box-sizing:border-box;margin-bottom:32px;font-family:'Cormorant',serif;}
+        .contact-form-2026 select{width:100%;border:1px solid #e5e7eb;border-radius:4px;padding:12px 14px;font-size:15px;box-sizing:border-box;margin-bottom:32px;font-family:'Cormorant',serif;background-color:white;color:#333;}
         .phone-group{display:flex;justify-content:space-between;gap:12px;margin-bottom:32px;}
-        .phone-group input{flex:1;min-width:0;text-align:center;font-family:'Cormorant',serif;}
+        .phone-group input{flex:1;min-width:0;text-align:center;font-family:'Cormorant',serif;margin-bottom:0;}
         .submit-btn-main{background:#6b5444;color:#fff;border:none;border-radius:2px;font-family:'Cormorant',serif;font-size:16px;letter-spacing:0.08em;padding:12px 48px;cursor:pointer;transition:opacity .3s;}
         .submit-btn-main:hover{opacity:.85;}
         .divider-line{margin:100px 0 60px;height:1px;background:#e5e7eb;border:0;}
@@ -146,6 +147,10 @@
                 </div>
                 <label>예약자 성함</label>
                 <input type="text" name="name" placeholder="예약자 성함을 입력해주세요" required>
+                <label>상품 선택</label>
+                <select name="package" required>
+                    <option value="signature" selected>5캠 단일 상품 - 770,000원 (구성은 'Price' 메뉴 참고)</option>
+                </select>
                 <button type="submit" class="submit-btn-main" onclick="fbq('track', 'Lead');">제출</button>
             </form>
             <hr class="divider-line">
@@ -188,7 +193,6 @@
     <script>
       // 프로모션 설정 (한 곳에서 관리)
       const DISCOUNT_PERCENT = 0; // 할인율 (%)
-      const PACKAGE_NAME = 'Signature';
       const ORIGINAL_PRICE = 770000;
       
       // 할인가 계산 함수
@@ -211,7 +215,7 @@
         const form = this;
         const phoneInputs=form.querySelectorAll('.phone-group input');
         const phone=`${phoneInputs[0].value}-${phoneInputs[1].value}-${phoneInputs[2].value}`;
-        const packageText = PACKAGE_NAME;
+        const packageText = form.package.options[form.package.selectedIndex].text;
         const price = calculateDiscountedPrice(ORIGINAL_PRICE, DISCOUNT_PERCENT);
         const params={
           date:form.date.value,
