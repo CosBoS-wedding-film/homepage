@@ -186,18 +186,22 @@
     <script src="../scripts.js?v=20241008"></script>
     <script src="chatbot.js?v=20241228n"></script>
     <script>
+      const PRICE = 770000;
+
       // EmailJS 폼 전송 처리
       document.getElementById('contactForm').addEventListener('submit',function(e){
         e.preventDefault();
         const form = this;
         const phoneInputs=form.querySelectorAll('.phone-group input');
         const phone=`${phoneInputs[0].value}-${phoneInputs[1].value}-${phoneInputs[2].value}`;
+        const price = PRICE.toLocaleString('ko-KR');
         const params={
           date:form.date.value,
           time:form.time.value,
           venue:form.venue.value,
           contact:phone,
-          name:form.name.value
+          name:form.name.value,
+          price:price
         };
         
         // 폼 데이터 저장 (챗봇에서 사용)
