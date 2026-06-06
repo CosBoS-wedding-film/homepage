@@ -101,7 +101,7 @@ docs: change the variable name for gmailJS (fix the error of 3can to 4cam, 4cam 
 fix: rename package option from 'standard' to 'classic' and update corresponding JavaScript variables
 - Changed HTML option value from 'standard' to 'classic' in contact form
 - Updated JavaScript logic to use 'classic' instead of 'standard' for package text generation
-- Maintained correct pricing: Classic (1인 4캠) 495,000원, Premium (2인 5캠) 700,000원
+- Maintained correct pricing: Classic (1인 4캠) 495,000원, Premium (2인 5캠) 680,000원
 
 250814
 feat: remove 50% discount
