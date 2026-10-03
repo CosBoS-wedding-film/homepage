@@ -47,7 +47,7 @@
         .contact-parent-note{font-family:'Noto Sans KR',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;font-size:13px;color:#6b5444;line-height:1.9;max-width:600px;margin:-40px auto 60px;}
         .contact-form-2026 label{display:block;text-align:left;font-size:15px;margin-bottom:8px;color:#374151;}
         .contact-form-2026 input{width:100%;border:1px solid #e5e7eb;border-radius:4px;padding:12px 14px;font-size:15px;box-sizing:border-box;margin-bottom:32px;font-family:'Cormorant',serif;}
-        .contact-form-2026 .product-display{width:100%;border:1px solid #e5e7eb;border-radius:4px;padding:12px 14px;font-size:15px;box-sizing:border-box;margin-bottom:32px;font-family:'Cormorant',serif;background-color:white;color:#333;}
+        .contact-form-2026 .product-display{display:block;width:100%;border:1px solid #e5e7eb;border-radius:4px;padding:12px 14px;font-size:15px;line-height:1.5;box-sizing:border-box;margin-bottom:32px;font-family:'Cormorant',serif;background-color:white;color:#333;resize:none;overflow:hidden;white-space:pre-wrap;word-break:keep-all;}
         .phone-group{display:flex;justify-content:space-between;gap:12px;margin-bottom:32px;}
         .phone-group input{flex:1;min-width:0;text-align:center;font-family:'Cormorant',serif;margin-bottom:0;}
         .submit-btn-main{background:#6b5444;color:#fff;border:none;border-radius:2px;font-family:'Cormorant',serif;font-size:16px;letter-spacing:0.08em;padding:12px 48px;cursor:pointer;transition:opacity .3s;}
@@ -130,7 +130,8 @@
                 
             <span style="color: black;"></br> 순간을 영원히 기록하고 싶다는 바람, </br> 그 바람으로부터 영상을 시작했습니다. </br> </br> "50년이 지나도 아름답게 기억될 시네마틱 영상" </br> 이것이 코스보스 웨딩필름의 지향점입니다. </span></p>
             <p class="contact-parent-note">5캠 중 2캠은 양가 부모님만을 위해 사용됩니다.<br>무엇과도 바꿀 수 없는 부모님의 귀중한 순간,<br>표정 하나까지 놓치지 않도록 원본은 무료로 제공됩니다.</p>
-            <p class="contact-parent-note" style="color:red;margin-top:calc(-60px + 1.8em);margin-bottom:1.8em;">2026.10.01 계약부터 770,000원으로 인상됩니다.</p>
+
+            <p class="contact-parent-note">하객 분들의 덕담을 풍부히 담을 수 있도록,<br>기본 인터뷰 뿐만 아니라<br>포토테이블에 액션캠을 설치하여 자유롭게 덕담 영상을 담습니다.</p>
            
             <p class="contact-note">후기: <a href="https://www.instagram.com/cosbos.wedding.film/" target="_blank">Instagram</a>의 하이라이트</p>
             <form class="contact-form-2026" id="contactForm">
@@ -149,7 +150,7 @@
                 <label>예약자 성함</label>
                 <input type="text" name="name" placeholder="예약자 성함을 입력해주세요" required>
                 <label>상품</label>
-                <input type="text" class="product-display" readonly tabindex="-1" aria-readonly="true">
+                <textarea class="product-display" readonly tabindex="-1" aria-readonly="true" rows="1"></textarea>
                 <button type="submit" class="submit-btn-main" onclick="fbq('track', 'Lead');">제출</button>
             </form>
             <hr class="divider-line">
@@ -190,16 +191,25 @@
     <script src="../scripts.js?v=20241008"></script>
     <script src="chatbot.js?v=20241228n"></script>
     <script>
-      const PRICE = 680000;
+      const PRICE = 770000;
 
       function formatPrice(price) {
         return price.toLocaleString('ko-KR');
       }
 
+      function fitProductDisplay(el) {
+        el.style.height = 'auto';
+        el.style.height = el.scrollHeight + 'px';
+      }
+
       document.addEventListener('DOMContentLoaded', function() {
         const productDisplay = document.querySelector('.product-display');
         if (productDisplay) {
-          productDisplay.value = `5캠 단일 상품 - ${formatPrice(PRICE)}원 (구성: 'Price' 메뉴)`;
+          productDisplay.value = `단일 상품 (1인 5캠 / 부모님 2캠 / 포토테이블 액션캠) - ${formatPrice(PRICE)}원 (구성: 'Price' 메뉴)`;
+          fitProductDisplay(productDisplay);
+          window.addEventListener('resize', function() {
+            fitProductDisplay(productDisplay);
+          });
         }
       });
 
