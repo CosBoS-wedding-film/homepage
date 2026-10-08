@@ -44,7 +44,12 @@
             }
         }
         .contact-note small{font-size:14px;color:#9ca3af;font-family:'Noto Sans KR',sans-serif;}
-        .contact-parent-note{font-family:'Noto Sans KR',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;font-size:13px;color:#6b5444;line-height:1.9;max-width:600px;margin:-40px auto 60px;}
+        .contact-features{max-width:600px;margin:-40px auto 60px;text-align:center;border:1.2px solid #6b5444;padding:36px 20px;box-sizing:border-box;}
+        .contact-feature{margin-bottom:28px;}
+        .contact-feature:last-child{margin-bottom:0;}
+        .contact-feature-title{font-family:'Noto Sans KR',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;font-size:15px;line-height:1.7;color:#6b5444;margin:0 0 8px;}
+        .contact-sample{width:min(100%,280px);margin:0 auto;aspect-ratio:16/9;}
+        .contact-sample iframe{width:100%;height:100%;border:0;display:block;}
         .contact-form-2026 label{display:block;text-align:left;font-size:15px;margin-bottom:8px;color:#374151;}
         .contact-form-2026 input{width:100%;border:1px solid #e5e7eb;border-radius:4px;padding:12px 14px;font-size:15px;box-sizing:border-box;margin-bottom:32px;font-family:'Cormorant',serif;}
         .contact-form-2026 .product-display{display:block;width:100%;border:1px solid #e5e7eb;border-radius:4px;padding:12px 14px;font-size:15px;line-height:1.5;box-sizing:border-box;margin-bottom:32px;font-family:'Cormorant',serif;background-color:white;color:#333;resize:none;overflow:hidden;white-space:pre-wrap;word-break:keep-all;}
@@ -129,9 +134,26 @@
             <p class="contact-note" style="color: #16a34a;">아래 양식에 맞게 작성해 주시면<br>예약 가능 여부를 문자로 안내해 드립니다.<br><span style="color: #000000;">
                 
             <span style="color: black;"></br> 순간을 영원히 기록하고 싶다는 바람, </br> 그 바람으로부터 영상을 시작했습니다. </br> </br> "50년이 지나도 아름답게 기억될 시네마틱 영상" </br> 이것이 코스보스 웨딩필름의 지향점입니다. </span></p>
-            <p class="contact-parent-note">5캠 중 2캠은 양가 부모님만을 위해 사용됩니다.<br>무엇과도 바꿀 수 없는 부모님의 귀중한 순간,<br>표정 하나까지 놓치지 않도록 원본은 무료로 제공됩니다.</p>
-
-            <p class="contact-parent-note">하객분들의 덕담을 풍부히 담을 수 있도록,<br>기본 인터뷰 뿐만 아니라<br>포토테이블에 액션캠을 설치하여 자유롭게 덕담 영상을 담습니다.</p>
+            <div class="contact-features">
+                <div class="contact-feature">
+                    <p class="contact-feature-title">시그니쳐 단일 상품 구성 1️⃣<br>[ 1인 5캠 4K ]<br>다양한 화각으로 끊김없이 생생하게</p>
+                    <div class="contact-sample">
+                        <iframe src="https://www.youtube.com/embed/uEiAILOus4g?autoplay=1&mute=1&loop=1&playlist=uEiAILOus4g&controls=0&rel=0&modestbranding=1&playsinline=1" title="시그니쳐 단일 상품 구성 1️⃣ 1인 5캠 4K" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="contact-feature">
+                    <p class="contact-feature-title">시그니쳐 단일 상품 구성 2️⃣<br>[ 부모님 2캠 ]<br>전문가용 카메라로 부모님의 감동적인 순간을 선명하게</p>
+                    <div class="contact-sample">
+                        <iframe src="https://www.youtube.com/embed/B8YGHoYQ7nI?autoplay=1&mute=1&loop=1&playlist=B8YGHoYQ7nI&controls=0&rel=0&modestbranding=1&playsinline=1" title="시그니쳐 단일 상품 구성 2️⃣ 부모님 2캠" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="contact-feature">
+                    <p class="contact-feature-title">시그니쳐 단일 상품 구성 3️⃣<br>[ 포토테이블 덕담캠 ]<br>인터뷰와 더불어 하객분들의 덕담을 풍부하게</p>
+                    <div class="contact-sample">
+                        <iframe src="https://www.youtube.com/embed/__UIqq3J0uw?autoplay=1&mute=1&loop=1&playlist=__UIqq3J0uw&controls=0&rel=0&modestbranding=1&playsinline=1" title="시그니쳐 단일 상품 구성 3️⃣ 포토테이블 덕담캠" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
            
             <p class="contact-note">후기: <a href="https://www.instagram.com/cosbos.wedding.film/" target="_blank">Instagram</a>의 하이라이트</p>
             <form class="contact-form-2026" id="contactForm">
@@ -189,7 +211,7 @@
     </div>
 
     <script src="../scripts.js?v=20241008"></script>
-    <script src="chatbot.js?v=20241228n"></script>
+    <script src="chatbot.js?v=20261008"></script>
     <script>
       const PRICE = 770000;
 
@@ -205,7 +227,7 @@
       document.addEventListener('DOMContentLoaded', function() {
         const productDisplay = document.querySelector('.product-display');
         if (productDisplay) {
-          productDisplay.value = `단일 상품 (1인 5캠 / 부모님 2캠 / 포토테이블 액션캠) - ${formatPrice(PRICE)}원 (구성: 'Price' 메뉴)`;
+          productDisplay.value = `단일 상품 (1인 5캠 / 부모님 2캠 / 포토테이블 덕담캠) - ${formatPrice(PRICE)}원 (구성: 'Price' 메뉴)`;
           fitProductDisplay(productDisplay);
           window.addEventListener('resize', function() {
             fitProductDisplay(productDisplay);
