@@ -1,2 +1,5 @@
 # 비공개 전략·메모 (로컬만)
 plan/
+
+.env
+node_modules/

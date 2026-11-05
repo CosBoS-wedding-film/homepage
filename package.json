@@ -1,0 +1,9 @@
+{
+  "name": "cosbos-homepage",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server/index.js",
+    "test": "node --test server/*.test.js"
+  }
+}

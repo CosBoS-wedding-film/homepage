@@ -57,6 +57,19 @@
         .phone-group input{flex:1;min-width:0;text-align:center;font-family:'Cormorant',serif;margin-bottom:0;}
         .submit-btn-main{background:#6b5444;color:#fff;border:none;border-radius:2px;font-family:'Cormorant',serif;font-size:16px;letter-spacing:0.08em;padding:12px 48px;cursor:pointer;transition:opacity .3s;}
         .submit-btn-main:hover{opacity:.85;}
+        .submit-btn-main:disabled{opacity:.4;cursor:not-allowed;}
+        .availability-status{font-family:'Noto Sans KR',sans-serif;font-size:15px;line-height:1.6;text-align:left;margin:-8px 0 28px;min-height:1.4em;}
+        .availability-status.ok{color:#16a34a;}
+        .availability-status.no{color:#b91c1c;}
+        .availability-status.unknown{color:#6b7280;}
+        .consult-box{margin-top:56px;}
+        .consult-box h2{font-family:'Cormorant',serif;font-size:22px;font-weight:500;letter-spacing:0.06em;color:#6b5444;margin:0 0 12px;}
+        .consult-lead{font-family:'Noto Sans KR',sans-serif;font-size:14px;line-height:1.7;color:#6b7280;margin:0 0 24px;}
+        .consult-box label{display:block;text-align:left;font-size:15px;margin-bottom:8px;color:#374151;}
+        .consult-box textarea{width:100%;border:1px solid #e5e7eb;border-radius:4px;padding:12px 14px;font-size:15px;box-sizing:border-box;margin-bottom:16px;min-height:96px;resize:vertical;font-family:'Noto Sans KR',sans-serif;}
+        .consult-answers{margin-top:28px;text-align:left;font-family:'Noto Sans KR',sans-serif;font-size:15px;line-height:1.7;color:#374151;}
+        .consult-answers p{margin:0 0 8px;}
+        .consult-source{color:#6b7280;font-size:13px;margin:0 0 20px !important;}
         .divider-line{margin:100px 0 60px;height:1px;background:#e5e7eb;border:0;}
         .footer-icons{display:flex;justify-content:center;gap:24px;margin-bottom:24px;}
         .footer-icons img{width:24px;height:24px;}
@@ -76,8 +89,6 @@
       .swal-confirm{background:#6b5444 !important;border:0 !important;border-radius:2px !important;font-family:'Cormorant',serif;font-size:16px;letter-spacing:0.08em;padding:8px 32px !important;}
       .swal-cancel{background:#e5e7eb !important;color:#374151 !important;border:0 !important;border-radius:2px !important;font-family:'Cormorant',serif;font-size:16px;letter-spacing:0.08em;padding:8px 32px !important;}
     </style>
-    <!-- AI Chatbot -->
-    <link rel="stylesheet" href="chatbot.css?v=20241228j">
 </head>
 <body class="loaded">
     <header>
@@ -163,6 +174,7 @@
                 <input type="time" name="time" required>
                 <label>예식장소</label>
                 <input type="text" name="venue" placeholder="예식장명을 입력해주세요" required>
+                <p id="availabilityStatus" class="availability-status" aria-live="polite"></p>
                 <label>연락처</label>
                 <div class="phone-group">
                     <input type="tel" maxlength="3" value="010" required>
@@ -173,8 +185,16 @@
                 <input type="text" name="name" placeholder="예약자 성함을 입력해주세요" required>
                 <label>상품</label>
                 <textarea class="product-display" readonly tabindex="-1" aria-readonly="true" rows="1"></textarea>
-                <button type="submit" class="submit-btn-main" onclick="fbq('track', 'Lead');">제출</button>
+                <button type="submit" class="submit-btn-main" onclick="fbq('track', 'Lead');" disabled>제출</button>
             </form>
+            <div class="consult-box" id="consultBox">
+                <h2>상담</h2>
+                <p class="consult-lead">상담출처에 적힌 내용만 답합니다. 답변마다 출처를 표시하고, 출처에 없으면 답하지 않습니다.</p>
+                <label for="consultQuestion">질문</label>
+                <textarea id="consultQuestion" placeholder="궁금한 점을 입력해 주세요"></textarea>
+                <button type="button" class="submit-btn-main" id="consultSend">물어보기</button>
+                <div class="consult-answers" id="consultAnswers" aria-live="polite"></div>
+            </div>
             <hr class="divider-line">
             <div class="footer-icons">
                 <a href="https://www.instagram.com/cosbos.wedding.film/" target="_blank"><img src="../insta_logo.png" alt="Instagram"></a>
@@ -190,28 +210,7 @@
         </div>
     </main>
 
-    <!-- AI Chatbot -->
-    <button class="chatbot-toggle" id="chatbotToggle" aria-label="채팅 열기">
-      <svg class="chat-icon" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.2L4 17.2V4h16v12z"/><circle cx="8" cy="10" r="1.5"/><circle cx="12" cy="10" r="1.5"/><circle cx="16" cy="10" r="1.5"/></svg>
-      <svg class="close-icon" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-    </button>
-    
-    <div class="chatbot-window" id="chatbotWindow">
-      <div class="chatbot-header">
-        <span>CosBoS 상담</span>
-        <button id="chatbotClose" style="background:none;border:none;color:#fff;font-size:22px;cursor:pointer;padding:0 4px;line-height:1;">&times;</button>
-      </div>
-      <div class="chatbot-messages" id="chatbotMessages">
-        <div class="chat-message bot">안녕하세요! 코스보스 웨딩필름입니다 ✧ 궁금하신 점이 있으시면 편하게 물어보세요.</div>
-      </div>
-      <div class="chatbot-input-area">
-        <textarea class="chatbot-input" id="chatbotInput" placeholder="메시지를 입력하세요..." rows="1"></textarea>
-        <button class="chatbot-send" id="chatbotSend">전송</button>
-      </div>
-    </div>
-
     <script src="../scripts.js?v=20241008"></script>
-    <script src="chatbot.js?v=20261010"></script>
     <script>
       const PRICE = 770000;
 
@@ -235,62 +234,160 @@
         }
       });
 
-      // EmailJS 폼 전송 처리
-      document.getElementById('contactForm').addEventListener('submit',function(e){
+      // 페이지와 API의 출처가 다를 때만 서버 오리진을 넣습니다. 예: "https://api.example.com"
+      const COSBOS_API_BASE = "";
+      const availabilityStatus = document.getElementById("availabilityStatus");
+      const submitButton = document.querySelector("#contactForm .submit-btn-main");
+      let availabilitySeq = 0;
+      let availabilityTimer = 0;
+
+      function showAvailability(kind, text) {
+        availabilityStatus.className = "availability-status" + (kind ? " " + kind : "");
+        availabilityStatus.textContent = text;
+        submitButton.disabled = kind !== "ok";
+      }
+
+      async function refreshAvailability() {
+        const form = document.getElementById("contactForm");
+        const date = form.date.value;
+        const time = form.time.value;
+        const venue = form.venue.value.trim();
+        if (!date || !time || !venue) {
+          availabilitySeq += 1;
+          showAvailability("", "");
+          return null;
+        }
+        const seq = (availabilitySeq += 1);
+        showAvailability("unknown", "확인 중");
+        try {
+          const response = await fetch(COSBOS_API_BASE + "/api/availability", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ date: date, time: time }),
+          });
+          const data = await response.json();
+          if (seq !== availabilitySeq) return null;
+          const reason = typeof data.reason === "string" ? data.reason : "";
+          if (data.status === "가능") showAvailability("ok", reason ? "가능 · " + reason : "가능");
+          else if (data.status === "불가") showAvailability("no", reason ? "불가 · " + reason : "불가");
+          else showAvailability("unknown", reason ? "확인 필요 · " + reason : "확인 필요");
+          return data;
+        } catch (err) {
+          if (seq !== availabilitySeq) return null;
+          showAvailability("unknown", "확인 필요 · 일정을 확인할 수 없습니다.");
+          return null;
+        }
+      }
+
+      function scheduleAvailability() {
+        window.clearTimeout(availabilityTimer);
+        availabilityTimer = window.setTimeout(refreshAvailability, 250);
+      }
+
+      ["date", "time", "venue"].forEach(function (name) {
+        const input = document.querySelector('#contactForm [name="' + name + '"]');
+        input.addEventListener("input", scheduleAvailability);
+        input.addEventListener("change", scheduleAvailability);
+      });
+
+      function renderConsult(data) {
+        const out = document.getElementById("consultAnswers");
+        out.replaceChildren();
+        const answers = data && Array.isArray(data.answers) ? data.answers : [];
+        if (!answers.length) {
+          const message = document.createElement("p");
+          message.textContent = (data && data.message) || "상담출처에 없는 내용입니다.";
+          out.appendChild(message);
+          return;
+        }
+        answers.forEach(function (answer) {
+          const text = document.createElement("p");
+          text.className = "consult-answer";
+          text.textContent = answer.text || "";
+          const source = document.createElement("p");
+          source.className = "consult-source";
+          source.textContent = "출처: " + (answer.sourceTab || "상담출처") + " · " + (answer.sourceLocation || "");
+          out.appendChild(text);
+          out.appendChild(source);
+        });
+      }
+
+      document.getElementById("consultSend").addEventListener("click", async function () {
+        const question = document.getElementById("consultQuestion").value.trim();
+        const out = document.getElementById("consultAnswers");
+        out.replaceChildren();
+        if (!question) {
+          const message = document.createElement("p");
+          message.textContent = "질문을 입력해 주세요.";
+          out.appendChild(message);
+          return;
+        }
+        const pending = document.createElement("p");
+        pending.textContent = "확인 중";
+        out.appendChild(pending);
+        try {
+          const response = await fetch(COSBOS_API_BASE + "/api/consult", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ question: question }),
+          });
+          renderConsult(await response.json());
+        } catch (err) {
+          renderConsult({ message: "출처를 확인할 수 없어 답변할 수 없습니다.", answers: [] });
+        }
+      });
+
+      document.getElementById('contactForm').addEventListener('submit', async function (e) {
         e.preventDefault();
+        const availability = await refreshAvailability();
+        if (!availability || availability.status !== "가능") return;
         const form = this;
-        const phoneInputs=form.querySelectorAll('.phone-group input');
-        const phone=`${phoneInputs[0].value}-${phoneInputs[1].value}-${phoneInputs[2].value}`;
+        submitButton.disabled = true;
+        const phoneInputs = form.querySelectorAll('.phone-group input');
+        const phone = `${phoneInputs[0].value}-${phoneInputs[1].value}-${phoneInputs[2].value}`;
         const price = formatPrice(PRICE);
-        const params={
-          date:form.date.value,
-          time:form.time.value,
-          venue:form.venue.value,
-          contact:phone,
-          name:form.name.value,
-          price:price
-        };
-        
-        // 폼 데이터 저장 (챗봇에서 사용)
-        window.customerData = {
-          name: form.name.value,
+        const params = {
           date: form.date.value,
           time: form.time.value,
           venue: form.venue.value,
-          contact: phone
+          contact: phone,
+          name: form.name.value,
+          price: price
         };
-        
-        emailjs.send('cosbos250720','template_cxupggi',params)
-          .then(()=>{
+
+        emailjs.send('cosbos250720', 'template_cxupggi', params)
+          .then(() => {
             Swal.fire({
-              html:`
+              html: `
                 <div style="position:relative;text-align:center;">
                   <button id="swalCloseX" style="position:absolute;top:-15px;right:-5px;background:none;border:none;font-size:24px;color:#9ca3af;cursor:pointer;padding:4px;outline:none;">&times;</button>
                   <p style="font-size:16px;margin-bottom:16px;">[접수 완료] 주말에 연락드리겠습니다.</p>
                   <p style="font-size:13px;color: #16a34a;margin-bottom:20px;">
                     계약서 작성 시 (계약금 X) 당일 연락드립니다.<br>
-                    기다리실 동안 아래 AI 상담사에게 편하게 문의해주세요.
+                    궁금한 점은 아래 상담에서 출처와 함께 확인해 주세요.
                   </p>
                   <a href="https://docs.google.com/forms/d/e/1FAIpQLSf-LWt9fFy1HFqq6UNKzWIIEt41rXUSuv_uirpNyAtHNqi8bg/viewform" target="_blank" style="display:block;background:#374151;color:#fff;border:none;border-radius:2px;padding:12px 24px;text-decoration:none;width:100%;box-sizing:border-box;margin-bottom:10px;font-size:14px;">
                     📋 계약서 작성
                   </a>
                   <button id="swalAiBtn" style="background:#6b5444;color:#fff;border:none;border-radius:2px;padding:14px 24px;cursor:pointer;width:100%;">
-                    <span style="font-size:15px;display:block;">☺️ AI 상담</span>
-                    <span style="font-size:11px;color:rgba(255,255,255,0.8);display:block;margin-top:4px;">(모든 내용 검토 후 필요한 부분은<br>주말에 대표가 직접 답변드립니다)</span>
+                    <span style="font-size:15px;display:block;">상담 보기</span>
                   </button>
                 </div>
               `,
               showConfirmButton: false,
               showCancelButton: false,
               showCloseButton: false,
-              width:420,
-              customClass:{
-                popup:'swal-popup'
+              width: 420,
+              customClass: {
+                popup: 'swal-popup'
               },
               didOpen: () => {
                 document.getElementById('swalAiBtn').addEventListener('click', () => {
                   Swal.close();
-                  if (window.startAiConsult) window.startAiConsult();
+                  const box = document.getElementById('consultBox');
+                  if (box) box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  const question = document.getElementById('consultQuestion');
+                  if (question) question.focus();
                 });
                 document.getElementById('swalCloseX').addEventListener('click', () => {
                   Swal.close();
@@ -298,8 +395,13 @@
               }
             });
             form.reset();
+            showAvailability("", "");
           })
-          .catch(err=>{console.error(err);alert('전송 오류가 발생했습니다. 다시 시도해주세요.');});
+          .catch(err => {
+            console.error(err);
+            alert('전송 오류가 발생했습니다. 다시 시도해주세요.');
+            submitButton.disabled = false;
+          });
       });
     </script>
 </body>

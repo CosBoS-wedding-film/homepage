@@ -7,57 +7,43 @@ https://cosbos-wedding-film.github.io/homepage/
 
 ---
 
-## AI 챗봇 설정
+## 일정 확인과 상담
 
-### API 키 보안 (GitHub Secrets + Actions)
-- **API 키 저장**: GitHub Secrets (repo 코드에 없음)
-- **빌드 시**: `__GEMINI_API_KEY__` → 실제 키로 치환됨
-- **Google 스캔**: repo에 키 없으니 revoke 안 함 ✅
+Contact 폼은 예식일, 예식 시각, 장소를 입력하면 제출 전에 `가능`, `불가`, `확인 필요`를 보여 줍니다. `불가`와 `확인 필요`는 제출할 수 없습니다.
 
-### GitHub Actions란?
-GitHub에서 코드를 push하면 자동으로 실행되는 빌드/배포 시스템
+가능 여부는 같은 날 기존 일정과 촬영 시간이 겹치는지만 봅니다.
 
-**왜 사용하나?**
-- GitHub Pages = 정적 호스팅 (코드 그대로 배포)
-- API 키를 코드에 넣으면 → GitHub에 노출 → Google이 감지해서 키 막음
-- **해결책**: GitHub Secrets에 키 저장 → Actions가 빌드할 때 키 주입 → 배포
+- 촬영 시간: 예식 시작 90분 전 ~ 예식 시작 60분 후
+- 그 날짜 행의 `촬영 시간` 칸에 값이 있으면, 그 칸의 시작과 끝을 사용
+- 겹치면 `불가`, 겹치지 않으면 `가능`
+- 하루에 이미 몇 건이 있든 상관없음
+- 이동 시간은 계산하지 않음. Kakao Mobility는 호출하지 않음
 
-**작동 방식:**
+응답에는 판정과 짧은 이유만 있습니다. 다른 예식의 이름, 연락처, 장소, 시각은 브라우저로 내려가지 않습니다.
+
+상담 칸은 `상담출처` 탭에 있는 문장만 보여 주고, 답변마다 탭 이름과 제목(또는 행 번호)을 붙입니다. 탭이 없거나 질문의 제목이 없으면 `상담출처에 없는 내용입니다.`라고만 합니다. 상담 문장은 이 저장소에 넣지 않습니다. 탭은 직접 만들고, 1행 헤더는 `제목`, `내용`으로 둡니다. 질문 안에 제목이 들어 있거나 제목 안에 질문이 들어 있을 때만 그 행을 보여 줍니다.
+
+### 시트를 읽는 서버
+
+GitHub Pages는 정적 사이트라 시트를 읽지 못합니다. `node server/index.js`가 페이지와 API를 함께 제공합니다. 이 서버로 열지 않으면 일정 확인이 실패하고 문의는 제출되지 않습니다.
+
+서버만 아래 스프레드시트를 읽습니다.
+
+- 스프레드시트 ID: `1Z5K9otbS1go4NcKSQyOJ3lSTt8y7bNYsUYFkdxU8qIE`
+- 일정: 문의 달의 `YYYY.MM` 탭만. 예: `2026.11`. 그 탭이 없으면 그 달은 일정이 없는 날로 봅니다.
+- 그 탭에서 읽는 열: `일시` (`YYMMDD_HHMM`, 예: `261107_1100`), `촬영 시간`
+- 상담: `상담출처` 탭만
+
+### 넣어 주셔야 하는 인증
+
+서비스 계정 키 JSON 전체를 환경변수 `GOOGLE_SERVICE_ACCOUNT_JSON`에 한 줄로 넣습니다. 키의 `client_email`을 위 스프레드시트에 뷰어로 공유합니다. 키가 없으면 가능으로 답하지 않고 `확인 필요`를 반환합니다.
+
 ```
-[GitHub Secrets] ← API 키 저장 (코드에 없음)
-    ↓ push하면 Actions 실행
-[chatbot.js] ← __GEMINI_API_KEY__ → 실제 키로 치환
-    ↓ 
-[GitHub Pages] ← 배포된 파일에만 키 있음
+export GOOGLE_SERVICE_ACCOUNT_JSON='{"type":"service_account","client_email":"...","private_key":"..."}'
+node server/index.js
 ```
 
-### GitHub Pages 설정
-- Settings → Pages → Source: **GitHub Actions** 선택 필수!
-- "Deploy from a branch" 선택하면 키 주입 안 됨
-
-### API 키 변경 방법
-1. [Google AI Studio](https://aistudio.google.com/apikey)에서 새 키 발급
-2. GitHub repo → Settings → Secrets and variables → Actions
-3. GEMINI_API_KEY 수정
-4. 다시 push하면 자동 배포
-
-### GitHub Secrets 설정
-1. GitHub repo → Settings → Secrets and variables → Actions
-2. New repository secret
-3. Name: `GEMINI_API_KEY`
-4. Value: (API 키)
-
-### 대화 기록 (Google Sheets)
-- 매 대화마다 Google Sheets로 자동 저장
-- 스프레드시트: `AI챗봇 대화기록`
-- **세션 ID 기반**: 같은 대화창이면 같은 행에 누적, 새 대화창이면 새 행 추가
-- 스프레드시트 헤더: `세션ID | 타임스탬프 | 이름 | 예식일 | 예식장 | 상품 | 연락처 | 대화내역`
-
-### Google Apps Script 수정 시
-1. 스프레드시트 → 확장 프로그램 → Apps Script
-2. 코드 수정 후 저장
-3. **배포 → 배포 관리 → 연필 아이콘 → 새 버전 → 배포**
-4. URL 바뀌면 `chatbot.js`의 `SHEETS_URL` 업데이트 필요
+기본 주소는 http://127.0.0.1:8787 입니다. 페이지와 API를 서로 다른 주소에 둘 때만 `contact/index.html`의 `COSBOS_API_BASE`를 서버 오리진으로 바꿉니다.
 
 ---
 
@@ -95,16 +81,19 @@ GitHub에서 코드를 push하면 자동으로 실행되는 빌드/배포 시스
 homepage/
 ├── index.html          # 메인 페이지
 ├── contact/
-│   ├── index.html      # 문의 폼 + 챗봇
-│   ├── chatbot.css     # 챗봇 스타일
-│   └── chatbot.js      # 챗봇 로직 (__GEMINI_API_KEY__ 플레이스홀더)
+│   └── index.html      # 문의 폼 + 출처 상담
+├── server/
+│   ├── index.js        # 정적 파일과 /api/availability, /api/consult
+│   ├── availability.js # 같은 날 시간 겹침
+│   ├── consult.js      # 상담출처 인용
+│   └── sheets.js       # 시트에서 필요한 열만 읽기
 ├── product/
 │   └── index.html      # 상품 페이지
 ├── reservation/
 │   └── index.html      # 예약 현황
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml  # GitHub Actions (빌드 시 키 주입 + 배포)
+│       └── deploy.yml  # GitHub Actions 정적 배포
 ├── commit_log.md       # 커밋 기록
 └── README.md           # 이 파일
 ```
